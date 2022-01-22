@@ -1,4 +1,5 @@
 import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 import Dollar from '../Images/dollar.svg';
 import Isle from '../Images/isle.svg';
 import Omnidroid from '../Images/omnidroid.svg';
@@ -29,7 +30,9 @@ const Navigator = () => {
 
                 <Fade>
                     <div className="navigator-item">
-                        <span className="navigator-item-content"><img src={Supers} alt="Supers" className="icon" />Supers</span>
+                        <Link to="/supers">
+                            <span className="navigator-item-content"><img src={Supers} alt="Supers" className="icon" />Supers</span>
+                        </Link>
                     </div>
                 </Fade>
             </div>

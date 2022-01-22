@@ -14,7 +14,7 @@ const Authentication = () => {
 
     useEffect(() => {
         const handleSubmit = () => {
-            if (passwordValue === "kronos") {
+            if (passwordValue.toLowerCase() === "kronos") {
                 navigate("/navigator");
             }
         }

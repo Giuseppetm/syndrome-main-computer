@@ -1,0 +1,12 @@
+#supers {
+    background: $quarternary-color-darker;
+    background: linear-gradient(90deg, $quarternary-color-darker 0%, $quaternary-color 15%, $quaternary-color 85%, $quarternary-color-darker 100%);
+
+    min-height: 100vh;
+    height: 100vh;
+    //display: flex;
+    //align-items: center;
+    border-bottom: 0;
+    justify-content: center;
+    //padding: 30px 40px 30px;
+}
