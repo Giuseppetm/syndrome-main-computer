@@ -1,9 +1,8 @@
 @import './variables.scss';
-
 @import './Components/Button.scss';
-
 @import './Views/About.scss';
 @import './Views/Authentication.scss';
+@import './Views/Navigator.scss';
 
 @font-face {
   font-family: 'Eurostile';
@@ -18,11 +17,28 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Eurostile';
+  src: url('Fonts/EuroStyle-RegularExtended2/Eurostile-ExtendedTwo.eot');
+  src: url('Fonts/EuroStyle-RegularExtended2/Eurostile-ExtendedTwo.eot?#iefix') format('embedded-opentype'),
+    url('Fonts/EuroStyle-RegularExtended2/Eurostile-ExtendedTwo.woff2') format('woff2'),
+    url('Fonts/EuroStyle-RegularExtended2/Eurostile-ExtendedTwo.woff') format('woff'),
+    url('Fonts/EuroStyle-RegularExtended2/Eurostile-ExtendedTwo.ttf') format('truetype'),
+    url('Fonts/EuroStyle-RegularExtended2/Eurostile-ExtendedTwo.svg#Eurostile-ExtendedTwo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: 0;
   font-family: 'Eurostile';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
 }
 
 .text-spaced {

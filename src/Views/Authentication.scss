@@ -1,0 +1,34 @@
+#authentication {
+    background: rgb(99, 157, 163);
+    background: linear-gradient(90deg, rgba(99, 157, 163, 1) 0%, rgba(112, 170, 179, 1) 15%, rgba(112, 170, 179, 1) 85%, rgba(99, 157, 163, 1) 100%);
+
+    color: $primary-color;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 0;
+
+    .password-frame {
+        text-transform: uppercase;
+        letter-spacing: 3rem;
+        font-size: 3.0rem;
+        font-weight: bold;
+        padding: 10px 0px 10px;
+        text-align: center;
+        width: 100%;
+        background: $tertiary-color-darker;
+        background: linear-gradient(90deg, $tertiary-color-darker 0%, $tertiary-color 20%, $tertiary-color 80%, $tertiary-color-darker 100%);
+    }
+
+    input {
+        background: none;
+        border: none;
+        outline: none;
+        font-weight: inherit;
+        text-transform: inherit;
+        letter-spacing: inherit;
+        text-align: inherit;
+        width: inherit;
+    }
+}

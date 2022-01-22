@@ -4,7 +4,8 @@
 
 `Work in progress`
 
-- [ ] Authentication section;
+- [x] About section;
+- [x] Authentication section;
 - [ ] Supers section;
 - [ ] Omnidroid final design;
 - [ ] Project kronos countdown.
