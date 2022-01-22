@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Eurostile';
+  src: url('Fonts/EuroStyle-BoldExtended2/Eurostile-BoldExtendedTwo.eot');
+  src: url('Fonts/EuroStyle-BoldExtended2/Eurostile-BoldExtendedTwo.eot?#iefix') format('embedded-opentype'),
+    url('Fonts/EuroStyle-BoldExtended2/Eurostile-BoldExtendedTwo.woff2') format('woff2'),
+    url('Fonts/EuroStyle-BoldExtended2/Eurostile-BoldExtendedTwo.woff') format('woff'),
+    url('Fonts/EuroStyle-BoldExtended2/Eurostile-BoldExtendedTwo.ttf') format('truetype'),
+    url('Fonts/EuroStyle-BoldExtended2/Eurostile-BoldExtendedTwo.svg#Eurostile-BoldExtendedTwo') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  font-family: 'Eurostile';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
