@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import About from './Views/About';
 import Authentication from './Views/Authentication'
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

@@ -1,3 +1,10 @@
+@import './variables.scss';
+
+@import './Components/Button.scss';
+
+@import './Views/About.scss';
+@import './Views/Authentication.scss';
+
 @font-face {
   font-family: 'Eurostile';
   src: url('Fonts/EuroStyle-BoldExtended2/Eurostile-BoldExtendedTwo.eot');
@@ -16,4 +23,12 @@ body {
   font-family: 'Eurostile';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.text-spaced {
+  letter-spacing: 0.5em;
+}
+
+a {
+  text-decoration: none !important;
 }

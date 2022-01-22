@@ -2,7 +2,7 @@
 
 
 const Authentication = () => {
-    return <>About</>;
+    return <>Authentication</>;
 };
 
 export default Authentication;

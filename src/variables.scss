@@ -1,0 +1,19 @@
+$primary-color: #212629;
+$secondary-color: #54868c;
+$tertiary-color: #bedfdf;
+$tertiary-color-darker: rgb(161, 196, 201);
+
+$white-color: #ededed;
+$warning-color: #e9401e;
+
+.primary-color {
+    color: $primary-color;
+}
+
+.secondary-color {
+    color: $secondary-color;
+}
+
+.tertiary-color {
+    color: $tertiary-color;
+}
