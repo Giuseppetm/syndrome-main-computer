@@ -1,6 +1,6 @@
 #navigator {
-    background: rgb(99, 157, 163);
-    background: linear-gradient(90deg, rgba(99, 157, 163, 1) 0%, rgba(112, 170, 179, 1) 15%, rgba(112, 170, 179, 1) 85%, rgba(99, 157, 163, 1) 100%);
+    background: $quarternary-color-darker;
+    background: linear-gradient(90deg, $quarternary-color-darker 0%, $quaternary-color 15%, $quaternary-color 85%, $quarternary-color-darker 100%);
 
     min-height: 100vh;
     height: 100vh;
@@ -19,16 +19,26 @@
         padding: 20px 0px 20px;
 
         .navigator-item {
-            margin: 20px 0px 20px;
+            margin: 30px 0px 30px;
             margin-left: 14.5%;
         }
 
         .navigator-item-content {
+            cursor: pointer;
             padding: 10px 25px 10px;
             text-transform: uppercase;
             color: $primary-color;
             letter-spacing: 0.5rem;
             font-size: 2.3rem;
+        }
+
+        .icon {
+            fill: $primary-color;
+            margin-right: 150px;
+            padding-left: 60px;
+            vertical-align: inherit;
+            width: 120px;
+            height: 40px;
         }
 
         .navigator-item-content:hover, .navigator-item-content:active {
@@ -40,22 +50,15 @@
                 fill: $white-color;
             }
         }
-
-        .icon {
-            fill: $primary-color;
-            margin-right: 150px;
-            padding-left: 60px;
-            vertical-align: inherit;
-            width: 100px;
-            height: 40px;
-        }
     }
 
     .box-icons-borders {
         position: absolute;
+        z-index: 3;
+        opacity: 70%;
         border-left: 1px solid $white-color;
         border-right: 1px solid $white-color;
-        width: 200px;
+        width: 220px;
         height: 100vh;
         left: 14.5%;
     }

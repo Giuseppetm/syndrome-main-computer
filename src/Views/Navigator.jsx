@@ -1,5 +1,8 @@
 import Fade from 'react-reveal/Fade';
 import Dollar from '../Images/dollar.svg';
+import Isle from '../Images/isle.svg';
+import Omnidroid from '../Images/omnidroid.svg';
+import Supers from '../Images/supers.svg';
 
 const Navigator = () => {
     return (
@@ -8,25 +11,25 @@ const Navigator = () => {
             <div className="navigator-frame">
                 <Fade>
                     <div className="navigator-item" active>
-                        <span className="navigator-item-content"><img src={Dollar} alt="Dollar" className="icon" />Island operations</span>
+                        <span className="navigator-item-content"><img src={Isle} alt="Isle" className="icon" />Island operations</span>
                     </div>
                 </Fade>
 
                 <Fade>
                     <div className="navigator-item">
-                        <span className="navigator-item-content"><img src={Dollar} alt="Dollar" className="icon" />Finances</span>
+                        <span className="navigator-item-content"><img src={Dollar} alt="Finances" className="icon" />Finances</span>
                     </div>
                 </Fade>
 
                 <Fade>
                     <div className="navigator-item">
-                        <span className="navigator-item-content"><img src={Dollar} alt="Dollar" className="icon" />Omnidroid metatraining</span>
+                        <span className="navigator-item-content"><img src={Omnidroid} alt="Omnidroid" className="icon" />Omnidroid metatraining</span>
                     </div>
                 </Fade>
 
                 <Fade>
                     <div className="navigator-item">
-                        <span className="navigator-item-content"><img src={Dollar} alt="Dollar" className="icon" />Supers</span>
+                        <span className="navigator-item-content"><img src={Supers} alt="Supers" className="icon" />Supers</span>
                     </div>
                 </Fade>
             </div>

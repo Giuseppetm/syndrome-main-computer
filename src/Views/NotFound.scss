@@ -1,0 +1,13 @@
+#notfound {
+    background: $quarternary-color-darker;
+    background: linear-gradient(90deg, $quarternary-color-darker 0%, $quaternary-color 15%, $quaternary-color 85%, $quarternary-color-darker 100%);
+
+    color: $primary-color;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 0;
+    font-weight: 400;
+    padding: 0 5.6rem;
+}
