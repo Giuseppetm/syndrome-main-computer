@@ -57,7 +57,6 @@ const SuperOmnidroidFrame = () => {
                     </div>
 
                     <div className="col-6 p-0 separator content image">
-                        {/* image */}
                         <Fade duration={200}>
                             <img id="super-image" src={superImages[dataElement?.super.img]} alt="super" />
                             {dataElement?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></> }
@@ -65,7 +64,6 @@ const SuperOmnidroidFrame = () => {
                     </div>
 
                     <div className="col-6 p-0 separator content image">
-                        {/* image */}
                         <Fade duration={200}>
                             <img id="omnidroid-image" src={omnidroidImages[dataElement?.omnidroid.img]} alt="omnidroid" />
                             {dataElement?.omnidroid.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}

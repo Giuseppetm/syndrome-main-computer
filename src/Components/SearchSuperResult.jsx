@@ -24,14 +24,12 @@ const SearchSuperResult = () => {
                         <div className="col-7 separator header" />
 
                         <div className="col-5 p-0 separator content image">
-                            {/* image */}
                             <Fade duration={200}>
                                 <img id="super-image" src={require('../Images/Search Results/' + superResult?.img)} alt={superResult?.img} />
                             </Fade>
                         </div>
 
                         <div className="col-7 separator result content">
-                            {/* text */}
                             <Fade duration={200}>
                                 <div className="mb-3">
                                     <h1 className="text-uppercase">{superResult?.name}</h1>
