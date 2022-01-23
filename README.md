@@ -15,5 +15,5 @@ This is a reproduction of Syndrome's main computer from "*The Incredibles*" movi
 - [ ] Omnidroid final design;
 - [ ] Project kronos countdown.
 
-## Sample video
+## Video from the movie
 https://www.youtube.com/watch?v=IRPI3lSACFc
