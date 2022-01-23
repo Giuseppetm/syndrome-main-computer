@@ -18,7 +18,7 @@ const Supers = () => {
 
                 <Fade>
                     <div className="navigator-item">
-                        <Link to="/search_supers">
+                        <Link to="/search_super">
                             <span className="navigator-item-content"><img src={Search} alt="Search super" className="icon" />Search super</span>
                         </Link>
                     </div>

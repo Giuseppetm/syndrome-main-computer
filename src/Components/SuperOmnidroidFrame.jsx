@@ -41,7 +41,7 @@ const SuperOmnidroidFrame = () => {
                     <div className="col-6 separator">
                         <Fade duration={200}>
                             <div className="d-flex justify-content-between">
-                                <div><h1>OPPONENT</h1></div>
+                                <div><h1 style={{ paddingLeft: 20 }}>OPPONENT</h1></div>
                                 <div className="white-color" style={{ marginTop: 7 }}>
                                     <p className="d-inline mr-4">THREAT RATING:</p> 
                                     <h2 className="mb-0 d-inline">{dataElement?.super.threatRating}</h2>
@@ -52,7 +52,7 @@ const SuperOmnidroidFrame = () => {
 
                     <div className="col-6 separator">
                         <Fade duration={200}>
-                            <h1>PROTOTYPE</h1>
+                            <h1 style={{ paddingLeft: 20 }}>PROTOTYPE</h1>
                         </Fade>
                     </div>
 

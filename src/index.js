@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SearchSuper from './Views/SearchSuper';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,8 +19,9 @@ ReactDOM.render(
         <Route exact path="/" element={<About />} />
         <Route path="/authentication" element={<Authentication />} />
         <Route path="/navigator" element={<Navigator />} />
-        <Route exact path="/supers" element={<Supers />} /> 
+        <Route path="/supers" element={<Supers />} /> 
         <Route path="/supers/:superId" element={<SuperOmnidroidFrame />} />
+        <Route path="/search_super" element={<SearchSuper />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
