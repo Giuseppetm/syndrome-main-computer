@@ -11,7 +11,7 @@ This is a reproduction of Syndrome's main computer from "*The Incredibles*" movi
 - [x] About section;
 - [x] Authentication section;
 - [x] Supers list section;
-- [ ] Search super section
+- [x] Search super section
 - [ ] Omnidroid final design;
 - [ ] Project kronos countdown.
 
