@@ -38,7 +38,7 @@ const SuperOmnidroidFrame = () => {
         <div className="super-omnidroid-frame">
             <div className="container-fluid h-100">
                 <div className="row h-100">
-                    <div className="col-6 separator">
+                    <div className="col-6 separator header">
                         <Fade duration={200}>
                             <div className="d-flex justify-content-between">
                                 <div><h1 style={{ paddingLeft: 20 }}>OPPONENT</h1></div>
@@ -50,13 +50,13 @@ const SuperOmnidroidFrame = () => {
                         </Fade>
                     </div>
 
-                    <div className="col-6 separator">
+                    <div className="col-6 separator header">
                         <Fade duration={200}>
                             <h1 style={{ paddingLeft: 20 }}>PROTOTYPE</h1>
                         </Fade>
                     </div>
 
-                    <div className="col-6-image separator">
+                    <div className="col-6 p-0 separator content">
                         {/* image */}
                         <Fade duration={200}>
                             <div className="image">
@@ -66,7 +66,7 @@ const SuperOmnidroidFrame = () => {
                         </Fade>
                     </div>
 
-                    <div className="col-6-image separator">
+                    <div className="col-6 p-0 separator content">
                         {/* image */}
                         <Fade duration={200}>
                             <div className="image">

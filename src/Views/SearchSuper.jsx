@@ -1,6 +1,5 @@
 import Fade from 'react-reveal/Fade';
 import React from 'react';
-import data from '../Data/data.json';
 import { useNavigate } from "react-router-dom";
 
 const SearchSuper = () => {
@@ -13,8 +12,10 @@ const SearchSuper = () => {
                 case "elastigirl":
                     navigate("/search_super/elastigirl");
                     break;
-                case "siberius":
-                    navigate("/search_super/siberius");
+                case "frozone":
+                    navigate("/search_super/frozone");
+                    break;
+                case "":
                     break;
                 default:
                     navigate("/notfound");
@@ -45,7 +46,7 @@ const SearchSuper = () => {
                         <div className="row">
                             <div className="label col-3">SEARCH:</div>
 
-                            <div className="input-text col-8">
+                            <div className="input-text col-9">
                                 <input autoFocus type="text" value={searchValue} onInput={e => setSearchValue(e.target.value)} id="search-field" name="search-field" maxLength={16} />
                             </div>
                         </div>

@@ -193,5 +193,20 @@
             "img": "x6.png",
             "terminated": false
         }
+    },
+    {
+        "super": {
+            "name": "Mr. Incredible",
+            "threatRating": 9.1,
+            "powers": "Superhuman strength, capable of lifting weight up to 55 tons, invulnerability to high levels of physical damage",
+            "img": "mr_incredible.png",
+            "terminated": true
+        },
+        "omnidroid": {
+            "name": "X9",
+            "features": "Omni-directional, trans-universal modulation, bi-polar sensor cluster",
+            "img": "x9.png",
+            "terminated": false
+        }
     }
 ]
