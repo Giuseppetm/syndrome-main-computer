@@ -1,14 +1,16 @@
 # Syndrome Main Computer
-![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-![image](https://user-images.githubusercontent.com/52317197/150657249-df8969b5-0376-4f10-8dc1-ea4eec3bec7c.png)
+This is a reproduction of Syndrome's main computer from "The Incredibles" movie (2004).
+
+![image](https://user-images.githubusercontent.com/52317197/150682274-9813df42-c378-4f51-a3e5-7d07ec3f4a99.png)
+
 
 `Work in progress`
 
 - [x] About section;
 - [x] Authentication section;
-- [ ] Supers section;
+- [x] Supers list section;
+- [ ] Search super section
 - [ ] Omnidroid final design;
 - [ ] Project kronos countdown.
 
