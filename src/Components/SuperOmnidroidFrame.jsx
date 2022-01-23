@@ -12,7 +12,7 @@ const SuperOmnidroidFrame = () => {
     React.useEffect( () => {
         setTimeout(() => {
             setRender(true);
-        }, 1000);
+        }, 800);
     }, [dataElement, navigate, superId]);
 
     React.useEffect(() => {
@@ -22,7 +22,7 @@ const SuperOmnidroidFrame = () => {
                 setDataElement(data[parseInt(superId) + 1]);
                 navigate("/supers/" + (parseInt(superId) + 1), { replace: true }); 
             }
-        }, 2500);
+        }, 1500);
     }, [navigate, superId]);
     
     return (
@@ -30,7 +30,7 @@ const SuperOmnidroidFrame = () => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-6 separator">
-                        <Fade>
+                        <Fade duration={100}>
                             <div className="d-flex justify-content-between">
                                 <div><h1>OPPONENT</h1></div>
                                 <div className="white-color" style={{ marginTop: 7 }}>
@@ -42,33 +42,33 @@ const SuperOmnidroidFrame = () => {
                     </div>
 
                     <div className="col-6 separator">
-                        <Fade>
+                        <Fade duration={100}>
                             <h1>PROTOTYPE</h1>
                         </Fade>
                     </div>
 
                     <div className="col-6-image separator">
                         {/* image */}
-                        <Fade>
+                        <Fade duration={100}>
                             <div className="image">
                                 <img id="super-image" src={require("../Images/Supers/" + dataElement?.super.img)} alt="super" />
-                                {dataElement?.super.terminated && render ? <Fade><div className="terminated-frame">TERMINATED</div></Fade> : <></> }
+                                {dataElement?.super.terminated && render ? <Fade duration={100}><div className="terminated-frame">TERMINATED</div></Fade> : <></> }
                             </div>
                         </Fade>
                     </div>
 
                     <div className="col-6-image separator">
                         {/* image */}
-                        <Fade>
+                        <Fade duration={100}>
                             <div className="image">
                                 <img id="omnidroid-image" src={require("../Images/Omnidroids/" + dataElement?.omnidroid.img)} alt="omnidroid" />
-                                {dataElement?.omnidroid.terminated && render ? <Fade><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
+                                {dataElement?.omnidroid.terminated && render ? <Fade duration={100}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                             </div>
                         </Fade>
                     </div>
 
                     <div className="col-6 separator text-center white-color footer">
-                        <Fade>
+                        <Fade duration={100}>
                             <div className="mb-2 text-uppercase"><h1>{dataElement?.super.name}</h1></div>
                             <p className="text-uppercase">
                                 POWERS: {dataElement?.super.powers}
@@ -77,7 +77,7 @@ const SuperOmnidroidFrame = () => {
                     </div>
 
                     <div className="col-6 separator text-center white-color footer">
-                        <Fade>
+                        <Fade duration={100}>
                             <h1>OMNIDROID v.{dataElement?.omnidroid.name}</h1>
                             <p className="text-uppercase">
                                 Features: {dataElement?.omnidroid.features}
