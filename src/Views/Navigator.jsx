@@ -11,19 +11,19 @@ const Navigator = () => {
             <div className="box-icons-borders" />
             <div className="navigator-frame">
                 <Fade>
-                    <div className="navigator-item" active>
+                    <div className="navigator-item" disabled>
                         <span className="navigator-item-content"><img src={Isle} alt="Isle" className="icon" />Island operations</span>
                     </div>
                 </Fade>
 
                 <Fade>
-                    <div className="navigator-item">
+                    <div className="navigator-item" disabled>
                         <span className="navigator-item-content"><img src={Dollar} alt="Finances" className="icon" />Finances</span>
                     </div>
                 </Fade>
 
                 <Fade>
-                    <div className="navigator-item">
+                    <div className="navigator-item" disabled>
                         <span className="navigator-item-content"><img src={Omnidroid} alt="Omnidroid" className="icon" />Omnidroid metatraining</span>
                     </div>
                 </Fade>

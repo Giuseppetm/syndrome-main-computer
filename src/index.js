@@ -4,6 +4,7 @@ import About from './Views/About';
 import Authentication from './Views/Authentication';
 import Navigator from './Views/Navigator';
 import Supers from './Views/Supers';
+import SuperOmnidroidFrame from './Components/SuperOmnidroidFrame';
 import NotFound from './Views/NotFound';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -14,10 +15,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<About />} />
+        <Route exact path="/" element={<About />} />
         <Route path="/authentication" element={<Authentication />} />
         <Route path="/navigator" element={<Navigator />} />
-        <Route path="/supers" element={<Supers />} /> 
+        <Route exact path="/supers" element={<Supers />} /> 
+        <Route path="/supers/:superId" element={<SuperOmnidroidFrame />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
