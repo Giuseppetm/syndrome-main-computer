@@ -8,6 +8,15 @@ const SuperOmnidroidFrame = () => {
     let [render, setRender] = React.useState(false);
     let superId = useParams().superId;
     let [dataElement, setDataElement] = React.useState(data[superId]);
+
+    function importAll(r) {
+        let images = {};
+        r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
+        return images
+    }
+
+    const superImages = importAll(require.context('../Images/Supers', false, /\.(png|jpe?g|svg)$/));
+    const omnidroidImages = importAll(require.context('../Images/Omnidroids', false, /\.(png|jpe?g|svg)$/));
     
     React.useEffect( () => {
         setTimeout(() => {
@@ -51,7 +60,7 @@ const SuperOmnidroidFrame = () => {
                         {/* image */}
                         <Fade duration={200}>
                             <div className="image">
-                                <img id="super-image" src={require("../Images/Supers/" + dataElement?.super.img)} alt="super" />
+                                <img id="super-image" src={superImages[dataElement?.super.img]} alt="super" />
                                 {dataElement?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></> }
                             </div>
                         </Fade>
@@ -61,7 +70,7 @@ const SuperOmnidroidFrame = () => {
                         {/* image */}
                         <Fade duration={200}>
                             <div className="image">
-                                <img id="omnidroid-image" src={require("../Images/Omnidroids/" + dataElement?.omnidroid.img)} alt="omnidroid" />
+                                <img id="omnidroid-image" src={omnidroidImages[dataElement?.omnidroid.img]} alt="omnidroid" />
                                 {dataElement?.omnidroid.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                             </div>
                         </Fade>
