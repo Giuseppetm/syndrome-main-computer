@@ -23,12 +23,10 @@ const SearchSuperResult = () => {
 
                         <div className="col-7 separator header" />
 
-                        <div className="col-5 p-0 separator content">
+                        <div className="col-5 p-0 separator content image">
                             {/* image */}
                             <Fade duration={200}>
-                                <div className="image">
-                                    <img id="super-image" src={require('../Images/Search Results/' + superResult?.img)} alt={superResult?.img} />
-                                </div>
+                                <img id="super-image" src={require('../Images/Search Results/' + superResult?.img)} alt={superResult?.img} />
                             </Fade>
                         </div>
 

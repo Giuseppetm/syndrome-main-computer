@@ -8,6 +8,8 @@
 
     .terminated-frame {
         position: absolute;
+        height: 100px;
+        width: 50%;
         letter-spacing: 0.2rem;
         font-size: 4rem;
         font-weight: bold;
@@ -15,20 +17,13 @@
         color: $white-color;
         border-right: 1px solid;
         text-align: center;
-        top: 40%;
-        height: 100px;
-        width: 50%;
+        top: 42%;
     }
 
     .image {
-        background-color: grey;
-        min-height: 600px;
-
         img {
+            min-height: 100%;
             width: 100%;
-            height: 100%;
-            object-fit: fill;
-            min-height: inherit;
         }
     }
 
@@ -58,5 +53,6 @@
     }
 
     .content {
+        min-height: 70%;
     }
 }

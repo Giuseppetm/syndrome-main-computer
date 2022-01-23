@@ -26,14 +26,9 @@
     }
 
     .image {
-        background-color: grey;
-        min-height: 704px;
-
         img {
+            min-height: 100%;
             width: 100%;
-            height: 100%;
-            object-fit: fill;
-            min-height: inherit;
         }
     }
 
