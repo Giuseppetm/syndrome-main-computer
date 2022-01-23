@@ -5,12 +5,13 @@ import Authentication from './Views/Authentication';
 import Navigator from './Views/Navigator';
 import Supers from './Views/Supers';
 import SuperOmnidroidFrame from './Components/SuperOmnidroidFrame';
+import SearchSuper from './Views/SearchSuper';
+import SearchSuperResult from './Components/SearchSuperResult';
 import NotFound from './Views/NotFound';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SearchSuper from './Views/SearchSuper';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path="/supers" element={<Supers />} /> 
         <Route path="/supers/:superId" element={<SuperOmnidroidFrame />} />
         <Route path="/search_super" element={<SearchSuper />} />
+        <Route path="/search_super/:superName" element={<SearchSuperResult />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
