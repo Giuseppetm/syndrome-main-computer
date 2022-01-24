@@ -3,10 +3,9 @@
 This is a reproduction of Syndrome's main computer from "*The Incredibles*" movie (2004).
 🎦 [DEMO](https://syndromemaincomputer.netlify.app/)
 
-![image](https://user-images.githubusercontent.com/52317197/150682274-9813df42-c378-4f51-a3e5-7d07ec3f4a99.png)
+https://user-images.githubusercontent.com/52317197/150824434-a8ac930f-6c25-41ea-a3b0-d28c8504f779.mp4
 
-
-`Work in progress`
+`This is a work in progress`
 
 - [x] About section;
 - [x] Authentication section;
