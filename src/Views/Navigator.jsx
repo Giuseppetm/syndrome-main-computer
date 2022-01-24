@@ -11,8 +11,10 @@ const Navigator = () => {
             <div className="box-icons-borders" />
             <div className="navigator-frame">
                 <Fade>
-                    <div className="navigator-item" disabled>
-                        <span className="navigator-item-content"><img src={Isle} alt="Isle" className="icon" />Island operations</span>
+                    <div className="navigator-item">
+                        <Link to="/kronos">
+                            <span className="navigator-item-content"><img src={Isle} alt="Isle" className="icon" />Island operations</span>
+                        </Link>
                     </div>
                 </Fade>
 

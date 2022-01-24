@@ -1,0 +1,110 @@
+#kronos {
+    background: $tertiary-color-darker;
+    background: linear-gradient(90deg, $tertiary-color-darker 0%, $tertiary-color 20%, $tertiary-color 80%, $tertiary-color-darker 100%);
+    min-height: 100vh;
+    height: 100vh;
+    border-bottom: 0;
+    justify-content: center;
+
+    .phase-name {
+        color: $white-color;
+        font-size: 4vw;
+        background-color: $secondary-color;
+        font-weight: bold;
+        padding: 0px 8px 0px;
+    }
+
+    .phase-details {
+        width: 380px;
+        margin-left: 30px;
+        border: 2px solid $secondary-color;
+        padding: 2px 15px 2px;
+        color: $secondary-color;
+        font-weight: normal;
+        font-size: 0.6vw;
+        letter-spacing: 0.2vw;
+    }
+
+    h1 {
+        font-size: 3.4vw;
+        margin-bottom: 1px;
+    }
+
+    h3 {
+        font-size: 1.4vw !important;
+        letter-spacing: 1.3vw;
+        margin-bottom: 0px;
+    }
+
+    .phase-frame {
+        background-color: $secondary-color;
+        color: $white-color;
+        font-weight: normal;
+        letter-spacing: 0.2vw;
+        font-size: 1.4vw;
+
+        .step {
+            margin-left: 18px;
+            padding: 0px 2px 0px;
+        }
+
+        .step:hover, .step-activated {
+            background-color: #ef705d;
+            color: $primary-color;
+            cursor: pointer;
+        }
+    }
+    
+    .version-label {
+        font-weight: bold;
+        font-size: 3.6vw;
+    }
+
+    .version-number {
+        font-weight: bold;
+        font-size: 5.4vw;
+    }
+
+    .operation-phases-box {
+        bottom: 0px;
+        font-weight: bold;
+        font-size: 2.2vw;
+
+        .warning-color {
+            font-size: 2.9vw;
+        }
+    }
+
+    .separator {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-right: 1px solid $tertiary-color;
+    }
+
+    .main-img {
+        width: 90%;
+    }
+
+    .other-img {
+        width: 60%;
+    }
+
+    .footer,
+    .header {
+        min-height: 10%;
+        background: $quarternary-color-darker;
+    }
+
+    .content {
+        padding-top:5px;
+        padding-bottom: 5px;
+        min-height: 80%;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .lateral {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
