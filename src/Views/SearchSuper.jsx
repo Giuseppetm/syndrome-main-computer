@@ -15,6 +15,9 @@ const SearchSuper = () => {
                 case "frozone":
                     navigate("/search_super/frozone");
                     break;
+                case "dennis farina":
+                    navigate("/search_super/dennis_farina");
+                    break;
                 case "":
                     break;
                 default:

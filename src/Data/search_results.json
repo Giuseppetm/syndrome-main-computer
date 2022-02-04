@@ -7,7 +7,6 @@
         "locationKnown": false,
         "threatRating": "6.2 Exercise moderate caution"
     },
-
     {
         "name": "Frozone",
         "img": "frozone.png",
@@ -15,5 +14,13 @@
         "lastActiveRecord": "17.12.56",
         "locationKnown": true,
         "threatRating": "8.9"
+    },
+    {
+        "name": "Dennis_Farina",
+        "img": "dennis_farina.jpg",
+        "description": "Dennis Farina was one of Hollywood's busiest actors and a familiar face to moviegoers and television viewers alike. Recently, he appeared in the feature films, The Grand, a comedy about a Vegas poker tournament with Woody Harrelson, Cheryl Hines and Ray Romano; Bottle Shock, also starring Alan Rickman, Bill Pullman and Bradley Whitford; and Fox's What Happens in Vegas, in which Dennis starred as Cameron Diaz's boss. Farina also appeared on the NBC series Law and Order and in the HBO miniseries, Empire Falls, for which he won a Golden Globe Award for Best Mini-Series.",
+        "lastActiveRecord": "22.07.2013",
+        "locationKnown": true,
+        "threatRating": "9.8 Exercise extreme caution"
     }
 ]
