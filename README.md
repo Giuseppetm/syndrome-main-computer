@@ -1,4 +1,4 @@
-# Syndrome Main Computer
+# Syndrome Main Computer ("The Incredibles")
 
 This is a reproduction of Syndrome's main computer from "*The Incredibles*" movie (2004).
 🎦 [DEMO](https://syndromemaincomputer.netlify.app/)
