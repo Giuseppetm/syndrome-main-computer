@@ -15,7 +15,8 @@ https://user-images.githubusercontent.com/52317197/150824434-a8ac930f-6c25-41ea-
 - [x] Supers list section;
 - [x] Search super section
 - [x] Omnidroid final design;
-- [ ] Project kronos countdown.
+- [x] Project kronos simulation;
+- [x] Project kronos countdown.
 
 ## Video from the movie
 https://www.youtube.com/watch?v=IRPI3lSACFc

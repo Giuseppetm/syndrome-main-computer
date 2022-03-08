@@ -1,0 +1,34 @@
+#kronos-countdown {
+    background: $quarternary-color-darker;
+    background: linear-gradient(90deg, $quarternary-color-darker 0%, $quaternary-color 20%, $quaternary-color 80%, $quarternary-color-darker 100%);
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 3vw;
+        color: $white-color;
+        letter-spacing: 0.4vw;
+    }
+
+    .countdown {
+        width: 100vw;
+        background: $tertiary-color-darker;
+        background: linear-gradient(90deg, $tertiary-color-darker 0%, $tertiary-color 20%, $tertiary-color 80%, $tertiary-color-darker 100%);
+
+        .clock-word {
+            letter-spacing: 1vw;
+            font-weight: bold;
+            color: $primary-color;
+            font-size: 4.5vw;
+        }
+
+        .clock-description {
+            letter-spacing: 0.3vw;
+            font-weight: bold;
+            color: $warning-color;
+        }
+    }
+}

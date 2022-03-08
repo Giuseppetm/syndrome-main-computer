@@ -54,6 +54,22 @@
             cursor: pointer;
         }
     }
+
+    .button-kronos {
+        background-color: $secondary-color;
+        color: $white-color;
+        font-weight: normal;
+        letter-spacing: 0.2vw;
+        font-size: 1.4vw;
+        padding: 5px 0px 5px 0px;
+
+    }
+
+    .button-kronos:hover {
+        background-color: #ef705d;
+        color: $primary-color;
+        cursor: pointer;
+    }
     
     .version-label {
         font-weight: bold;

@@ -8,6 +8,7 @@ import SuperOmnidroidFrame from './Components/SuperOmnidroidFrame';
 import SearchSuper from './Views/SearchSuper';
 import SearchSuperResult from './Components/SearchSuperResult';
 import Kronos from './Views/Kronos';
+import KronosCountdown from './Views/KronosCountdown';
 import NotFound from './Views/NotFound';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="/search_super" element={<SearchSuper />} />
         <Route path="/search_super/:superName" element={<SearchSuperResult />} />
         <Route path="/kronos" element={<Kronos /> } />
+        <Route path="/kronos-countdown" element={<KronosCountdown /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

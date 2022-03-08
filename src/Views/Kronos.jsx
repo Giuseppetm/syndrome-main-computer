@@ -1,8 +1,96 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Kronos = () => {
+    let [render, setRender] = React.useState(false);
     let [phase, setPhase] = React.useState(0); /* Phase 0 => Just show title and image */
+    let navigate = useNavigate();
+
+    const BeginSimulation = () => {
+        ResetImgFade();
+        setPhase(1);
+
+        setTimeout( () => {
+            ResetImgFade();
+            setPhase(2);
+        }, 2000);
+
+        setTimeout( () => {
+            ResetImgFade();
+            setPhase(3);
+        }, 4000);
+
+        setTimeout( () => {
+            navigate("/kronos-countdown");
+        }, 6000);
+    };
+
+    const ResetImgFade = () => {
+        setRender(false);
+        setRender(true);
+    }
+
+    const Phase1 = () => {
+        return (
+            <Fade duration={200}>
+                <div className="mb-5 row">
+                    <div className="col-6 phase-name d-inline">PHASE 1</div>
+                    <div className="col-3 phase-details text-uppercase">
+                        <b style={{fontSize: '0.9vw', letterSpacing: '0.2vw'}}>Loading sequence:</b><br/>
+                        <span>1{'>'} Omnidroid delivery mode</span><br />
+                        <span>2{'>'} Gantry Loading</span><br />
+                        <span>3{'>'} Launch sequence</span><br />
+                    </div>
+                </div>
+                { render ? 
+                <Fade duration={1000}>
+                    <img style={{ width: '90%' }} src={require('../Images/Kronos/phase_1.png')} alt="Phase 1" />
+                </Fade> : <></> }
+            </Fade>
+        );
+    }
+    
+    const Phase2 = () => {
+        return (
+            <Fade duration={200}>
+                <div className="mb-5 row">
+                    <div className="col-6 phase-name d-inline">PHASE 2</div>
+                    <div className="col-3 phase-details text-uppercase">
+                        <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Stage delivery:</b><br />
+                        <span>1{'>'} ICSM Deployment</span><br />
+                        <span>2{'>'} Glider separation</span><br />
+                        <span>3{'>'} Omnidroid activation</span><br />
+                    </div>
+                </div>
+                { render ? 
+                <Fade duration={1000}>
+                    <img style={{ width: '100%' }} src={require('../Images/Kronos/phase_2.png')} alt="Phase 2" />
+                </Fade> : <></> }
+            </Fade>
+        );
+    }
+    
+    const Phase3 = () => {
+        return (
+            <Fade duration={200}>
+                <div className="mb-5 row">
+                    <div className="col-6 phase-name d-inline">PHASE 3</div>
+                    <div className="col-3 phase-details text-uppercase">
+                        <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Activation:</b><br />
+                        <span>1{'>'} Scan target zone</span><br />
+                        <span>2{'>'} Offensive engagement</span><br />
+                        <span>3{'>'} Remote override</span><br />
+                    </div>
+                </div>
+                { render ? 
+                <Fade duration={1000}>
+                    <img style={{ width: '100%' }} src={require('../Images/Kronos/phase_3.png')} alt="Phase 3" />
+                </Fade> : <></> }
+            </Fade>
+        );
+    }
 
     return (
         <section id="kronos">
@@ -13,9 +101,15 @@ const Kronos = () => {
                     <div className="col-7 separator header" />
                     <div className="col-3 separator header" />
 
-                    <div className="col-2 separator content lateral">
+                    <div className="col-2 separator content lateral" style={{ justifyContent: 'flex-end', display: 'flex', flexDirection: 'column'}}>
                         <Fade duration={200}>
                             { /* random characters */}
+                            <div className="text-center">
+                                <Link to="/kronos-countdown">
+                                    <div className="button-kronos" style={{ fontSize: '1vw', marginTop: 8 }}>COUNTDOWN</div>
+                                </Link>
+                                <div className="button-kronos" onClick={() => BeginSimulation()} style={{ fontSize: '1vw', marginTop: 8 }}>SIMULATE</div>
+                            </div>
                         </Fade>
                     </div>
 
@@ -46,9 +140,9 @@ const Kronos = () => {
                                 <div className="phase-frame">
                                     <div className="d-inline">PHASE:</div>
                                     <div className="steps d-inline">
-                                        <div className={phase === 1 ? "d-inline step step-activated" : "d-inline step"} onClick={() => setPhase(1)}>1</div>
-                                        <div className={phase === 2 ? "d-inline step step-activated" : "d-inline step"} onClick={() => setPhase(2)}>2</div>
-                                        <div className={phase === 3 ? "d-inline step step-activated" : "d-inline step"} onClick={() => setPhase(3)}>3</div>
+                                        <div className={phase === 1 ? "d-inline step step-activated" : "d-inline step"} onClick={() => { setRender(true); setPhase(1);  }}>1</div>
+                                        <div className={phase === 2 ? "d-inline step step-activated" : "d-inline step"} onClick={() => { setRender(true); setPhase(2); }}>2</div>
+                                        <div className={phase === 3 ? "d-inline step step-activated" : "d-inline step"} onClick={() => { setRender(true); setPhase(3); }}>3</div>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +156,7 @@ const Kronos = () => {
                 </div>
             </div>
         </section>
-    )
+    );
 };
 
 const Main = () => {
@@ -82,57 +176,6 @@ const Main = () => {
                 </div>
             </div>
             <img className="main-img" src={require('../Images/Kronos/omnidroid_v10_cut.png')} alt="Omnidroid V10" />
-        </Fade>
-    );
-}
-
-const Phase1 = () => {
-    return (
-        <Fade duration={200}>
-            <div className="mb-5 row">
-                <div className="col-6 phase-name d-inline">PHASE 1</div>
-                <div className="col-3 phase-details text-uppercase">
-                    <b style={{fontSize: '1.0vw', letterSpacing: '0.2vw'}}>Loading sequence:</b><br/>
-                    <span>1{'>'} Omnidroid delivery mode</span><br />
-                    <span>2{'>'} Gantry Loading</span><br />
-                    <span>3{'>'} Launch sequence</span><br />
-                </div>
-            </div>
-            <img style={{ width: '90%' }} src={require('../Images/Kronos/phase_1.png')} alt="Phase 1" />
-        </Fade>
-    );
-}
-
-const Phase2 = () => {
-    return (
-        <Fade duration={200}>
-            <div className="mb-5 row">
-                <div className="col-6 phase-name d-inline">PHASE 2</div>
-                <div className="col-3 phase-details text-uppercase">
-                    <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Stage delivery:</b><br />
-                    <span>1{'>'} ICSM Deployment</span><br />
-                    <span>2{'>'} Glider separation</span><br />
-                    <span>3{'>'} Omnidroid activation</span><br />
-                </div>
-            </div>
-            <img style={{ width: '100%' }} src={require('../Images/Kronos/phase_2.png')} alt="Phase 2" />
-        </Fade>
-    );
-}
-
-const Phase3 = () => {
-    return (
-        <Fade duration={200}>
-            <div className="mb-5 row">
-                <div className="col-6 phase-name d-inline">PHASE 3</div>
-                <div className="col-3 phase-details text-uppercase">
-                    <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Activation:</b><br />
-                    <span>1{'>'} Scan target zone</span><br />
-                    <span>2{'>'} Offensive engagement</span><br />
-                    <span>3{'>'} Remote override</span><br />
-                </div>
-            </div>
-            <img style={{ width: '100%' }} src={require('../Images/Kronos/phase_3.png')} alt="Phase 3" />
         </Fade>
     );
 }
