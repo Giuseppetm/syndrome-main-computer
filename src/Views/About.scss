@@ -10,6 +10,23 @@
     border-bottom: 0;
     font-weight: 400;
     padding: 0 5.6rem;
+    text-align: center;
+
+    span {
+        font-size: 1vw;
+    }
+
+    h1 {
+        color: $secondary-color;
+    }
+
+    a {
+        color: $secondary-color;
+    }
+
+    a:hover {
+        color: #ef705d !important;
+    }
 
     .version {
         font-weight: bold;

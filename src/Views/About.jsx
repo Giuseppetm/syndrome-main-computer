@@ -1,24 +1,28 @@
-import Button from '../Components/Button';
+import { Link } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
+import { FiPlayCircle } from "react-icons/fi";
+import Video from 'react-responsive-video'
 
 const About = () => {
     return (
         <section id="about">
             <Fade>
                 <div className="container-fluid">
-                    <div className="row mb-4">
-                        <div className="col-10">
-                            <h1>SYNDROME MAIN COMPUTER</h1>
+                    <div className="mb-4">
+                        <h1>SYNDROME MAIN COMPUTER</h1>
 
-                            <h5 className="text-spaced">CREATED BY <span className="secondary-color">GIUSEPPE DEL CAMPO</span></h5>
-                        </div>
-                        <div className="col-2 secondary-color">
-                            <span className="version">v.</span>
-                            <span className="version-number">01</span>
-                        </div>
+                        <h3>from "The Incredibles" movie (2004)</h3>
+
+                        <h5>Reproduction made by <span className="secondary-color"><a href="https://github.com/Giuseppetm">GIUSEPPE DEL CAMPO</a></span></h5>
                     </div>
 
-                    <Button Title="Proceed to Authentication" To="/authentication" />
+                    <div style={{ display: 'flex', justifyContent: "center", marginBottom: 40 }}>
+                        <Video mp4={require('../Videos/kronos_edit.mp4')} />
+                    </div>
+                            
+                    <Link to="/authentication">
+                        <span className="button">PROCEED WITH THE REPRODUCTION <FiPlayCircle style={{ marginBottom: 8 }} /></span>
+                    </Link>
                 </div>
             </Fade>
         </section>
