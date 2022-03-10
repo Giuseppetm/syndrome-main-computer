@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const SuperOmnidroidFrame = () => {
     let navigate = useNavigate();
     let [render, setRender] = React.useState(false);
-    let [renderLabel, setRenderLabel] = React.useState(false);
+    let [, setRenderLabel] = React.useState(false);
     let superId = useParams().superId;
     let [dataElement, setDataElement] = React.useState(data[superId]);
 
