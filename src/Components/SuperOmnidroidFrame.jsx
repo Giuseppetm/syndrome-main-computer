@@ -6,32 +6,29 @@ import { useNavigate, useParams } from "react-router-dom";
 const SuperOmnidroidFrame = () => {
     let navigate = useNavigate();
     let [render, setRender] = React.useState(false);
+    let [renderLabel, setRenderLabel] = React.useState(false);
     let superId = useParams().superId;
     let [dataElement, setDataElement] = React.useState(data[superId]);
 
-    function importAll(r) {
-        let images = {};
-        r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images
-    }
-
-    const superImages = importAll(require.context('../Images/Supers', false, /\.(png|jpe?g|svg)$/));
-    const omnidroidImages = importAll(require.context('../Images/Omnidroids', false, /\.(png|jpe?g|svg)$/));
-    
     React.useEffect( () => {
         setTimeout(() => {
             setRender(true);
-        }, 800);
+        }, 500);
+
+        setTimeout(() => {
+            setRenderLabel(true);
+        }, 300);
     }, [dataElement, navigate, superId]);
 
     React.useEffect(() => {
         setTimeout(() => { 
             if (parseInt(superId) + 1 < data.length) {
                 setRender(false);
+                setRenderLabel(false);
                 setDataElement(data[parseInt(superId) + 1]);
                 navigate("/supers/" + (parseInt(superId) + 1), { replace: true }); 
             }
-        }, 1500);
+        }, 1200);
     }, [navigate, superId]);
     
     return (
@@ -58,21 +55,21 @@ const SuperOmnidroidFrame = () => {
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="super-image" src={superImages[dataElement?.super.img]} alt="super" />
+                            <img id="super-image" src={require('../Images/Supers/' + dataElement?.super.img)} alt="super" />
                             {dataElement?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></> }
                         </Fade>
                     </div>
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="omnidroid-image" src={omnidroidImages[dataElement?.omnidroid.img]} alt="omnidroid" />
+                            <img id="omnidroid-image" src={require('../Images/Omnidroids/' + dataElement?.omnidroid.img)} alt="omnidroid" />
                             {dataElement?.omnidroid.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                         </Fade>
                     </div>
 
                     <div className="col-6 separator text-center white-color footer">
                         <Fade duration={200}>
-                            <div className="mb-2 text-uppercase"><h1>{dataElement?.super.name}</h1></div>
+                            <div className="mb-2 text-uppercase footer-h1"><h1>{dataElement?.super.name}</h1></div>
                             <p className="text-uppercase">
                                 POWERS: {dataElement?.super.powers}
                             </p>
@@ -81,7 +78,7 @@ const SuperOmnidroidFrame = () => {
 
                     <div className="col-6 separator text-center white-color footer">
                         <Fade duration={200}>
-                            <h1>OMNIDROID v.{dataElement?.omnidroid.name}</h1>
+                            <h1 className="footer-h1">OMNIDROID v.{dataElement?.omnidroid.name}</h1>
                             <p className="text-uppercase">
                                 Features: {dataElement?.omnidroid.features}
                             </p>

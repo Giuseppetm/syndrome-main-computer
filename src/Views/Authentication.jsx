@@ -20,7 +20,8 @@ const Authentication = () => {
         }
 
         const listener = event => {
-            if (event.code === "Enter" || event.code === "NumpadEnter") {
+            var key = event.which || event.keyCode || 0;
+            if (event.code === "Enter" || event.code === "NumpadEnter" || key === 13) {
                 event.preventDefault();
                 handleSubmit();
             }

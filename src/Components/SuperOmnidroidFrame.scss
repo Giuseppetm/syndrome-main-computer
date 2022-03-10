@@ -8,16 +8,19 @@
 
     .terminated-frame {
         position: absolute;
-        height: 100px;
         width: 50%;
-        letter-spacing: 0.2rem;
-        font-size: 4rem;
+        letter-spacing: 0.1vw;
+        font-size: 4.5vw;
         font-weight: bold;
         background-color: $warning-color;
         color: $white-color;
         border-right: 1px solid;
         text-align: center;
-        top: 42%;
+        top: 40%;
+        height: 5.4vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .image {
@@ -42,6 +45,10 @@
             margin-right: 40px;
             margin-left: 40px;
         }
+    }
+
+    .footer-h1 {
+        letter-spacing: 0.5vw;
     }
 
     .header {
