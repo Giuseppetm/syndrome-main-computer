@@ -34,7 +34,7 @@ const SuperOmnidroidFrame = () => {
     return (
         <div className="super-omnidroid-frame">
             <div className="container-fluid h-100">
-                <div className="row h-100">
+                <div className="row h-100" style={{ overflow: 'hidden' }}>
                     <div className="col-6 separator header">
                         <Fade duration={200}>
                             <div className="d-flex justify-content-between">
