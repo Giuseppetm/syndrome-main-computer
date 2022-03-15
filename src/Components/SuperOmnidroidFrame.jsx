@@ -28,7 +28,7 @@ const SuperOmnidroidFrame = () => {
                 setDataElement(data[parseInt(superId) + 1]);
                 navigate("/supers/" + (parseInt(superId) + 1), { replace: true }); 
             }
-        }, 1800);
+        }, 1500);
     }, [navigate, superId]);
     
     return (
