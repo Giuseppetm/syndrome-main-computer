@@ -6,31 +6,81 @@ import { useNavigate, useParams } from "react-router-dom";
 const SuperOmnidroidFrame = () => {
     let navigate = useNavigate();
     let [render, setRender] = React.useState(false);
-    let [, setRenderLabel] = React.useState(false);
     let superId = useParams().superId;
     let [dataElement, setDataElement] = React.useState(data[superId]);
 
-    React.useEffect( () => {
+    let [refreshSuper, ] = React.useState(true);
+    let [refreshOmnidroid, ] = React.useState(true);
+    
+    let [percentageValueSuper, setPercentageValueSuper] = React.useState(100);
+    let [percentageValueOmnidroid, setPercentageValueOmnidroid] = React.useState(100);
+
+    React.useEffect(() => {
         setTimeout(() => {
             setRender(true);
         }, 500);
 
-        setTimeout(() => {
-            setRenderLabel(true);
-        }, 300);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        decreaseImageFilter("super");
+        decreaseImageFilter("omnidroid");
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dataElement, navigate, superId]);
 
     React.useEffect(() => {
-        setTimeout(() => { 
+        setTimeout(() => {
             if (parseInt(superId) + 1 < data.length) {
                 setRender(false);
-                setRenderLabel(false);
                 setDataElement(data[parseInt(superId) + 1]);
-                navigate("/supers/" + (parseInt(superId) + 1), { replace: true }); 
+                navigate("/supers/" + (parseInt(superId) + 1), { replace: true });
             }
-        }, 1500);
+        }, 1400);
     }, [navigate, superId]);
-    
+
+    function decreaseImageFilter(type) {
+        if (type === "super") {
+            let stopCount = 0, duration = 20;
+            setPercentageValueSuper(100);
+
+            let startCount = percentageValueSuper, intervalTime = duration / Math.abs(startCount - stopCount);
+        
+            let countDown = setInterval(
+                function () {
+                    if (startCount === stopCount) clearInterval(countDown)
+                    
+                    if (startCount > stopCount) {
+                        startCount--
+                    } else {
+                        startCount++
+                    }
+
+                    setPercentageValueSuper(startCount);
+                },
+                intervalTime
+            );
+        } else if (type === "omnidroid") {
+            let stopCount = 0, duration = 50;
+            setPercentageValueOmnidroid(100);
+
+            let startCount = percentageValueOmnidroid, intervalTime = duration / Math.abs(startCount - stopCount);
+        
+            let countDown = setInterval(
+                function () {
+                    if (startCount === stopCount) clearInterval(countDown)
+                    
+                    if (startCount > stopCount) {
+                        startCount--
+                    } else {
+                        startCount++
+                    }
+
+                    setPercentageValueOmnidroid(startCount);
+                },
+                intervalTime
+            );
+        }
+    }
+
     return (
         <div className="super-omnidroid-frame">
             <div className="container-fluid h-100">
@@ -40,7 +90,7 @@ const SuperOmnidroidFrame = () => {
                             <div className="d-flex justify-content-between">
                                 <div><h1 style={{ paddingLeft: 20 }}>OPPONENT</h1></div>
                                 <div className="white-color" style={{ marginTop: 7 }}>
-                                    <p className="d-inline mr-4">THREAT RATING:</p> 
+                                    <p className="d-inline mr-4">THREAT RATING:</p>
                                     <h2 className="mb-0 d-inline">{dataElement?.super.threatRating}</h2>
                                 </div>
                             </div>
@@ -55,14 +105,14 @@ const SuperOmnidroidFrame = () => {
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="super-image" src={require('../Images/Supers/' + dataElement?.super.img)} alt="super" />
-                            {dataElement?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></> }
+                            <img id="super-image" src={require('../Images/Supers/' + dataElement?.super.img)} alt="super" style={{ filter: refreshSuper ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }} />
+                            {dataElement?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                         </Fade>
                     </div>
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="omnidroid-image" src={require('../Images/Omnidroids/' + dataElement?.omnidroid.img)} alt="omnidroid" />
+                            <img id="omnidroid-image" src={require('../Images/Omnidroids/' + dataElement?.omnidroid.img)} alt="omnidroid" style={{ filter: refreshOmnidroid ? `invert(${percentageValueOmnidroid}%)` : 'invert(0%)' }} />
                             {dataElement?.omnidroid.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                         </Fade>
                     </div>
