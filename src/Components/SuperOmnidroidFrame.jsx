@@ -101,14 +101,14 @@ const SuperOmnidroidFrame = () => {
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="super-image" src={process.env.PUBLIC_URL + '/Supers/' + dataElement?.super.img} alt="super" style={{ filter: dataElement?.super.refresh ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }} />
+                            <img id="super-image" src={require('../Images/Supers/' + dataElement?.super.img)} alt="super" style={{ filter: dataElement?.super.refresh ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }} />
                             {dataElement?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                         </Fade>
                     </div>
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="omnidroid-image" src={process.env.PUBLIC_URL + '/Omnidroids/' + dataElement?.omnidroid.img} alt="omnidroid" style={{ filter: dataElement?.omnidroid.refresh ? `invert(${percentageValueOmnidroid}%)` : 'invert(0%)' }} />
+                            <img id="omnidroid-image" src={require('../Images/Omnidroids/' + dataElement?.omnidroid.img)} alt="omnidroid" style={{ filter: dataElement?.omnidroid.refresh ? `invert(${percentageValueOmnidroid}%)` : 'invert(0%)' }} />
                             {dataElement?.omnidroid.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                         </Fade>
                     </div>
