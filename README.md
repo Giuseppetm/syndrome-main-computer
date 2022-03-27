@@ -5,7 +5,7 @@ I am a big fan of "The Incredibles" movie (2004), and I've always been fascinate
 _Careful: this is a `work in progress` and is adapted for 16:9 displays and not for mobile devices. I will adapt it for smaller displays as soon as I can._
 
 > This is a reproduction of Syndrome's main computer from "*The Incredibles*" movie (2004).
-🎦 [LIVE PREVIEW HERE](https://syndromemaincomputer.netlify.app/)
+🎦 [LIVE PREVIEW](https://syndromemaincomputer.netlify.app/)
 
 ![syndrome_updated_cut](https://user-images.githubusercontent.com/52317197/160282601-9ec89aa0-d215-497f-8113-e5a47f49004a.gif)
 
