@@ -1,15 +1,20 @@
 # Syndrome Main Computer ("The Incredibles")
 
-This is a reproduction of Syndrome's main computer from "*The Incredibles*" movie (2004).
-🎦 [DEMO](https://syndromemaincomputer.netlify.app/)
+I am a big fan of "The Incredibles" movie (2004), and I've always been fascinated by the [user interface](https://www.youtube.com/watch?v=IRPI3lSACFc) Syndrome had on his computer in the giant room: for this reason I decided to replicate it rather quickly as a web application.
 
-![image](https://user-images.githubusercontent.com/52317197/157754765-9203aec4-b867-4dba-b525-46f206dac970.png)
+_Careful: this is a `work in progress` and is adapted for 16:9 displays and not for mobile devices. I will adapt it for smaller displays as soon as I can._
 
-## Video demo
-https://user-images.githubusercontent.com/52317197/150824434-a8ac930f-6c25-41ea-a3b0-d28c8504f779.mp4
+> This is a reproduction of Syndrome's main computer from "*The Incredibles*" movie (2004).
+🎦 [LIVE PREVIEW HERE](https://syndromemaincomputer.netlify.app/)
 
-`This is a work in progress`
+![syndrome_updated_cut](https://user-images.githubusercontent.com/52317197/160282601-9ec89aa0-d215-497f-8113-e5a47f49004a.gif)
 
+<!--![image](https://user-images.githubusercontent.com/52317197/157754765-9203aec4-b867-4dba-b525-46f206dac970.png)-->
+
+## Video demo of supers list section
+https://user-images.githubusercontent.com/52317197/160282614-4adb3b2e-2d67-4acc-8e35-4568aa547567.mp4
+
+## Recap of sections
 - [x] About section;
 - [x] Authentication section;
 - [x] Supers list section;
@@ -17,6 +22,3 @@ https://user-images.githubusercontent.com/52317197/150824434-a8ac930f-6c25-41ea-
 - [x] Omnidroid final design;
 - [x] Project kronos simulation;
 - [x] Project kronos countdown.
-
-## Video from the movie
-https://www.youtube.com/watch?v=IRPI3lSACFc
