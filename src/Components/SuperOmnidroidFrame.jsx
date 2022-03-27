@@ -8,9 +8,6 @@ const SuperOmnidroidFrame = () => {
     let [render, setRender] = React.useState(false);
     let superId = useParams().superId;
     let [dataElement, setDataElement] = React.useState(data[superId]);
-
-    let [refreshSuper, ] = React.useState(true);
-    let [refreshOmnidroid, ] = React.useState(true);
     
     let [percentageValueSuper, setPercentageValueSuper] = React.useState(100);
     let [percentageValueOmnidroid, setPercentageValueOmnidroid] = React.useState(100);
@@ -19,8 +16,7 @@ const SuperOmnidroidFrame = () => {
         setTimeout(() => {
             setRender(true);
         }, 500);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        
         decreaseImageFilter("super");
         decreaseImageFilter("omnidroid");
 
@@ -105,14 +101,14 @@ const SuperOmnidroidFrame = () => {
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="super-image" src={require('../Images/Supers/' + dataElement?.super.img)} alt="super" style={{ filter: refreshSuper ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }} />
+                            <img id="super-image" src={require('../Images/Supers/' + dataElement?.super.img)} alt="super" style={{ filter: dataElement?.super.refresh ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }} />
                             {dataElement?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                         </Fade>
                     </div>
 
                     <div className="col-6 p-0 separator content image">
                         <Fade duration={200}>
-                            <img id="omnidroid-image" src={require('../Images/Omnidroids/' + dataElement?.omnidroid.img)} alt="omnidroid" style={{ filter: refreshOmnidroid ? `invert(${percentageValueOmnidroid}%)` : 'invert(0%)' }} />
+                            <img id="omnidroid-image" src={require('../Images/Omnidroids/' + dataElement?.omnidroid.img)} alt="omnidroid" style={{ filter: dataElement?.omnidroid.refresh ? `invert(${percentageValueOmnidroid}%)` : 'invert(0%)' }} />
                             {dataElement?.omnidroid.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
                         </Fade>
                     </div>

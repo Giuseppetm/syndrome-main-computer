@@ -5,13 +5,15 @@
             "threatRating": 2.9,
             "powers": "Atomic density manipulation",
             "img": "universal_man.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X1",
             "features": "Threaded locomotion, sensory display, bi-articulated grappling claws",
             "img": "x1.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         }
     },
     {
@@ -20,13 +22,15 @@
             "threatRating": 1.6,
             "powers": "Psychic foresight, thought control, telekinesis",
             "img": "psycwave.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X1",
             "features": "Threaded locomotion, sensory display, bi-articulated grappling claws",
             "img": "x1.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": false
         }
     },
     {
@@ -35,13 +39,15 @@
             "threatRating": 3.2,
             "powers": "Telepathy, clairvoyance, magni-vision",
             "img": "everseer.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X1",
             "features": "Threaded locomotion, sensory display, bi-articulated grappling claws",
             "img": "x1.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": false
         }
     },
     {
@@ -50,13 +56,15 @@
             "threatRating": 5.9,
             "powers": "High density force projection",
             "img": "macroburst.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X1",
             "features": "Threaded locomotion, sensory display, bi-articulated grappling claws",
             "img": "x1.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": false
         }
     },
     {
@@ -65,13 +73,15 @@
             "threatRating": 5.9,
             "powers": "High density force projection",
             "img": "macroburst.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": false
         },
         "omnidroid": {
             "name": "X2",
             "features": "Bipedal locomotion, omni-directional sensory array, bi-articulated grappling claws",
             "img": "x2.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         }
     },
     {
@@ -80,13 +90,15 @@
             "threatRating": 4.7,
             "powers": "Sonic field projection",
             "img": "phylange.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X2",
             "features": "Bipedal locomotion, omni-directional sensory array, bi-articulated grappling claws",
             "img": "x2.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": false
         }
     },
     {
@@ -95,13 +107,15 @@
             "threatRating": 5.5,
             "powers": "Pyrotechnic discharge, fire control",
             "img": "blazestone.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X2",
             "features": "Bipedal locomotion, omni-directional sensory array, bi-articulated grappling claws",
             "img": "x2.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": false
         }
     },
     {
@@ -110,13 +124,15 @@
             "threatRating": 6.5,
             "powers": "Flight, gaseous expulsion",
             "img": "downburst.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X3",
             "features": "Suspended tri-pedal locomotion, grappling-claws, uni-directional sensory array",
             "img": "x3.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         }
     },
     {
@@ -125,13 +141,15 @@
             "threatRating": 7.5,
             "powers": "Seismic wave generation",
             "img": "hyper_shock.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X3",
             "features": "Suspended tri-pedal locomotion, grappling-claws, uni-directional sensory array",
             "img": "x3.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": false
         }
     },
     {
@@ -140,13 +158,15 @@
             "threatRating": 7.5,
             "powers": "Seismic wave generation",
             "img": "hyper_shock.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": false
         },
         "omnidroid": {
             "name": "X4",
             "features": "Quadra-pedal locomotion, grappling-claws, quadra-directional sensory array",
             "img": "x4.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         }
     },
     {
@@ -155,13 +175,15 @@
             "threatRating": 6.5,
             "powers": "Gravity control, levitation",
             "img": "apogee.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X4",
             "features": "Quadra-pedal locomotion, grappling-claws, quadra-directional sensory array",
             "img": "x4.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": false
         }
     },
     {
@@ -170,13 +192,15 @@
             "threatRating": 7.9,
             "powers": "Controlled radiation burst",
             "img": "gamma_jack.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X5",
             "features": "Quadra-pedal locomotion, omni articulated grappling-claws",
             "img": "x5.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         }
     },
     {
@@ -185,13 +209,15 @@
             "threatRating": 7.9,
             "powers": "Controlled radiation burst",
             "img": "gamma_jack.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": false
         },
         "omnidroid": {
             "name": "X6",
             "features": "Quadra-pedal locomotion, omni articulated grappling-claws",
             "img": "x6.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         }
     },
     {
@@ -200,13 +226,15 @@
             "threatRating": 9.1,
             "powers": "Superhuman strength, capable of lifting weight up to 55 tons, invulnerability to high levels of physical damage",
             "img": "mr_incredible.png",
-            "terminated": true
+            "terminated": true,
+            "refresh": true
         },
         "omnidroid": {
             "name": "X9",
             "features": "Omni-directional, trans-universal modulation, bi-polar sensor cluster",
             "img": "x9.png",
-            "terminated": false
+            "terminated": false,
+            "refresh": true
         }
     }
 ]
