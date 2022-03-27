@@ -85,7 +85,7 @@ const SuperOmnidroidFrame = () => {
                         <Fade duration={200}>
                             <div className="d-flex justify-content-between">
                                 <div><h1 style={{ paddingLeft: 20 }}>OPPONENT</h1></div>
-                                <div className="white-color" style={{ marginTop: 7 }}>
+                                <div className="white-color" style={{ marginTop: 7, filter: dataElement?.super.refresh ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }}>
                                     <p className="d-inline mr-4">THREAT RATING:</p>
                                     <h2 className="mb-0 d-inline">{dataElement?.super.threatRating}</h2>
                                 </div>
@@ -115,19 +115,23 @@ const SuperOmnidroidFrame = () => {
 
                     <div className="col-6 separator text-center white-color footer">
                         <Fade duration={200}>
-                            <div className="mb-2 text-uppercase footer-h1"><h1>{dataElement?.super.name}</h1></div>
-                            <p className="text-uppercase">
-                                POWERS: {dataElement?.super.powers}
-                            </p>
+                            <div style={{ filter: dataElement?.super.refresh ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }}>
+                                <div className="mb-2 text-uppercase footer-h1"><h1>{dataElement?.super.name}</h1></div>
+                                <p className="text-uppercase">
+                                    POWERS: {dataElement?.super.powers}
+                                </p>
+                            </div>
                         </Fade>
                     </div>
 
                     <div className="col-6 separator text-center white-color footer">
                         <Fade duration={200}>
-                            <h1 className="footer-h1">OMNIDROID v.{dataElement?.omnidroid.name}</h1>
-                            <p className="text-uppercase">
-                                Features: {dataElement?.omnidroid.features}
-                            </p>
+                            <div style={{ filter: dataElement?.omnidroid.refresh ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }}>
+                                <h1 className="footer-h1">OMNIDROID v.{dataElement?.omnidroid.name}</h1>
+                                <p className="text-uppercase">
+                                    Features: {dataElement?.omnidroid.features}
+                                </p>
+                            </div>
                         </Fade>
                     </div>
                 </div>
