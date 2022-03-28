@@ -120,6 +120,40 @@
     },
     {
         "super": {
+            "name": "Dynaguy",
+            "threatRating": 6.2,
+            "powers": "Flight, disintegration ray",
+            "img": "dynaguy.png",
+            "terminated": false,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X2",
+            "features": "Bipedal locomotion, omni-directional sensory array, bi-articulated grappling claws",
+            "img": "x2.png",
+            "terminated": true,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
+            "name": "Dynaguy",
+            "threatRating": 6.2,
+            "powers": "Flight, disintegration ray",
+            "img": "dynaguy.png",
+            "terminated": true,
+            "refresh": false
+        },
+        "omnidroid": {
+            "name": "X3",
+            "features": "Suspended tri-pedal locomotion, grappling-claws, uni-directional sensory array",
+            "img": "x3.png",
+            "terminated": false,
+            "refresh": true
+        }
+    },
+    {
+        "super": {
             "name": "Downburst",
             "threatRating": 6.5,
             "powers": "Flight, gaseous expulsion",
@@ -132,7 +166,7 @@
             "features": "Suspended tri-pedal locomotion, grappling-claws, uni-directional sensory array",
             "img": "x3.png",
             "terminated": false,
-            "refresh": true
+            "refresh": false
         }
     },
     {
@@ -188,6 +222,74 @@
     },
     {
         "super": {
+            "name": "Tradewind",
+            "threatRating": 5.8,
+            "powers": "Elemental control of wind and storms",
+            "img": "tradewind.png",
+            "terminated": true,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X4",
+            "features": "Quadra-pedal locomotion, grappling-claws, quadra-directional sensory array",
+            "img": "x4.png",
+            "terminated": false,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
+            "name": "Gazerbeam",
+            "threatRating": 6.3,
+            "powers": "Lazer vision",
+            "img": "gazerbeam.png",
+            "terminated": false,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X4",
+            "features": "Quadra-pedal locomotion, grappling-claws, quadra-directional sensory array",
+            "img": "x4.png",
+            "terminated": true,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
+            "name": "Gazerbeam",
+            "threatRating": 6.3,
+            "powers": "Lazer vision",
+            "img": "gazerbeam.png",
+            "terminated": true,
+            "refresh": false
+        },
+        "omnidroid": {
+            "name": "X5",
+            "features": "Quadra-pedal locomotion, omni articulated grappling-claws",
+            "img": "x5.png",
+            "terminated": false,
+            "refresh": true
+        }
+    },
+    {
+        "super": {
+            "name": "Stormicide",
+            "threatRating": 6.7,
+            "powers": "Electrical discharge gale bursts",
+            "img": "stormicide.png",
+            "terminated": true,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X5",
+            "features": "Quadra-pedal locomotion, omni articulated grappling-claws",
+            "img": "x5.png",
+            "terminated": false,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
             "name": "Gamma jack",
             "threatRating": 7.9,
             "powers": "Controlled radiation burst",
@@ -200,7 +302,7 @@
             "features": "Quadra-pedal locomotion, omni articulated grappling-claws",
             "img": "x5.png",
             "terminated": true,
-            "refresh": true
+            "refresh": false
         }
     },
     {
@@ -222,16 +324,118 @@
     },
     {
         "super": {
+            "name": "Splashdown",
+            "threatRating": 7.4,
+            "powers": "Flight, aquatic respiration",
+            "img": "splashdown.png",
+            "terminated": true,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X6",
+            "features": "Quadra-pedal locomotion, omni articulated grappling-claws",
+            "img": "x6.png",
+            "terminated": false,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
+            "name": "Plasmabolt",
+            "threatRating": 8.2,
+            "powers": "Flight, plasma wave emission",
+            "img": "plasmabolt.png",
+            "terminated": false,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X6",
+            "features": "Quadra-pedal locomotion, omni articulated grappling-claws",
+            "img": "x6.png",
+            "terminated": true,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
+            "name": "Plasmabolt",
+            "threatRating": 8.2,
+            "powers": "Flight, plasma wave emission",
+            "img": "plasmabolt.png",
+            "terminated": true,
+            "refresh": false
+        },
+        "omnidroid": {
+            "name": "X7",
+            "features": "Penta-pedal locomotion, trans universal articulation, sensor cluster",
+            "img": "x7.png",
+            "terminated": false,
+            "refresh": true
+        }
+    },
+    {
+        "super": {
+            "name": "Metaman",
+            "threatRating": 8.9,
+            "powers": "Flight, super strength, x-ray vision, magnetic manipulation, teleportation, invisibility",
+            "img": "metaman.png",
+            "terminated": false,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X7",
+            "features": "Penta-pedal locomotion, trans universal articulation, sensor cluster",
+            "img": "x7.png",
+            "terminated": true,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
+            "name": "Metaman",
+            "threatRating": 8.9,
+            "powers": "Flight, super strength, x-ray vision, magnetic manipulation, teleportation, invisibility",
+            "img": "metaman.png",
+            "terminated": true,
+            "refresh": false
+        },
+        "omnidroid": {
+            "name": "X8",
+            "features": "Omni-directional, trans universal articulation, bi-polar sensor clusters",
+            "img": "x8.png",
+            "terminated": false,
+            "refresh": true
+        }
+    },
+    {
+        "super": {
+            "name": "Mr. Incredible",
+            "threatRating": 9.1,
+            "powers": "Superhuman strength, capable of lifting weight up to 55 tons, invulnerability to high levels of physical damage",
+            "img": "mr_incredible.png",
+            "terminated": false,
+            "refresh": true
+        },
+        "omnidroid": {
+            "name": "X8",
+            "features": "Omni-directional, trans universal articulation, bi-polar sensor clusters",
+            "img": "x8.png",
+            "terminated": true,
+            "refresh": false
+        }
+    },
+    {
+        "super": {
             "name": "Mr. Incredible",
             "threatRating": 9.1,
             "powers": "Superhuman strength, capable of lifting weight up to 55 tons, invulnerability to high levels of physical damage",
             "img": "mr_incredible.png",
             "terminated": true,
-            "refresh": true
+            "refresh": false
         },
         "omnidroid": {
             "name": "X9",
-            "features": "Omni-directional, trans-universal modulation, bi-polar sensor cluster",
+            "features": "Omni-directional, trans-universal articulation, bi-polar sensor cluster",
             "img": "x9.png",
             "terminated": false,
             "refresh": true
