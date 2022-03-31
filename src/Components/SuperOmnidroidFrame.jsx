@@ -30,12 +30,12 @@ const SuperOmnidroidFrame = () => {
                 setDataElement(data[parseInt(superId) + 1]);
                 navigate("/supers/" + (parseInt(superId) + 1), { replace: true });
             }
-        }, 1400);
+        }, 1200);
     }, [navigate, superId]);
 
     function decreaseImageFilter(type) {
         if (type === "super") {
-            let stopCount = 0, duration = 20;
+            let stopCount = 0, duration = 1;
             setPercentageValueSuper(100);
 
             let startCount = percentageValueSuper, intervalTime = duration / Math.abs(startCount - stopCount);
@@ -55,7 +55,7 @@ const SuperOmnidroidFrame = () => {
                 intervalTime
             );
         } else if (type === "omnidroid") {
-            let stopCount = 0, duration = 50;
+            let stopCount = 0, duration = 1;
             setPercentageValueOmnidroid(100);
 
             let startCount = percentageValueOmnidroid, intervalTime = duration / Math.abs(startCount - stopCount);

@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
 import { FiPlayCircle } from "react-icons/fi";
-import Video from 'react-responsive-video'
+import Video from 'react-responsive-video';
+import PreCacheImg from 'react-precache-img';
 
-const About = () => {
+function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+}
+
+const About = () => { 
+    const supers = importAll(require.context('../Images/Supers/', false, /\.(png|jpe?g|svg)$/));
+    const omnidroids = importAll(require.context('../Images/Omnidroids/', false, /\.(png|jpe?g|svg)$/));
+
     return (
         <section id="about">
+            <PreCacheImg images={Object.values(supers)}/>
+            <PreCacheImg images={Object.values(omnidroids)}/>
             <Fade>
                 <div className="container-fluid">
                     <div className="mb-4">
