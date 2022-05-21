@@ -13,39 +13,38 @@
 
     .search-box {
         height: 80px;
-        margin-left: 9.5%;
-        margin-right: 9.5%;
-
-        .row {
-            height: inherit;
-            margin-left: 0px;
-            margin-right: 0px;
-        }
+        margin-left: 10%;
+        margin-right: 10%;
 
         .label {
+            border: 1px solid #b9b9b9;
             padding: 5px 15px 5px;
             height: inherit;
-            border-right: 1px solid $white-color;
             font-weight: normal;
             font-size: 2.7vw;
-            letter-spacing: -0.1vw;
+            letter-spacing: 0.2vw;
+            display: flex;
             align-items: center;
             color: $white-color;
             background-color: $secondary-color;
         }
 
         .input-text {
-            padding: 5px 40px 5px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 5px 0px 5px;
             height: inherit;
             text-transform: uppercase;
             letter-spacing: 0.5vw;
-            font-size: 3.0vw;
+            font-size: 2.7vw;
             font-weight: bold;
             background: $tertiary-color-darker;
             background: linear-gradient(90deg, $tertiary-color-darker 0%, $tertiary-color 20%, $tertiary-color 80%, $tertiary-color-darker 100%);
         }
 
         input {
+            margin-left: 3vw;
             background: none;
             border: none;
             outline: none;
@@ -54,7 +53,6 @@
             letter-spacing: inherit;
             text-align: left;
             padding: 0px;
-            width:100%;
         }
     }
 

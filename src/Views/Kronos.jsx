@@ -30,15 +30,35 @@ const Kronos = () => {
     const ResetImgFade = () => {
         setRender(false);
         setRender(true);
-    }
+    };
+    
+    const GenerateCharacters = (position) => {
+        let text = "";
+        
+        if (position === "left")
+            for (let i = 0; i < 290; i++)
+            {
+                let rand = Math.floor(Math.random() * 9).toString();
+                if (rand % 3 === 1) text = text.concat("\n\n\n");
+                text = text.concat(rand);
+            }
+        else
+            for (let i = 0; i < 390; i++) {
+                let rand = Math.floor(Math.random() * 9).toString();
+                if (rand % 3 === 1) text = text.concat("\n\n\n");
+                text = text.concat(rand);
+            }
+
+        return text;
+    };
 
     const Phase1 = () => {
         return (
             <Fade duration={200}>
-                <div className="mb-5 row">
-                    <div className="col-6 phase-name d-inline">PHASE 1</div>
-                    <div className="col-3 phase-details text-uppercase">
-                        <b style={{fontSize: '0.9vw', letterSpacing: '0.2vw'}}>Loading sequence:</b><br/>
+                <div className="mb-5 d-flex flex-row">
+                    <div className="phase-name">PHASE 1</div>
+                    <div className="phase-details text-uppercase">
+                        <b style={{fontSize: '1.1vw', letterSpacing: '0.2vw'}}>Loading sequence:</b><br/>
                         <span>1{'>'} Omnidroid delivery mode</span><br />
                         <span>2{'>'} Gantry Loading</span><br />
                         <span>3{'>'} Launch sequence</span><br />
@@ -55,9 +75,9 @@ const Kronos = () => {
     const Phase2 = () => {
         return (
             <Fade duration={200}>
-                <div className="mb-5 row">
-                    <div className="col-6 phase-name d-inline">PHASE 2</div>
-                    <div className="col-3 phase-details text-uppercase">
+                <div className="mb-5 d-flex flex-row">
+                    <div className="phase-name d-inline">PHASE 2</div>
+                    <div className="phase-details text-uppercase">
                         <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Stage delivery:</b><br />
                         <span>1{'>'} ICSM Deployment</span><br />
                         <span>2{'>'} Glider separation</span><br />
@@ -75,9 +95,9 @@ const Kronos = () => {
     const Phase3 = () => {
         return (
             <Fade duration={200}>
-                <div className="mb-5 row">
-                    <div className="col-6 phase-name d-inline">PHASE 3</div>
-                    <div className="col-3 phase-details text-uppercase">
+                <div className="mb-5 d-flex flex-row">
+                    <div className="phase-name d-inline">PHASE 3</div>
+                    <div className="phase-details text-uppercase">
                         <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Activation:</b><br />
                         <span>1{'>'} Scan target zone</span><br />
                         <span>2{'>'} Offensive engagement</span><br />
@@ -101,9 +121,11 @@ const Kronos = () => {
                     <div className="col-7 separator header" />
                     <div className="col-3 separator header" />
 
-                    <div className="col-2 separator content lateral" style={{ justifyContent: 'flex-end', display: 'flex', flexDirection: 'column'}}>
+                    <div className="col-2 separator content lateral justify-content-between d-flex flex-column">
                         <Fade duration={200}>
-                            { /* random characters */}
+                            <div className="secondary-color" style={{ wordWrap: "break-word", overflowY: "hidden", fontSize: '0.6vw', wordSpacing: '0.5vw', paddingRight: '5vw' }}>
+                                { GenerateCharacters("left") }
+                            </div>
                             <div className="text-center">
                                 <Link to="/kronos-countdown">
                                     <div className="button-kronos" style={{ fontSize: '1vw', marginTop: 8 }}>COUNTDOWN</div>
@@ -113,7 +135,7 @@ const Kronos = () => {
                         </Fade>
                     </div>
 
-                    <div className="col-7 separator content">
+                    <div className="col-7 separator content d-flex flex-column" style={{ justifyContent: phase === 2 ? 'space-between' : 'start' }}>
                         {(() => {
                             switch(phase) {
                                 case 0:
@@ -131,9 +153,11 @@ const Kronos = () => {
                         }
                     </div>
 
-                    <div className="col-3 separator content lateral" style={{ justifyContent: 'flex-end', display: 'flex', flexDirection: 'column'}}>
+                    <div className="col-3 separator content lateral justify-content-between d-flex flex-column">
                         <Fade duration={200}>
-                            { /* random characters, operation kronos, phase ecc. */}
+                            <div className="secondary-color" style={{ wordWrap: "break-word", overflowY: "hidden", fontSize: '0.6vw', wordSpacing: '0.5vw', paddingLeft: '10vw' }}>
+                                { GenerateCharacters("right") }
+                            </div>
                             <div className="operation-phases-box text-center">
                                 <div style={{ marginBottom: -20}}>OPERATION</div>
                                 <span className="warning-color">KRONOS</span>

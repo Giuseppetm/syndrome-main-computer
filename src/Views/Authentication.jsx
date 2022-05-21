@@ -37,7 +37,7 @@ const Authentication = () => {
         <section id="authentication">
             <Fade>
                 <div className="password-frame">
-                    <input autoFocus type="text" value={passwordValue} onInput={e => setPasswordValue(e.target.value)} id="password-field" name="password-field" maxLength={6} />
+                    <input autoFocus type="text" value={passwordValue} autocomplete="off" onInput={e => setPasswordValue(e.target.value)} id="password-field" name="password-field" maxLength={6} />
                 </div>
             </Fade>
         </section>

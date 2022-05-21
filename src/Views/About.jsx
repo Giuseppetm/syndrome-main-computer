@@ -14,11 +14,15 @@ function importAll(r) {
 const About = () => { 
     const supers = importAll(require.context('../Images/Supers/', false, /\.(png|jpe?g|svg)$/));
     const omnidroids = importAll(require.context('../Images/Omnidroids/', false, /\.(png|jpe?g|svg)$/));
+    const kronosPics = importAll(require.context('../Images/Kronos/', false, /\.(png|jpe?g|svg)$/));
+    const superResults = importAll(require.context('../Images/Search Results/', false, /\.(png|jpe?g|svg)$/));
 
     return (
         <section id="about">
             <PreCacheImg images={Object.values(supers)}/>
             <PreCacheImg images={Object.values(omnidroids)}/>
+            <PreCacheImg images={Object.values(kronosPics)}/>
+            <PreCacheImg images={Object.values(superResults)} />
             <Fade>
                 <div className="container-fluid">
                     <div className="mb-4">
