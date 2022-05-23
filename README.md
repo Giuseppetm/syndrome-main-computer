@@ -1,24 +1,12 @@
-# Syndrome Main Computer ("The Incredibles")
+## Syndrome Main Computer ("The Incredibles", Kronos Unveiled Sequence)
 
-I am a big fan of "The Incredibles" movie (2004), and I've always been fascinated by the [user interface](https://www.youtube.com/watch?v=IRPI3lSACFc) Syndrome had on his computer in the giant room: for this reason I decided to replicate it rather quickly as a web application.
+I am a big fan of "The Incredibles" movie (2004), and I've always been fascinated by the [user interface](https://www.youtube.com/watch?v=IRPI3lSACFc) Syndrome had on his computer in the giant room: for this reason I decided to replicate it rather quickly as a web application. 
 
-_Careful: this is a `work in progress` and is adapted for 16:9 displays and not for mobile devices. I will adapt it for smaller displays as soon as I can._
-
-> This is a reproduction of Syndrome's main computer from "*The Incredibles*" movie (2004).
 🎦 [LIVE PREVIEW](https://syndromemaincomputer.netlify.app/)
 
-![syndrome_updated_cut](https://user-images.githubusercontent.com/52317197/160282601-9ec89aa0-d215-497f-8113-e5a47f49004a.gif)
+_Careful: this is a `work in progress` and is adapted for 16:9 displays and not for mobile devices; I will adapt it for smaller displays as soon as I can._
 
-<!--![image](https://user-images.githubusercontent.com/52317197/157754765-9203aec4-b867-4dba-b525-46f206dac970.png)-->
+[![image](https://user-images.githubusercontent.com/52317197/169821832-94ade0d4-e1a9-4c00-8b62-e3a1c8303d3d.png)
+You can find the YouTube video about the comparison with the movie sequence here](https://www.youtube.com/watch?v=2-cToQpNnaU)
 
-## Video demo of supers list section
-https://user-images.githubusercontent.com/52317197/160282614-4adb3b2e-2d67-4acc-8e35-4568aa547567.mp4
-
-## Recap of sections
-- [x] About section;
-- [x] Authentication section;
-- [x] Supers list section;
-- [x] Search super section
-- [x] Omnidroid final design;
-- [x] Project kronos simulation;
-- [x] Project kronos countdown.
+![Preview](https://user-images.githubusercontent.com/52317197/160282601-9ec89aa0-d215-497f-8113-e5a47f49004a.gif)
