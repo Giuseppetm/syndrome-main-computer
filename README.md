@@ -9,4 +9,4 @@ _Careful: this is a `work in progress` and is adapted for 16:9 displays and not 
 [![image](https://user-images.githubusercontent.com/52317197/169821832-94ade0d4-e1a9-4c00-8b62-e3a1c8303d3d.png)
 You can find the YouTube video about the comparison with the movie sequence here](https://www.youtube.com/watch?v=2-cToQpNnaU)
 
-![Preview](https://user-images.githubusercontent.com/52317197/160282601-9ec89aa0-d215-497f-8113-e5a47f49004a.gif)
+![kronos_unveiled](https://user-images.githubusercontent.com/52317197/179360125-3471b309-50f9-4300-99e3-55fa82efe562.gif)
