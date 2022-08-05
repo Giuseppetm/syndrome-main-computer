@@ -16,22 +16,28 @@
         font-weight: normal;
         justify-content: center;
         width: 100%;
-        padding: 20px 0px 20px;
+        padding: 10px 0px 10px;
 
         .navigator-item {
             margin: 30px 0px 30px;
             margin-left: 14.5%;
+            width: fit-content;
         }
 
         .navigator-item-content {
-            padding: 10px 25px 10px;
+            display: flex;
+            flex-direction: row;
+            width: fit-content;
+            align-items: center;
+            padding: 10px 45px 10px 25px;
             text-transform: uppercase;
             color: $primary-color;
             letter-spacing: 0.5vw;
             font-size: 2.1vw;
+            transition: all 0.1s ease;
         }
 
-        .navigator-item:hover {
+        .disabled:hover {
             cursor: not-allowed !important;
         }
 
@@ -40,14 +46,13 @@
             margin-right: 150px;
             padding-left: 60px;
             vertical-align: inherit;
-            width: 120px;
-            height: 40px;
+            width: 130px;
+            height: 50px;
         }
 
         .navigator-item-content:hover, .navigator-item-content:active {
             color: $white-color;
-            background-color: $nav-item-hover-color;
-            font-weight: 500;
+            background-color: rgba($nav-item-hover-color, 0.80);
 
             .icon {
                 fill: $white-color;
@@ -57,7 +62,7 @@
 
     .box-icons-borders {
         position: absolute;
-        z-index: 3;
+        z-index: 0;
         opacity: 70%;
         border-left: 1px solid $white-color;
         border-right: 1px solid $white-color;

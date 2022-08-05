@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './responsive.scss';
 @import './Components/Button.scss';
 @import './Components/SuperOmnidroidFrame.scss';
 @import './Components/SearchSuperResult.scss';
@@ -6,7 +7,6 @@
 @import './Views/Authentication.scss';
 @import './Views/Navigator.scss';
 @import './Views/NotFound.scss';
-@import './Views/Supers.scss';
 @import './Views/SearchSuper.scss';
 @import './Views/Kronos.scss';
 @import './Views/KronosCountdown.scss';
@@ -44,9 +44,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-}
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
 h1 { font-size: 2.5vw }
 h2 { font-size: 2vw }
@@ -60,10 +58,4 @@ p {
   margin-bottom: 0px;
 }
 
-.text-spaced {
-  letter-spacing: 0.5em;
-}
-
-a {
-  text-decoration: none !important;
-}
+a { text-decoration: none !important; }

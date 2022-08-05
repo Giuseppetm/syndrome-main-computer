@@ -1,13 +1,16 @@
 .button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
     font-weight: normal;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 12px 20px 12px;
+    padding: 12px 25px 12px;
     color: $white-color;
-
     background-color: $secondary-color;
-    
-
+    transition: all 0.2s ease;
 }
 
 .button:hover {

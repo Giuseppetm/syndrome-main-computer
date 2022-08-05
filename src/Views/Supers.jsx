@@ -5,7 +5,7 @@ import Fade from 'react-reveal/Fade';
 
 const Supers = () => {
     return (
-        <section id="supers">
+        <section id="navigator">
             <div className="box-icons-borders" />
             <div className="navigator-frame">
                 <Fade>

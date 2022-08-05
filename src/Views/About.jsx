@@ -23,25 +23,36 @@ const About = () => {
             <PreCacheImg images={Object.values(omnidroids)}/>
             <PreCacheImg images={Object.values(kronosPics)}/>
             <PreCacheImg images={Object.values(superResults)} />
+            
             <Fade>
                 <div className="container-fluid">
-                    <div className="mb-4">
+                    <div className="description mb-4">
                         <h1>SYNDROME MAIN COMPUTER</h1>
 
                         <h3>from "The Incredibles" movie (2004)</h3>
 
-                        <h5>Reproduction made by <span className="secondary-color"><a href="https://github.com/Giuseppetm">GIUSEPPE DEL CAMPO</a></span></h5>
+                        <div>
+                            <h5>Reproduction made by</h5> 
+                            <h5><span className="secondary-color"><a href="https://github.com/Giuseppetm">GIUSEPPE DEL CAMPO</a></span></h5>
+                        </div>
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: "center", marginBottom: 40 }}>
                         <Video mp4={require('../Videos/kronos_edit.mp4')} />
                     </div>
+
+                    <div className="mobile-warning">
+                        <span>
+                            Warning: you are device with a display that is too small. Use a desktop for the correct experience.
+                        </span>
+                    </div>
                             
-                    <Link to="/authentication">
-                        <span className="button">PROCEED WITH THE REPRODUCTION <FiPlayCircle style={{ marginBottom: 8 }} /></span>
+                    <Link to="/authentication" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <span className="button">PROCEED WITH THE REPRODUCTION <FiPlayCircle /></span>
                     </Link>
                 </div>
             </Fade>
+
         </section>
     )
 };

@@ -12,7 +12,7 @@ const SearchSuperResult = () => {
     React.useEffect(() => {
         setTimeout(() => {
             setRender(true);
-        }, 1200);
+        }, 800);
     }, []);
 
     return (
