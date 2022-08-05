@@ -43,7 +43,7 @@ const About = () => {
 
                     <div className="mobile-warning">
                         <span>
-                            Warning: you are device with a display that is too small. Use a desktop for the correct experience.
+                            Warning: you are using a device with a display that is too small. Use a desktop for the correct experience.
                         </span>
                     </div>
                             
