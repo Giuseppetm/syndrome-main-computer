@@ -50,7 +50,7 @@
             height: 50px;
         }
 
-        .navigator-item-content:hover, .navigator-item-content:active {
+        .navigator-item-content:hover, .navigator-item-content:active, .navigator-item-content-active {
             color: $white-color;
             background-color: rgba($nav-item-hover-color, 0.80);
 
