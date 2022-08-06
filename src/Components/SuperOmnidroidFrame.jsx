@@ -83,7 +83,7 @@ const SuperOmnidroidFrame = () => {
                 <div className="row h-100" style={{ overflow: 'hidden' }}>
                     <div className="col-6 separator header">
                         <Fade duration={200}>
-                            <div className="d-flex justify-content-between">
+                            <div className="d-flex justify-content-between align-baseline">
                                 <div><h1 style={{ paddingLeft: 20 }}>OPPONENT</h1></div>
                                 <div className="white-color" style={{ marginTop: 7, filter: dataElement?.super.refresh ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }}>
                                     <p className="d-inline mr-4">THREAT RATING:</p>

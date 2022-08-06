@@ -1,19 +1,20 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Dollar from '../Images/dollar.svg';
 import Isle from '../Images/isle.svg';
 import Omnidroid from '../Images/omnidroid.svg';
 import Supers from '../Images/supers.svg';
 
 const Navigator = () => {
+    let navigate = useNavigate();
     let [navItem, setNavItem] = React.useState(null);
     let navItems = 4;
 
     React.useEffect(() => {
         setTimeout(() => {
             setNavItem(0);
-        }, 800);
+        }, 600);
     }, []);
 
     React.useEffect(() => {
@@ -29,14 +30,31 @@ const Navigator = () => {
             }
         };
 
-        window.addEventListener("keydown", downHandler);
+        const enterHandler = (event) => {
+            if (event.keyCode === 13) {
+                switch (navItem) {
+                    case 0: 
+                        navigate("/kronos");
+                        break;
+                    case 3:
+                        navigate("/supers");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
+        window.addEventListener("keyup", downHandler);
         window.addEventListener("keyup", upHandler);
+        window.addEventListener("keyup", enterHandler);
 
         return () => {
-            window.removeEventListener("keydown", downHandler);
+            window.removeEventListener("keyup", downHandler);
             window.removeEventListener("keyup", upHandler);
+            window.removeEventListener("keyup", enterHandler);
         };
-    }, [navItem, navItems]);
+    }, [navItem, navItems, navigate]);
 
     const buildClassName = (key) => {
         if (key === navItem) return "navigator-item-content navigator-item-content-active";

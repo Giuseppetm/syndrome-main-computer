@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SupersImage from '../Images/supers.svg';
 import Search from '../Images/search.svg';
 import Fade from 'react-reveal/Fade';
 
 const Supers = () => {
+    let navigate = useNavigate();
     let [navItem, setNavItem] = React.useState(null);
     let navItems = 2;
 
@@ -27,14 +28,31 @@ const Supers = () => {
             }
         };
 
-        window.addEventListener("keydown", downHandler);
+        const enterHandler = (event) => {
+            if (event.keyCode === 13) {
+                switch (navItem) {
+                    case 0:
+                        navigate("/supers/0");
+                        break;
+                    case 1:
+                        navigate("/search_super");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
+        window.addEventListener("keyup", downHandler);
         window.addEventListener("keyup", upHandler);
+        window.addEventListener("keyup", enterHandler);
 
         return () => {
-            window.removeEventListener("keydown", downHandler);
+            window.removeEventListener("keyup", downHandler);
             window.removeEventListener("keyup", upHandler);
+            window.removeEventListener("keyup", enterHandler);
         };
-    }, [navItem, navItems]);
+    }, [navItem, navItems, navigate]);
 
     const buildClassName = (key) => {
         if (key === navItem) return "navigator-item-content navigator-item-content-active";
