@@ -5,7 +5,24 @@ I am a big fan of "The Incredibles" movie (2004), and I've always been fascinate
 
 🎦 [LIVE PREVIEW](https://syndromemaincomputer.netlify.app/)
 
-_Careful: this is a `work in progress` and is adapted for 16:9 displays and not for mobile devices; I will adapt it for smaller displays as soon as I can._
+_Careful: this is a `work in progress` and is adapted for 16:9 displays; there is no support for mobile devices right now. If you want to completely scale down the application to make it usable on mobile devices you can open a [PR](https://github.com/Giuseppetm/syndrome-main-computer/pulls)._
 
 [![image](https://user-images.githubusercontent.com/52317197/169821832-94ade0d4-e1a9-4c00-8b62-e3a1c8303d3d.png)
-You can find the YouTube video about the comparison with the movie sequence here](https://www.youtube.com/watch?v=2-cToQpNnaU)
+You can find the YouTube video I made about the comparison with the movie sequence here.](https://www.youtube.com/watch?v=2-cToQpNnaU)
+
+## Comparison with the movie sequence
+|Image from the movie | Syndrome Main Computer reproduction |
+|---|---|
+| ![image](https://user-images.githubusercontent.com/52317197/183285350-2eb4aa72-1945-4cd3-876d-afe8f3f308a6.png) | ![image](https://user-images.githubusercontent.com/52317197/183285356-0b08c4fc-eb0a-4c20-b858-1907a1c2b441.png) |
+| ![image](https://user-images.githubusercontent.com/52317197/183285410-69745cb6-5046-4e03-bfa6-cdca3c40ad18.png) | ![image](https://user-images.githubusercontent.com/52317197/183285421-e61eae2e-6eef-4241-8c8f-9fd55a51bff5.png) | 
+| ![image](https://user-images.githubusercontent.com/52317197/183285590-a8cd405c-218f-4d33-b727-11f4b84d2b15.png) | ![image](https://user-images.githubusercontent.com/52317197/183285685-a3f760c8-6f06-4c68-9359-1464a14a5455.png) | 
+| ![image](https://user-images.githubusercontent.com/52317197/183285756-8828568c-c25b-46b0-8f26-261de40c3b56.png) | ![image](https://user-images.githubusercontent.com/52317197/183285765-06c77d7c-0aaa-40bc-9989-b0388202edc1.png) |
+| ![image](https://user-images.githubusercontent.com/52317197/183285781-041b2981-2b3a-4485-a0c3-ea340d743567.png) | ![image](https://user-images.githubusercontent.com/52317197/183285789-752c4570-0709-4a4f-ae4f-0a53083aa804.png) |
+| ![image](https://user-images.githubusercontent.com/52317197/183285812-e3ca04b4-5910-4e93-a205-a2e1802cf891.png) | ![image](https://user-images.githubusercontent.com/52317197/183285898-88a973d9-bcf6-4128-9db8-d81bd22938c8.png) |
+| ![image](https://user-images.githubusercontent.com/52317197/183285822-b19b219d-2150-4602-ae2b-4493d1cf5905.png) | ![image](https://user-images.githubusercontent.com/52317197/183285931-12745a2c-b7d3-42d6-b45a-77e56b8ff096.png) |
+| ![image](https://user-images.githubusercontent.com/52317197/183285831-9b332c47-6481-428f-84d6-19910f33e55d.png) | ![image](https://user-images.githubusercontent.com/52317197/183285938-7839b31e-0d42-423e-8a1f-6f198f1032ec.png) |
+| ![image](https://user-images.githubusercontent.com/52317197/183285839-488de04d-21e2-47a5-95a2-932441236c3d.png) | ![image](https://user-images.githubusercontent.com/52317197/183285945-f2be9a09-48f6-4066-921d-c3b4841bb983.png) |
+| ![image](https://user-images.githubusercontent.com/52317197/183285854-762ccc22-7d46-49a2-b308-61483377d223.png) | ![image](https://user-images.githubusercontent.com/52317197/183285955-a7e331eb-122a-4780-b6fa-996d44b3e2e9.png) |
+
+## How to run the project
+Install the dependencies with `npm install` and then run the webapp locally with `npm start`.
