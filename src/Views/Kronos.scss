@@ -35,25 +35,6 @@
         margin-bottom: 0px;
     }
 
-    .phase-frame {
-        background-color: $secondary-color;
-        color: $white-color;
-        font-weight: normal;
-        letter-spacing: 0.2vw;
-        font-size: 1.4vw;
-
-        .step {
-            margin-left: 18px;
-            padding: 0px 2px 0px;
-        }
-
-        .step:hover, .step-activated {
-            background-color: #ef705d;
-            color: $primary-color;
-            cursor: pointer;
-        }
-    }
-
     .button-kronos {
         background-color: $secondary-color;
         color: $white-color;
@@ -61,13 +42,15 @@
         letter-spacing: 0.2vw;
         font-size: 1.4vw;
         padding: 5px 0px 5px 0px;
-
+        transition: all 0.1s ease;
+        border: 1px solid transparent;
     }
 
     .button-kronos:hover {
-        background-color: #ef705d;
+        background-color: $red-color;
         color: $primary-color;
         cursor: pointer;
+        border: 1px solid $primary-color;
     }
     
     .version-label {
@@ -84,6 +67,42 @@
         bottom: 0px;
         font-weight: bold;
         font-size: 2.2vw;
+        display: flex;
+        flex-direction: column;
+
+        .phase-frame {
+                background-color: $secondary-color;
+                color: $white-color;
+                margin: 0px 10px;
+                padding: 0px 8px;
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                justify-content: center;
+                font-weight: normal;
+                letter-spacing: 0.2vw;
+                font-size: 1.4vw;
+
+                .steps {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                }
+        
+                .step {
+                    display: flex;
+                    justify-content: center;
+                    padding: 0px 2px 0px 2px;
+                    transition: all 0.1s ease;
+                }
+        
+                .step:hover,
+                .step-activated {
+                    background-color: $red-color;
+                    color: $primary-color;
+                    cursor: pointer;
+                }
+            }
 
         .warning-color {
             font-size: 2.9vw;

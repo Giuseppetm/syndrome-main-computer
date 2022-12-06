@@ -1,0 +1,65 @@
+.super-omnidroid-frame {
+    background: $quarternary-color-darker;
+    background: linear-gradient(90deg, $quarternary-color-darker 0%, $quaternary-color 15%, $quaternary-color 85%, $quarternary-color-darker 100%);
+    min-height: 100vh;
+    height: 100vh;
+    border-bottom: 0;
+    justify-content: center;
+
+    .terminated-frame {
+        position: absolute;
+        width: 50%;
+        letter-spacing: 0.1vw;
+        font-size: 4.8vw;
+        font-weight: bold;
+        background-color: $warning-color;
+        color: $white-color;
+        border-right: 1px solid;
+        text-align: center;
+        top: 40%;
+        height: 5.4vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image {
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+    }
+
+    .padded {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .borded {
+        border-right: 1px solid $tertiary-color;
+    }
+
+    .footer {
+        p {
+            margin-right: 40px;
+            margin-left: 40px;
+        }
+    }
+
+    .footer-h1 {
+        letter-spacing: 0.4vw;
+    }
+
+    .header {
+        min-height: 10%;
+    }
+
+    .footer {
+        min-height: 22%;
+    }
+
+    .content {
+        max-height: 68%;
+    }
+}

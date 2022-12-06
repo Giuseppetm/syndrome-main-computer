@@ -7,13 +7,15 @@
     font-weight: normal;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 12px 25px 12px;
+    padding: 8px 25px 8px;
     color: $white-color;
     background-color: $secondary-color;
     transition: all 0.2s ease;
+    border: 1px solid transparent;
 }
 
 .button:hover {
     color: $primary-color;
-    background-color: #ef705d;
+    background-color: $red-color;
+    border: 1px solid $primary-color;
 }

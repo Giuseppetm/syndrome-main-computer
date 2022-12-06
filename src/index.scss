@@ -1,8 +1,8 @@
 @import './variables.scss';
 @import './responsive.scss';
 @import './Components/Button.scss';
-@import './Components/SuperOmnidroidFrame.scss';
-@import './Components/SearchSuperResult.scss';
+@import './Views/SuperOmnidroidFrame.scss';
+@import './Views/SearchSuperResult.scss';
 @import './Views/About.scss';
 @import './Views/Authentication.scss';
 @import './Views/Navigator.scss';
@@ -37,14 +37,15 @@
   font-display: swap;
 }
 
-body {
+body, html {
+  min-height: 100vh;
   margin: 0;
   font-family: 'Eurostile';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; margin: 0px; }
 
 h1 { font-size: 2.5vw }
 h2 { font-size: 2vw }

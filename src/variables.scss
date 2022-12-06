@@ -7,25 +7,12 @@ $quarternary-color-darker: rgb(93, 147, 153);
 
 $white-color: #dddcdc;
 $warning-color: #e9401e;
+$red-color: #ef705d;
 
 $nav-item-hover-color: #708483;
 
-.primary-color {
-    color: $primary-color;
-}
-
-.secondary-color {
-    color: $secondary-color;
-}
-
-.tertiary-color {
-    color: $tertiary-color;
-}
-
-.warning-color {
-    color: $warning-color;
-}
-
-.white-color {
-    color: $white-color;
-}
+.primary-color { color: $primary-color; }
+.secondary-color { color: $secondary-color; }
+.tertiary-color { color: $tertiary-color; }
+.warning-color { color: $warning-color; }
+.white-color { color: $white-color; }

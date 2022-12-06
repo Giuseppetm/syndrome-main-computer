@@ -76,7 +76,7 @@ const Kronos = () => {
         return (
             <Fade duration={200}>
                 <div className="mb-5 d-flex flex-row">
-                    <div className="phase-name d-inline">PHASE 2</div>
+                    <div className="phase-name">PHASE 2</div>
                     <div className="phase-details text-uppercase">
                         <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Stage delivery:</b><br />
                         <span>1{'>'} ICSM Deployment</span><br />
@@ -96,7 +96,7 @@ const Kronos = () => {
         return (
             <Fade duration={200}>
                 <div className="mb-5 d-flex flex-row">
-                    <div className="phase-name d-inline">PHASE 3</div>
+                    <div className="phase-name">PHASE 3</div>
                     <div className="phase-details text-uppercase">
                         <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Activation:</b><br />
                         <span>1{'>'} Scan target zone</span><br />
@@ -162,11 +162,11 @@ const Kronos = () => {
                                 <div style={{ marginBottom: -20}}>OPERATION</div>
                                 <span className="warning-color">KRONOS</span>
                                 <div className="phase-frame">
-                                    <div className="d-inline">PHASE:</div>
-                                    <div className="steps d-inline">
-                                        <div className={phase === 1 ? "d-inline step step-activated" : "d-inline step"} onClick={() => { setRender(true); setPhase(1);  }}>1</div>
-                                        <div className={phase === 2 ? "d-inline step step-activated" : "d-inline step"} onClick={() => { setRender(true); setPhase(2); }}>2</div>
-                                        <div className={phase === 3 ? "d-inline step step-activated" : "d-inline step"} onClick={() => { setRender(true); setPhase(3); }}>3</div>
+                                    <div>PHASE:</div>
+                                    <div className="steps">
+                                        <div className={phase === 1 ? "step step-activated" : "step"} onClick={() => { setRender(true); setPhase(1);  }}>1</div>
+                                        <div className={phase === 2 ? "step step-activated" : "step"} onClick={() => { setRender(true); setPhase(2); }}>2</div>
+                                        <div className={phase === 3 ? "step step-activated" : "step"} onClick={() => { setRender(true); setPhase(3); }}>3</div>
                                     </div>
                                 </div>
                             </div>

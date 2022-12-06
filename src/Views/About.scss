@@ -4,15 +4,60 @@
     color: $primary-color;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    border-bottom: 0;
-    font-weight: 400;
     text-align: center;
 
-    @include xs { padding: 2rem 1rem; }
-    @include sm { padding: 2rem 5.6rem; }
+    .header { 
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        padding: 10px 20px 10px 20px;
+        text-align: left;
+        min-height: 50px;
+        width: 100%;
+        background: linear-gradient(90deg, $quarternary-color-darker 0%, $quaternary-color 15%, $quaternary-color 85%, $quarternary-color-darker 100%); 
+
+        @include xs { flex-direction: column; text-align: center; }
+        @include sm { flex-direction: row; }
+
+        h5, a {
+            @include xs { font-size: 12px !important; }
+            @include sm { font-size: 16px !important; }
+        }
+
+        .author { color: $white-color; :hover { color: $secondary-color; } }
+
+        img { width: 32px; height:24px; }
+        svg { font-size: 20px; }
+    }
+
+    .content { 
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-grow: 1; 
+        display: flex;
+        align-items: center;
+    }
+
+    .title {
+        background-color: $secondary-color;
+        color: $white-color;
+        font-weight: normal;
+        letter-spacing: 0.2vw;
+        font-size: 1.4vw;
+        padding: 5px 10px;
+    }
 
     .description {
+        width:fit-content;
+        font-style: italic;
+        border: 2px $secondary-color solid;
+        padding: 4px 12px 4px 12px;
+        color: $secondary-color;
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -24,8 +69,6 @@
     }
 
     h1 { 
-        color: $secondary-color; 
-
         @include xs { font-size: 6vmin; }
         @include sm { font-size: 40px; }
     }
@@ -35,27 +78,30 @@
         @include sm { font-size: 20px; }
     }
 
-    h5 { 
-        @include xs { font-size: 3vmin; }
-        @include sm { font-size: 20px; }
-    }
-
     a {
         transition: all 0.2s ease;
         color: $secondary-color;
     }
 
     a:hover {
-        color: #ef705d !important;
+        color: $red-color !important;
     }
 
     .mobile-warning {
-        background-color:#ef705d;
+        background-color:$red-color;
         color: $white-color;
         padding: 10px 20px;
         margin-bottom: 20px;
 
         @include sm { display: block; }
         @include lg { display: none; }
+    }
+
+    .video {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .button {
+        font-weight: bold;
     }
 }
