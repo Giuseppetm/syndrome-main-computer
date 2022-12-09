@@ -6,10 +6,18 @@
     border-bottom: 0;
     justify-content: center;
 
+    h1 { font-size: 3vw; letter-spacing: 3px; }
+    p { font-size: 0.8vw; }
+
     .result {
-        padding: 100px 30px 10px !important;
+        padding: 0px 35px !important;
+        padding-top: 100px !important;
         background: $tertiary-color-darker;
         background: linear-gradient(90deg, $tertiary-color-darker 0%, $tertiary-color 20%, $tertiary-color 80%, $tertiary-color-darker 100%);
+    }
+
+    .description {
+        margin-bottom: 30px;
     }
 
     .threat-rating {
