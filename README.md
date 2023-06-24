@@ -1,4 +1,8 @@
 ## Syndrome Main Computer ("The Incredibles", Kronos Unveiled Sequence)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3564b000-f9d8-47ee-9c26-78ab0b0b5a7c/deploy-status)](https://app.netlify.com/sites/syndromemaincomputer/deploys)
+[![GitHub issues](https://img.shields.io/github/issues/Giuseppetm/syndrome-main-computer)](https://github.com/Giuseppetm/syndrome-main-computer/issues)
+
 ![Preview](https://user-images.githubusercontent.com/52317197/182917717-48b535b0-2a95-4b74-af68-0d287f782c86.gif)
 
 I am a big fan of "The Incredibles" movie (2004), and I've always been fascinated by the [user interface](https://www.youtube.com/watch?v=IRPI3lSACFc) Syndrome had on his computer in the giant room: for this reason I decided to replicate it rather quickly as a web application. 
