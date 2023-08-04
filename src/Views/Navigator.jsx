@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Fade from 'react-reveal/Fade';
 import { Link, useNavigate } from 'react-router-dom';
 import Dollar from '../Images/dollar.svg';
@@ -8,16 +8,16 @@ import Supers from '../Images/supers.svg';
 
 const Navigator = () => {
     let navigate = useNavigate();
-    let [navItem, setNavItem] = React.useState(null);
+    let [navItem, setNavItem] = useState(null);
     let navItems = 4;
 
-    React.useEffect(() => {
+    useEffect(() => {
         setTimeout(() => {
             setNavItem(0);
-        }, 600);
+        }, 300);
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const downHandler = (event) => {
             if (event.keyCode === 40) {
                 setNavItem((navItem + 1) % navItems);
@@ -45,14 +45,22 @@ const Navigator = () => {
             }
         };
 
+        const escHandler = (event) => {
+            if (event.keyCode === 27) {
+                navigate("/authentication");
+            }
+        };
+
         window.addEventListener("keyup", downHandler);
         window.addEventListener("keyup", upHandler);
         window.addEventListener("keyup", enterHandler);
+        window.addEventListener("keyup", escHandler);
 
         return () => {
             window.removeEventListener("keyup", downHandler);
             window.removeEventListener("keyup", upHandler);
             window.removeEventListener("keyup", enterHandler);
+            window.removeEventListener("keyup", escHandler);
         };
     }, [navItem, navItems, navigate]);
 
@@ -63,7 +71,6 @@ const Navigator = () => {
 
     return (
         <section id="navigator">
-
             <div className="box-icons-borders" />
 
             <div className="navigator-frame">
@@ -107,7 +114,6 @@ const Navigator = () => {
                     </div>
                 </Fade>
             </div>
-
         </section>
     )
 };

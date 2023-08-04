@@ -11,25 +11,28 @@ import Kronos from './Views/Kronos';
 import KronosCountdown from './Views/KronosCountdown';
 import NotFound from './Views/NotFound';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GlobalProvider } from './Context/GlobalContext';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<About />} />
-        <Route path="/authentication" element={<Authentication />} />
-        <Route path="/navigator" element={<Navigator />} />
-        <Route path="/supers" element={<Supers />} /> 
-        <Route path="/supers/:superId" element={<SuperOmnidroidFrame />} />
-        <Route path="/search_super" element={<SearchSuper />} />
-        <Route path="/search_super/:superName" element={<SearchSuperResult />} />
-        <Route path="/kronos" element={<Kronos /> } />
-        <Route path="/kronos-countdown" element={<KronosCountdown /> } />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <GlobalProvider>
+        <Routes>
+          <Route exact path="/" element={<About />} />
+          <Route path="/authentication" element={<Authentication />} />
+          <Route path="/navigator" element={<Navigator />} />
+          <Route path="/supers" element={<Supers />} /> 
+          <Route path="/supers/:superSlug" element={<SuperOmnidroidFrame />} />
+          <Route path="/search_super" element={<SearchSuper />} />
+          <Route path="/search_super/:superName" element={<SearchSuperResult />} />
+          <Route path="/kronos" element={<Kronos /> } />
+          <Route path="/kronos-countdown" element={<KronosCountdown /> } />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </GlobalProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

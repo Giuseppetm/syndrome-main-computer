@@ -1,10 +1,10 @@
 import Fade from 'react-reveal/Fade';
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const Authentication = () => {
     let navigate = useNavigate();
-    let [passwordValue, setPasswordValue] = React.useState("PASSWORD");
+    let [passwordValue, setPasswordValue] = useState("PASSWORD");
     
     useEffect(() => {
         setTimeout(() => {
@@ -27,9 +27,18 @@ const Authentication = () => {
             }
         };
 
-        document.addEventListener("keydown", listener);
+        const escHandler = (event) => {
+            if (event.keyCode === 27) {
+                navigate("/");
+            }
+        };
+
+        window.addEventListener("keydown", listener);
+        window.addEventListener("keyup", escHandler);
+
         return () => {
-            document.removeEventListener("keydown", listener);
+            window.removeEventListener("keydown", listener);
+            window.removeEventListener("keyup", escHandler);
         };
     }, [navigate, passwordValue]);
 
@@ -37,7 +46,7 @@ const Authentication = () => {
         <section id="authentication">
             <Fade>
                 <div className="password-frame">
-                    <input autoFocus type="text" value={passwordValue} autocomplete="off" onInput={e => setPasswordValue(e.target.value)} id="password-field" name="password-field" maxLength={6} />
+                    <input autoFocus type="text" value={passwordValue} autoComplete="off" onInput={e => setPasswordValue(e.target.value)} id="password-field" name="password-field" maxLength={6} />
                 </div>
             </Fade>
         </section>

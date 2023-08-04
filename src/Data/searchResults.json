@@ -1,6 +1,7 @@
 [
     {
         "name": "Elastigirl",
+        "slug": "elastigirl",
         "img": "elastigirl.png",
         "description": "Full-body elasticity, body capable of stretching in extreme way up to three hundred feet, high durability to physical injuries, stretch assisted leaps span eighty feet. Can compress and expand shape limited to maintaining bodily volume.",
         "lastActiveRecord": "13.11.55",
@@ -9,6 +10,7 @@
     },
     {
         "name": "Frozone",
+        "slug": "frozone",
         "img": "frozone.png",
         "description": "Spontaneous generation of ice from water sources, freeze surface areas in excess of five hundreds meters. Manipulation of water for the formation of ice in solid form and structures in this material. He can generate ice from his fingertips but is limited by the amount of moisture in the air and his body. He has made water and milk solid and can freeze bullets in midair while congealing gun-wielding opponents. He has limited airborne mobility, not necessarily complete levitation, but he can quickly maneuver along coasters of midair icicles (which deteriorate as he goes) which boost him in the air a good hundred or more feet. He can also take large bounds and leaps when in the air. He can also create snow, soft enough to cushion falls and slides on rough surfaces.",
         "lastActiveRecord": "17.12.56",
@@ -16,7 +18,8 @@
         "threatRating": "8.0 Exercise moderate caution"
     },
     {
-        "name": "Dennis_Farina",
+        "name": "Dennis Farina",
+        "slug": "dennis_farina",
         "img": "dennis_farina.jpg",
         "description": "Dennis Farina was one of Hollywood's busiest actors and a familiar face to moviegoers and television viewers alike. Recently, he appeared in the feature films, The Grand, a comedy about a Vegas poker tournament with Woody Harrelson, Cheryl Hines and Ray Romano; Bottle Shock, also starring Alan Rickman, Bill Pullman and Bradley Whitford; and Fox's What Happens in Vegas, in which Dennis starred as Cameron Diaz's boss. Farina also appeared on the NBC series Law and Order and in the HBO miniseries, Empire Falls, for which he won a Golden Globe Award for Best Mini-Series.",
         "lastActiveRecord": "22.07.2013",

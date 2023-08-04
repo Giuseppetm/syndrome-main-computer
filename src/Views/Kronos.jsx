@@ -1,12 +1,26 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 const Kronos = () => {
-    let [render, setRender] = React.useState(false);
-    let [phase, setPhase] = React.useState(0); /* Phase 0 => Just show title and image */
+    let [render, setRender] = useState(false);
+    let [phase, setPhase] = useState(0); // Phase 0 => Just show title and image
     let navigate = useNavigate();
+
+    useEffect(() => {
+        const escHandler = (event) => {
+            if (event.keyCode === 27) {
+                navigate("/navigator");
+            }
+        };
+
+        window.addEventListener("keyup", escHandler);
+
+        return () => {
+            window.removeEventListener("keyup", escHandler);
+        };
+    }, [navigate]);
 
     const BeginSimulation = () => {
         ResetImgFade();

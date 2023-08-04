@@ -1,19 +1,33 @@
 import Fade from 'react-reveal/Fade';
-import React from 'react';
-import search_results from '../Data/search_results.json';
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import searchResults from '../Data/searchResults.json';
 
 const SearchSuperResult = () => {
-    let [render, setRender] = React.useState(false);
-    let superName = useParams().superName;
-    let [superResult,] = React.useState(search_results.find(x => x.name.toLowerCase() === superName.toLowerCase()));
-    console.log(superName, superResult, search_results)
+    const navigate = useNavigate();
+    const [render, setRender] = useState(false);
+    const superSlug = useParams().superName;
+    const [superResult,] = useState(searchResults.find(x => x.slug.toLowerCase() === superSlug.toLowerCase()));
 
-    React.useEffect(() => {
+    useEffect(() => {
         setTimeout(() => {
             setRender(true);
-        }, 600);
+        }, 400);
     }, []);
+
+    useEffect(() => {
+        const escHandler = (event) => {
+            if (event.keyCode === 27) {
+                navigate("/search_super");
+            }
+        };
+
+        window.addEventListener("keyup", escHandler);
+
+        return () => {
+            window.removeEventListener("keyup", escHandler);
+        };
+    }, [navigate]);
 
     return (
         <div className="search-super-result-frame">

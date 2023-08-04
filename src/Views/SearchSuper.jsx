@@ -1,30 +1,33 @@
 import Fade from 'react-reveal/Fade';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import supers from '../Data/supers.json';
+import searchResults from '../Data/searchResults.json';
 
 const SearchSuper = () => {
     let navigate = useNavigate();
-    let [searchValue, setSearchValue] = React.useState("");
+    let [searchValue, setSearchValue] = useState("");
+    const searchSuperEndpoint = '/search_super';
+    const supersEndpoint = '/supers';
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleSubmit = () => {
-            switch (searchValue.toLowerCase()) {
-                case "elastigirl":
-                    navigate("/search_super/elastigirl");
-                    break;
-                case "frozone":
-                    navigate("/search_super/frozone");
-                    break;
-                case "dennis farina":
-                    navigate("/search_super/dennis_farina");
-                    break;
-                case "":
-                    break;
-                default:
-                    navigate("/notfound");
-                    break;
+            // Handle basic search (not omnidroid related)
+            const superElementSearch = searchResults.find(x => x.name.toLowerCase() === searchValue.toLowerCase());
+            if (superElementSearch) {
+                navigate(`${searchSuperEndpoint}/${superElementSearch.slug}`);
+                return;
             }
-        }
+            
+            // Handle omnidroid related search
+            const superElementsOmnidroid = supers.filter(x => x.super.name.toLowerCase() === searchValue.toLowerCase());
+            if (superElementsOmnidroid && superElementsOmnidroid.length === 2) {
+                navigate(`${supersEndpoint}/${superElementsOmnidroid[1].super.slug}`, { state: { steady: true } });
+                return;
+            }
+
+            navigate("/notfound");
+        };
 
         const listener = event => {
             var key = event.which || event.keyCode || 0;
@@ -34,9 +37,18 @@ const SearchSuper = () => {
             }
         };
 
-        document.addEventListener("keydown", listener);
+        const escHandler = (event) => {
+            if (event.keyCode === 27) {
+                navigate("/supers");
+            }
+        };
+
+        window.addEventListener("keydown", listener);
+        window.addEventListener("keyup", escHandler);
+
         return () => {
-            document.removeEventListener("keydown", listener);
+            window.removeEventListener("keydown", listener);
+            window.removeEventListener("keyup", escHandler);
         };
     }, [navigate, searchValue]);
 
@@ -50,7 +62,7 @@ const SearchSuper = () => {
                         <div className="label">SEARCH:</div>
 
                         <div className="input-text">
-                            <input autoFocus type="text" value={searchValue} autocomplete="off" onInput={e => setSearchValue(e.target.value)} id="search-field" name="search-field" maxLength={16} />
+                            <input autoFocus type="text" value={searchValue} autoComplete="off" onInput={e => setSearchValue(e.target.value)} id="search-field" name="search-field" maxLength={16} />
                         </div>
                     </div>
                 </div>
