@@ -141,14 +141,26 @@ const SuperOmnidroidFrame = () => {
                     <div className="col-6 p-0 padded borded content image">
                         <Fade duration={200}>
                             <img id="super-image" src={require('../Images/Supers/' + superOmnidroid?.super.img)} alt={superOmnidroid.super.name} style={{ filter: superOmnidroid?.super.refresh || steady ? `invert(${percentageValueSuper}%)` : 'invert(0%)' }} />
-                            {superOmnidroid?.super.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
+                            {superOmnidroid?.super.terminated && render ? 
+                                <Fade duration={200}>
+                                    <div className="terminated-frame">
+                                        <div className="terminated-label">TERMINATED</div>
+                                    </div>
+                                </Fade> : <></>
+                            }
                         </Fade>
                     </div>
 
                     <div className="col-6 p-0 padded content image">
                         <Fade duration={200}>
                             <img id="omnidroid-image" src={require('../Images/Omnidroids/' + superOmnidroid?.omnidroid.img)} alt={superOmnidroid.omnidroid.name} style={{ filter: superOmnidroid?.omnidroid.refresh || steady ? `invert(${percentageValueOmnidroid}%)` : 'invert(0%)' }} />
-                            {superOmnidroid?.omnidroid.terminated && render ? <Fade duration={200}><div className="terminated-frame">TERMINATED</div></Fade> : <></>}
+                            {superOmnidroid?.omnidroid.terminated && render ? 
+                                <Fade duration={200}>
+                                    <div className="terminated-frame">
+                                        <div className="terminated-label">TERMINATED</div>
+                                    </div>
+                                </Fade> : <></>
+                            }
                         </Fade>
                     </div>
 

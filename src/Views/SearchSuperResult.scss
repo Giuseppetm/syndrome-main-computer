@@ -6,8 +6,14 @@
     border-bottom: 0;
     justify-content: center;
 
-    h1 { font-size: 3vw; letter-spacing: 3px; }
-    p { font-size: 0.8vw; }
+    h1 { 
+        font-size: 60px; 
+        letter-spacing: 3px; 
+    }
+
+    p { 
+        font-size: 16px; 
+    }
 
     .result {
         padding: 0px 35px !important;
@@ -38,16 +44,16 @@
 
     .image {
         img {
-            min-height: 100%;
+            height: 100%;
             width: 100%;
         }
     }
 
     .footer, .header {
-        min-height: 10%;
+        height: 10%;
     }
 
     .content {
-        min-height: 80%;
+        height: 80%;
     }
 }

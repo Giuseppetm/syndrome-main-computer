@@ -29,7 +29,7 @@ const KronosCountdown = (props) => {
     return (
         <section id="kronos-countdown">
             <Fade duration={1000}>
-                <div className="content text-center">
+                <div className="content text-center" style={{ width: '100%' }}>
                     <div style={{ marginBottom: 50 }}><h1>PROJECT KRONOS COUNTDOWN</h1></div>
                 
                     <div className="countdown">

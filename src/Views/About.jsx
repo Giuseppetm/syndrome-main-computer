@@ -18,6 +18,12 @@ const About = () => {
     const kronosPics = importAll(require.context('../Images/Kronos/', false, /\.(png|jpe?g|svg)$/));
     const superResults = importAll(require.context('../Images/Search Results/', false, /\.(png|jpe?g|svg)$/));
 
+    const setAspectRatio = () => {
+        const body = document.getElementsByTagName("body")[0];
+        body.style.aspectRatio = "16/9";
+        body.style.overflowY = "hidden";
+    };
+
     return (
         <section id="about">
             <PreCacheImg images={Object.values(supers)}/>
@@ -65,7 +71,7 @@ const About = () => {
                             </div>
                                     
                             <div className="d-flex justify-content-center">
-                                <Link to="/authentication">
+                                <Link to="/authentication" onClick={() => setAspectRatio()}>
                                     <span className="button">PROCEED WITH THE REPRODUCTION <FiPlayCircle /></span>
                                 </Link>
                             </div>

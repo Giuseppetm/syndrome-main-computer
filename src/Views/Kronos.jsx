@@ -72,7 +72,7 @@ const Kronos = () => {
                 <div className="mb-5 d-flex flex-row">
                     <div className="phase-name">PHASE 1</div>
                     <div className="phase-details text-uppercase">
-                        <b style={{fontSize: '1.1vw', letterSpacing: '0.2vw'}}>Loading sequence:</b><br/>
+                        <b style={{ fontSize: '22px', letterSpacing: '4px' }}>Loading sequence:</b><br/>
                         <span>1{'>'} Omnidroid delivery mode</span><br />
                         <span>2{'>'} Gantry Loading</span><br />
                         <span>3{'>'} Launch sequence</span><br />
@@ -92,7 +92,7 @@ const Kronos = () => {
                 <div className="mb-5 d-flex flex-row">
                     <div className="phase-name">PHASE 2</div>
                     <div className="phase-details text-uppercase">
-                        <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Stage delivery:</b><br />
+                        <b style={{ fontSize: '22px', letterSpacing: '4px' }}>Stage delivery:</b><br />
                         <span>1{'>'} ICSM Deployment</span><br />
                         <span>2{'>'} Glider separation</span><br />
                         <span>3{'>'} Omnidroid activation</span><br />
@@ -112,7 +112,7 @@ const Kronos = () => {
                 <div className="mb-5 d-flex flex-row">
                     <div className="phase-name">PHASE 3</div>
                     <div className="phase-details text-uppercase">
-                        <b style={{ fontSize: '1.1vw', letterSpacing: '0.2vw' }}>Activation:</b><br />
+                        <b style={{ fontSize: '22px', letterSpacing: '4px' }}>Activation:</b><br />
                         <span>1{'>'} Scan target zone</span><br />
                         <span>2{'>'} Offensive engagement</span><br />
                         <span>3{'>'} Remote override</span><br />
@@ -137,14 +137,14 @@ const Kronos = () => {
 
                     <div className="col-2 separator content lateral justify-content-between d-flex flex-column">
                         <Fade duration={200}>
-                            <div className="secondary-color" style={{ wordWrap: "break-word", overflowY: "hidden", fontSize: '0.6vw', wordSpacing: '0.5vw', paddingRight: '5vw' }}>
+                            <div className="secondary-color" style={{ wordWrap: "break-word", overflowY: "hidden", fontSize: '12px', wordSpacing: '10px', paddingRight: '100px' }}>
                                 { GenerateCharacters("left") }
                             </div>
                             <div className="text-center">
                                 <Link to="/kronos-countdown">
-                                    <div className="button-kronos" style={{ fontSize: '1vw', marginTop: 8 }}>COUNTDOWN</div>
+                                    <div className="button-kronos" style={{ fontSize: '20px', marginTop: 8 }}>COUNTDOWN</div>
                                 </Link>
-                                <div className="button-kronos" onClick={() => BeginSimulation()} style={{ fontSize: '1vw', marginTop: 8 }}>SIMULATE</div>
+                                <div className="button-kronos" onClick={() => BeginSimulation()} style={{ fontSize: '20px', marginTop: 8 }}>SIMULATE</div>
                             </div>
                         </Fade>
                     </div>
@@ -169,7 +169,7 @@ const Kronos = () => {
 
                     <div className="col-3 separator content lateral justify-content-between d-flex flex-column">
                         <Fade duration={200}>
-                            <div className="secondary-color" style={{ wordWrap: "break-word", overflowY: "hidden", fontSize: '0.6vw', wordSpacing: '0.5vw', paddingLeft: '10vw' }}>
+                            <div className="secondary-color" style={{ wordWrap: "break-word", overflowY: "hidden", fontSize: '12px', wordSpacing: '10px', paddingRight: '100px' }}>
                                 { GenerateCharacters("right") }
                             </div>
                             <div className="operation-phases-box text-center">

@@ -21,8 +21,8 @@
             padding: 5px 15px 5px;
             height: inherit;
             font-weight: normal;
-            font-size: 2.7vw;
-            letter-spacing: 0.2vw;
+            font-size: 54px;
+            letter-spacing: 4px;
             display: flex;
             align-items: center;
             color: $white-color;
@@ -36,15 +36,15 @@
             padding: 5px 0px 5px;
             height: inherit;
             text-transform: uppercase;
-            letter-spacing: 0.5vw;
-            font-size: 2.7vw;
+            letter-spacing: 10px;
+            font-size: 54px;
             font-weight: bold;
             background: $tertiary-color-darker;
             background: linear-gradient(90deg, $tertiary-color-darker 0%, $tertiary-color 20%, $tertiary-color 80%, $tertiary-color-darker 100%);
         }
 
         input {
-            margin-left: 3vw;
+            margin-left: 60px;
             background: none;
             border: none;
             outline: none;

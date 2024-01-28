@@ -9,7 +9,7 @@ I am a big fan of "The Incredibles" movie (2004), and I've always been fascinate
 
 🎦 [LIVE PREVIEW](https://syndromemaincomputer.netlify.app/)
 
-_Careful: this is a `work in progress` and is adapted for 16:9 displays; there is no support for mobile devices right now. If you want to completely scale down the application to make it usable on mobile devices you can open a [PR](https://github.com/Giuseppetm/syndrome-main-computer/pulls)._
+_Careful: this is a `work in progress` and is adapted for 16:9 displays + edge/chrome browsers; there is no support for mobile devices right now. If you want to completely scale down the application to make it usable on mobile devices you can open a [PR](https://github.com/Giuseppetm/syndrome-main-computer/pulls)._
 
 [![image](https://user-images.githubusercontent.com/52317197/169821832-94ade0d4-e1a9-4c00-8b62-e3a1c8303d3d.png)
 You can find the YouTube video I made about the comparison with the movie sequence here.](https://www.youtube.com/watch?v=2-cToQpNnaU)
@@ -30,4 +30,4 @@ You can find the YouTube video I made about the comparison with the movie sequen
 | ![image](https://user-images.githubusercontent.com/52317197/183285854-762ccc22-7d46-49a2-b308-61483377d223.png) | ![image](https://user-images.githubusercontent.com/52317197/183285955-a7e331eb-122a-4780-b6fa-996d44b3e2e9.png) |
 
 ## How to run the project
-Install the dependencies with `npm install` and then run the webapp locally with `npm start`.
+Set node version to v14 with NVM, install the dependencies with `npm install` and then run the webapp locally with `npm run start`.

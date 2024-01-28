@@ -32,8 +32,8 @@
             padding: 10px 45px 10px 25px;
             text-transform: uppercase;
             color: $primary-color;
-            letter-spacing: 0.5vw;
-            font-size: 2.1vw;
+            letter-spacing: 10px;
+            font-size: 42px;
             transition: all 0.1s ease;
         }
 
@@ -68,6 +68,6 @@
         border-right: 1px solid $white-color;
         width: 220px;
         height: 100vh;
-        left: 14.5%;
+        left: 248px;
     }
 }

@@ -7,20 +7,24 @@
     justify-content: center;
 
     .terminated-frame {
+        top: -40vh;
         position: absolute;
-        width: 50%;
-        letter-spacing: 0.1vw;
-        font-size: 4.8vw;
-        font-weight: bold;
-        background-color: $warning-color;
-        color: $white-color;
-        border-right: 1px solid;
-        text-align: center;
-        top: 40%;
-        height: 5.4vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 100%;
+
+        .terminated-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 108px;
+            text-align: center;
+            letter-spacing: 2px;
+            font-size: clamp(84px, 5vw, 96px);
+            font-weight: bold;
+            background-color: $warning-color;
+            color: $white-color;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     .image {
@@ -48,18 +52,18 @@
     }
 
     .footer-h1 {
-        letter-spacing: 0.4vw;
+        letter-spacing: 8px;
     }
 
     .header {
-        min-height: 10%;
+        height: 10%;
     }
 
     .footer {
-        min-height: 22%;
+        height: 22%;
     }
 
     .content {
-        max-height: 68%;
+        height: 68%;
     }
 }
