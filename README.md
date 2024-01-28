@@ -9,8 +9,6 @@ I am a big fan of "The Incredibles" movie (2004), and I've always been fascinate
 
 🎦 [LIVE PREVIEW](https://syndromemaincomputer.netlify.app/)
 
-_Careful: this is a `work in progress` and is adapted for 16:9 displays + edge/chrome browsers; there is no support for mobile devices right now. If you want to completely scale down the application to make it usable on mobile devices you can open a [PR](https://github.com/Giuseppetm/syndrome-main-computer/pulls)._
-
 [![image](https://user-images.githubusercontent.com/52317197/169821832-94ade0d4-e1a9-4c00-8b62-e3a1c8303d3d.png)
 You can find the YouTube video I made about the comparison with the movie sequence here.](https://www.youtube.com/watch?v=2-cToQpNnaU)
 
