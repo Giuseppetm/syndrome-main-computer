@@ -28,4 +28,4 @@ You can find the YouTube video I made about the comparison with the movie sequen
 | ![image](https://user-images.githubusercontent.com/52317197/183285854-762ccc22-7d46-49a2-b308-61483377d223.png) | ![image](https://user-images.githubusercontent.com/52317197/183285955-a7e331eb-122a-4780-b6fa-996d44b3e2e9.png) |
 
 ## How to run the project
-Set node version to v14 with NVM, install the dependencies with `npm install` and then run the webapp locally with `npm run start`.
+Set node version to v14 with NVM (`nvm use 14`), install the dependencies with `npm install` and then run the webapp locally with `npm run start`.

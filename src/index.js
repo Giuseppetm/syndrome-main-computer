@@ -11,10 +11,13 @@ import Kronos from './Views/Kronos';
 import KronosCountdown from './Views/KronosCountdown';
 import NotFound from './Views/NotFound';
 import reportWebVitals from './reportWebVitals';
+import ReactGA from 'react-ga';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalProvider } from './Context/GlobalContext';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
+
+ReactGA.initialize('G-220V3ZRLLS');
 
 ReactDOM.render(
   <React.StrictMode>
