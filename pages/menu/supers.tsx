@@ -1,7 +1,9 @@
 import { MenuItem } from '@/types'
-import MenuLayout from '../../layouts/menu'
-import Link from 'next/link'
 import { getFirstEncounterRoute } from '@/utils/routes'
+import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
+import { SearchIcon, SuperIcon } from '@/assets/icons'
+import MenuLayout from '../../layouts/menu'
+import Head from 'next/head'
 
 /**
  * @name MenuSupersPage
@@ -15,15 +17,17 @@ import { getFirstEncounterRoute } from '@/utils/routes'
  * @author Giuseppe Del Campo
  */
 const MenuSupersPage = () => {
+  const styles = useSlotRecipe({ key: 'menuPage' })({}) as Record<string, BoxProps & StackProps>
+
   const superMenuItems: Array<MenuItem> = [
     {
       label: 'Supers List',
-      icon: <></>,
+      icon: <SuperIcon boxSize={14} color="black" />,
       href: getFirstEncounterRoute(),
     },
     {
       label: 'Search Super',
-      icon: <></>,
+      icon: <SearchIcon color="black" />,
       href: '/search-super',
     },
   ]
@@ -31,15 +35,16 @@ const MenuSupersPage = () => {
   // TODO: Il click su /supers deve portare un argomento che abilita la navigazione automatica ai prossimi super
 
   return (
-    <MenuLayout>
-      <ul>
-        {superMenuItems.map((item) => (
-          <Link key={item.label} href={item.href}>
-            {item.label}
-          </Link>
-        ))}
-      </ul>
-    </MenuLayout>
+    <>
+      <Head>
+        <title>Menu Page</title>
+        <meta name="description" content="" />
+      </Head>
+
+      <VStack {...styles.container}>
+        <MenuLayout items={superMenuItems} page={'menu-supers'} />
+      </VStack>
+    </>
   )
 }
 

@@ -47,6 +47,8 @@ interface KronosLayoutProps {
  *   <Box>Content</Box>
  * </KronosLayout>
  * ```
+ *
+ * @author Giuseppe Del Campo
  */
 const KronosLayout = ({ children, baseWidth = 1920, baseHeight = 1080, background = 'black' }: KronosLayoutProps) => {
   const [scale, setScale] = useState(1)

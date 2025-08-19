@@ -3,6 +3,8 @@ import { menuLayoutRecipe } from './layouts/menu'
 import { encounterLayoutRecipe } from './layouts/encounter'
 import { authenticationPageRecipe } from './pages/authentication'
 import { terminalInputComponentRecipe } from './components/terminal-input'
+import { menuPageRecipe } from './pages/menu'
+import { menuItemComponentRecipe } from './layouts/menu/partials/menu-item'
 
 const system = createSystem(defaultConfig, {
   theme: {
@@ -16,6 +18,7 @@ const system = createSystem(defaultConfig, {
         background: {
           primary: { value: '#4D7676' },
           secondary: { value: '#859E9D' },
+          tertiary: { value: '#5E706E' },
         },
         spacing: {
           '1': { value: '4px' },
@@ -30,6 +33,8 @@ const system = createSystem(defaultConfig, {
           '10': { value: '40px' },
           '11': { value: '44px' },
           '12': { value: '48px' },
+          '13': { value: '52px' },
+          '14': { value: '56px' },
         },
       },
       fonts: {
@@ -58,8 +63,10 @@ const system = createSystem(defaultConfig, {
       encounterLayout: encounterLayoutRecipe,
       // Pages
       authenticationPage: authenticationPageRecipe,
+      menuPage: menuPageRecipe,
       // Components
       terminalInputComponent: terminalInputComponentRecipe,
+      menuItemComponent: menuItemComponentRecipe,
     },
   },
 })

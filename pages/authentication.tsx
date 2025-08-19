@@ -1,9 +1,10 @@
+import SkipButton from '@/components/skip-button'
 import TerminalInput from '@/components/terminal-input'
 import { ROUTES } from '@/utils/routes'
-import { Box, BoxProps, InputProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
+import { BoxProps, InputProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 
 /**
  * @name AuthenticationPage
@@ -18,6 +19,12 @@ const AuthenticationPage = () => {
   const router = useRouter()
   const [password, setPassword] = useState('PASSWORD')
   const passwordInput = useRef<HTMLInputElement>(null)
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (password !== 'PASSWORD') {
+      setPassword(e.target.value)
+    }
+  }
 
   const handleSubmit = useCallback(() => {
     if (password.toLowerCase() === 'kronos') {
@@ -64,11 +71,11 @@ const AuthenticationPage = () => {
       </Head>
       <VStack {...styles.container}>
         <VStack {...styles.terminalPasswordWrapper}>
-          <TerminalInput {...styles.passwordInput} ref={passwordInput} autoFocus type="text" password={password} autoComplete="off" onChange={(e) => setPassword(e.target.value)} maxLength={10} />
+          <TerminalInput {...styles.passwordInput} ref={passwordInput} autoFocus type="text" password={password} autoComplete="off" onChange={handleChange} maxLength={10} />
         </VStack>
       </VStack>
 
-      {/* TODO: Add skip button */}
+      <SkipButton label={'Skip Authentication'} onClick={() => router.push(ROUTES.MENU)} />
     </>
   )
 }

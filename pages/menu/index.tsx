@@ -1,7 +1,8 @@
 import MenuLayout from '../../layouts/menu'
 import Head from 'next/head'
-import MenuItemComponent from './partials/menu-item'
 import { MenuItem } from '@/types'
+import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
+import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon } from '@/assets/icons'
 
 /**
  * @name MenuPage
@@ -12,25 +13,27 @@ import { MenuItem } from '@/types'
  * @author Giuseppe Del Campo
  */
 const MenuPage = () => {
+  const styles = useSlotRecipe({ key: 'menuPage' })({}) as Record<string, BoxProps & StackProps>
+
   const menuItems: Array<MenuItem> = [
     {
       label: 'Island Operations',
-      icon: <></>,
+      icon: <MountainIcon boxSize={14} color="black" />,
       href: '/island-operations',
     },
     {
       label: 'Finances',
-      icon: <></>,
+      icon: <DollarIcon boxSize={14} color="black" />,
       href: '',
     },
     {
       label: 'Omnidroid Metatraining',
-      icon: <></>,
+      icon: <OmnidroidIcon boxSize={14} color="black" />,
       href: '',
     },
     {
       label: 'Supers',
-      icon: <></>,
+      icon: <SuperIcon boxSize={14} color="black" />,
       href: '/menu/supers',
     },
   ]
@@ -42,11 +45,9 @@ const MenuPage = () => {
         <meta name="description" content="" />
       </Head>
 
-      <MenuLayout bg="bodyBg" color="bodyText">
-        {menuItems.map((item) => (
-          <MenuItemComponent key={item.label} item={item} />
-        ))}
-      </MenuLayout>
+      <VStack {...styles.container}>
+        <MenuLayout items={menuItems} page={'menu'} />
+      </VStack>
     </>
   )
 }
