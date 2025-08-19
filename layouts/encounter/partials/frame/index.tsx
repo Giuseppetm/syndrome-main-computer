@@ -2,6 +2,8 @@ import AnimatedImage from '@/components/animated-image'
 import { AspectRatio, Box, HStack, StackProps, Text, TextProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 
+const MotionText = motion(Text)
+
 interface EncounterFrameProps {
   /**
    * The type of encounter frame to render.
@@ -40,8 +42,6 @@ interface EncounterFrameProps {
    */
   image: string
 }
-
-const MotionText = motion(Text)
 
 /**
  * @name EncounterFrame
@@ -104,8 +104,26 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
 
         {threatRating && (
           <HStack {...styles.threatRating} alignItems="flex-end">
-            <Text {...styles.threatRatingLabel}>Threat rating:</Text>
-            <Text {...styles.threatRatingValue}>{threatRating}</Text>
+            {/* @ts-expect-error Text props are okay here */}
+            <MotionText
+              {...styles.threatRatingLabel}
+              key={`${name}-${description}-threatRatingLabel`}
+              initial={{ filter: 'invert(100%)' }}
+              animate={{ filter: 'invert(0%)' }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              Threat rating:
+            </MotionText>
+            {/* @ts-expect-error Text props are okay here */}
+            <MotionText
+              {...styles.threatRatingValue}
+              key={`${name}-${description}-threatRatingValue:${threatRating}`}
+              initial={{ filter: 'invert(100%)' }}
+              animate={{ filter: 'invert(0%)' }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              {threatRating}
+            </MotionText>
           </HStack>
         )}
       </HStack>
@@ -130,10 +148,26 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
       </Box>
 
       <VStack {...styles.footer}>
-        <Text {...styles.footerTitle}>{footerTitle}</Text>
-        <Text {...styles.footerDescription}>
+        {/* @ts-expect-error Text props are okay here */}
+        <MotionText
+          {...styles.footerTitle}
+          key={`${name}-${description}-footerTitle`}
+          initial={{ filter: 'invert(100%)' }}
+          animate={{ filter: 'invert(0%)' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+          {footerTitle}
+        </MotionText>
+        {/* @ts-expect-error Text props are okay here */}
+        <MotionText
+          {...styles.footerDescription}
+          key={`${name}-${description}-footerDescription`}
+          initial={{ filter: 'invert(100%)' }}
+          animate={{ filter: 'invert(0%)' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
           {footerSpecifications}: {description}
-        </Text>
+        </MotionText>
       </VStack>
     </VStack>
   )
