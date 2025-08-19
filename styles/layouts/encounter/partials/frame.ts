@@ -33,20 +33,19 @@ export const encounterFrameComponentRecipe = defineSlotRecipe({
       textTransform: 'uppercase',
       fontSize: '42px',
     },
-    threatRating: {
-      alignItems: 'flex-end',
-    },
+    threatRating: {},
     threatRatingLabel: {
       textStyle: 'regular',
       textTransform: 'uppercase',
       color: '{colors.text.white}',
-      letterSpacing: '1px',
+      letterSpacing: '3px',
       fontSize: '16px',
     },
     threatRatingValue: {
       color: '{colors.text.white}',
       textStyle: 'bold',
       fontSize: '40px',
+      lineHeight: 1,
     },
     terminatedLabel: {
       position: 'absolute',

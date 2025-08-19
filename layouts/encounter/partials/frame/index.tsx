@@ -36,7 +36,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
         <Text {...styles.headerTitle}>{headerTitle}</Text>
 
         {threatRating && (
-          <HStack {...styles.threatRating}>
+          <HStack {...styles.threatRating} alignItems="flex-end">
             <Text {...styles.threatRatingLabel}>Threat rating:</Text>
             <Text {...styles.threatRatingValue}>{threatRating}</Text>
           </HStack>
