@@ -4,11 +4,55 @@ import { useSlotRecipe, HStack, BoxProps, Box, Text, TextProps, LinkProps } from
 import Link from 'next/link'
 
 interface MenuItemProps {
+  /**
+   * The menu item data object.
+   * Contains the label, icon, and navigation target (href).
+   */
   item: MenuItem
+
+  /**
+   * Whether this menu item is currently active (highlighted/selected).
+   * Used to determine visual styling via slot recipes.
+   */
   isActive: boolean
+
+  /**
+   * Optional callback triggered when the user hovers over the menu item.
+   */
   onMouseEnter?: MouseEventHandler<HTMLDivElement>
 }
 
+/**
+ * @name MenuItemComponent
+ *
+ * @description
+ * A styled navigation item for use in a menu layout.
+ *
+ * Each menu item displays:
+ * - An icon inside a styled wrapper.
+ * - A label describing the menu action.
+ *
+ * If the menu item's `href` is an empty string, the cursor is set
+ * to `"disabled"` and the item behaves as non-clickable.
+ *
+ * @example
+ * ```tsx
+ * <MenuItemComponent
+ *   item={{
+ *     label: "Supers",
+ *     href: "/menu/supers",
+ *     icon: <SuperIcon boxSize={14} color="black" />
+ *   }}
+ *   isActive={true}
+ *   onMouseEnter={() => console.log("Hovered over Supers")}
+ * />
+ * ```
+ *
+ * @see {@link MenuItem} type definition for the shape of `item`
+ *
+ * @author
+ * Giuseppe Del Campo
+ */
 const MenuItemComponent = ({ item, isActive, onMouseEnter }: MenuItemProps) => {
   const styles = useSlotRecipe({ key: 'menuItemComponent' })({
     state: isActive ? 'active' : 'inactive',

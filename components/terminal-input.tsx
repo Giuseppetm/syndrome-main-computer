@@ -12,7 +12,6 @@ const blink = keyframes`
 
 interface TerminalInputProps extends InputProps {
   password: string
-  showCursor?: boolean // optional: allow disabling the blinking cursor
 }
 
 /**
@@ -45,7 +44,18 @@ const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(({ passwo
 
   return (
     <HStack {...styles.wrapper}>
-      <Input {...styles.passwordInput} {...props} w={`${width}px`} ref={ref} autoFocus type="text" value={password} autoComplete="off" onChange={onChange} maxLength={20} />
+      <Input
+        {...styles.passwordInput}
+        {...props}
+        w={`${width}px`}
+        ref={ref}
+        autoFocus
+        type="text"
+        value={password}
+        autoComplete="off"
+        onChange={onChange}
+        maxLength={20}
+      />
 
       <Box {...styles.blinkUnderscore} as="span" ml={password.length === 0 ? '-120px' : 0} animation={`${blink} 1s step-start infinite`}>
         {blinkCharacter}

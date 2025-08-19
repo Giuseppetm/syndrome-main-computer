@@ -84,12 +84,36 @@ export const SuperIcon = createIcon({
       {/* ellipse (testa) */}
       <ellipse cx="399" cy="80.5" rx="71.5" ry="65.5" fill="currentColor" stroke="currentColor" strokeWidth="30" />
       {/* triangolo principale */}
-      <path d="m201.25552,165.00714l397.99064,0l-194.92033,423.0059l-203.07031,-423.0059z" fill="currentColor" stroke="currentColor" strokeWidth="10" transform="rotate(-0.0679465 400.251 376.51)" />
+      <path
+        d="m201.25552,165.00714l397.99064,0l-194.92033,423.0059l-203.07031,-423.0059z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="10"
+        transform="rotate(-0.0679465 400.251 376.51)"
+      />
       {/* braccio sinistro (ripetuto 2 volte nel file) */}
-      <path d="m-386.783,366.11448l327.59137,0l-160.44151,183.1674l-167.14986,-183.1674z" fill="currentColor" stroke="currentColor" strokeWidth="10" transform="rotate(49.3432 -222.987 457.698)" />
-      <path d="m-386.783,366.11448l327.59137,0l-160.44151,183.1674l-167.14986,-183.1674z" fill="currentColor" stroke="currentColor" strokeWidth="10" transform="rotate(49.3432 -222.987 457.698)" />
+      <path
+        d="m-386.783,366.11448l327.59137,0l-160.44151,183.1674l-167.14986,-183.1674z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="10"
+        transform="rotate(49.3432 -222.987 457.698)"
+      />
+      <path
+        d="m-386.783,366.11448l327.59137,0l-160.44151,183.1674l-167.14986,-183.1674z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="10"
+        transform="rotate(49.3432 -222.987 457.698)"
+      />
       {/* braccio destro */}
-      <path d="m112.72107,243.60972l236.4578,0l-115.80783,118.90727l-120.64997,-118.90727z" fill="currentColor" stroke="currentColor" strokeWidth="10" transform="rotate(49.3432 230.95 303.063)" />
+      <path
+        d="m112.72107,243.60972l236.4578,0l-115.80783,118.90727l-120.64997,-118.90727z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="10"
+        transform="rotate(49.3432 230.95 303.063)"
+      />
     </>
   ),
 })
@@ -117,4 +141,24 @@ export const SearchIcon = createIcon({
       />
     </g>
   ),
+})
+
+export const RotateDeviceIcon = createIcon({
+  displayName: 'RotateDeviceIcon',
+  viewBox: '0 0 64 64',
+  path: (
+    <>
+      {/* Phone in portrait */}
+      <rect x="20" y="8" width="24" height="48" rx="4" ry="4" stroke="currentColor" strokeWidth="3" fill="none" />
+      {/* Rotation arrow */}
+      <path d="M8,32a24,24 0 1,1 48,0" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="6 6" />
+      <path d="M52 28 l6 6 l-6 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+})
+
+export const CloseIcon = createIcon({
+  displayName: 'CloseIcon',
+  viewBox: '0 0 24 24',
+  path: <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />,
 })

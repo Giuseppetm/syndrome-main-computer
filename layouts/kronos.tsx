@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box } from '@chakra-ui/react'
+import PortraitOrientationOverlay from '@/components/portrait-orientation'
 
 interface KronosLayoutProps {
   /**
@@ -41,6 +42,10 @@ interface KronosLayoutProps {
  * - The layout automatically adapts to **window resize** and
  *   **orientation change** events.
  *
+ * @remarks
+ * Additionally, when the device is in **portrait orientation**, an overlay
+ * is displayed prompting the user to rotate the device or use a desktop/tablet.
+ *
  * @example
  * ```tsx
  * <KronosLayout>
@@ -50,8 +55,14 @@ interface KronosLayoutProps {
  *
  * @author Giuseppe Del Campo
  */
-const KronosLayout = ({ children, baseWidth = 1920, baseHeight = 1080, background = 'radial-gradient(circle at center, #131414 0%, #131313 100%)' }: KronosLayoutProps) => {
+const KronosLayout = ({
+  children,
+  baseWidth = 1920,
+  baseHeight = 1080,
+  background = 'radial-gradient(circle at center, #131414 0%, #131313 100%)',
+}: KronosLayoutProps) => {
   const [scale, setScale] = useState(1)
+  const [isPortrait, setIsPortrait] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,6 +70,7 @@ const KronosLayout = ({ children, baseWidth = 1920, baseHeight = 1080, backgroun
       const vh = window.innerHeight
       const s = Math.min(vw / baseWidth, vh / baseHeight)
       setScale(s)
+      setIsPortrait(vh > vw)
     }
 
     handleResize()
@@ -74,9 +86,21 @@ const KronosLayout = ({ children, baseWidth = 1920, baseHeight = 1080, backgroun
 
   return (
     <Box w="100vw" h="100vh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative">
-      <Box position="absolute" top="50%" left="50%" w={`${baseWidth}px`} h={`${baseHeight}px`} transform={`translate(-50%, -50%) scale(${scale})`} transformOrigin="center" bg="gray.900" boxShadow="lg">
+      <Box
+        position="absolute"
+        top="50%"
+        left="50%"
+        w={`${baseWidth}px`}
+        h={`${baseHeight}px`}
+        transform={`translate(-50%, -50%) scale(${scale})`}
+        transformOrigin="center"
+        bg="gray.900"
+        boxShadow="lg"
+      >
         {children}
       </Box>
+
+      <PortraitOrientationOverlay isVisible={isPortrait} onClose={() => setIsPortrait(false)} />
     </Box>
   )
 }

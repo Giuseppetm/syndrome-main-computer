@@ -1,0 +1,68 @@
+import { CloseIcon, RotateDeviceIcon } from '@/assets/icons'
+import { Box, IconButton, Text, VStack } from '@chakra-ui/react'
+import { AnimatePresence, motion } from 'framer-motion'
+
+interface PortraitOrientationOverlayProps {
+  /** Visibility status. */
+  isVisible: boolean
+  /** Optional custom message to display below the icon. */
+  message?: string
+  /** On close callback */
+  onClose?: () => void
+}
+
+const MotionBox = motion(Box)
+
+/**
+ * @name PortraitOrientationBox
+ *
+ * @description
+ * Fullscreen overlay component displayed when the device is in **portrait orientation**.
+ * Shows an icon suggesting to rotate the device and a customizable message.
+ *
+ * @author Giuseppe Del Campo
+ */
+const PortraitOrientationOverlay = ({
+  isVisible,
+  onClose,
+  message = 'Please rotate your device to landscape or use a desktop / tablet for the best experience.',
+}: PortraitOrientationOverlayProps) => {
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <MotionBox
+          key="portrait-orientation-overlay"
+          position="fixed"
+          top={0}
+          left={0}
+          w="100vw"
+          h="100vh"
+          bg="rgba(0,0,0,0.9)"
+          zIndex={9999}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          color="white"
+          p={4}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+        >
+          {/* Close button in the top-right corner */}
+          <IconButton variant="solid" aria-label="Close orientation notice" position="absolute" top={4} right={4} color="white" onClick={onClose}>
+            <CloseIcon boxSize={5} color="white" />
+          </IconButton>
+
+          <VStack gap={4} color="white" textAlign="center">
+            <RotateDeviceIcon boxSize={16} />
+            <Text fontSize="lg">{message}</Text>
+          </VStack>
+        </MotionBox>
+      )}
+    </AnimatePresence>
+  )
+}
+
+export default PortraitOrientationOverlay
