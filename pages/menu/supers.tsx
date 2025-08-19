@@ -1,6 +1,7 @@
 import { MenuItem } from '@/types'
-import MenuLayout from './layout'
+import MenuLayout from '../../layouts/menu'
 import Link from 'next/link'
+import { getFirstEncounterRoute } from '@/utils/routes'
 
 /**
  * @name MenuSupersPage
@@ -14,11 +15,11 @@ import Link from 'next/link'
  * @author Giuseppe Del Campo
  */
 const MenuSupersPage = () => {
-  const items: Array<MenuItem> = [
+  const superMenuItems: Array<MenuItem> = [
     {
       label: 'Supers List',
       icon: <></>,
-      href: '/super-omnidroid/1', // TODO: First super slug here
+      href: getFirstEncounterRoute(),
     },
     {
       label: 'Search Super',
@@ -32,7 +33,7 @@ const MenuSupersPage = () => {
   return (
     <MenuLayout>
       <ul>
-        {items.map((item) => (
+        {superMenuItems.map((item) => (
           <Link key={item.label} href={item.href}>
             {item.label}
           </Link>

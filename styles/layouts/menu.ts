@@ -6,7 +6,8 @@ export const menuLayoutRecipe = defineSlotRecipe({
     navigator: {
       bg: '{colors.background.primary}',
       color: '{colors.text.primary}',
-      minH: '100dvh',
+      w: 'full',
+      h: 'full',
     },
   },
 })

@@ -1,7 +1,7 @@
-import { MenuItem } from '@/types'
-import MenuLayout from './layout'
+import MenuLayout from '../../layouts/menu'
 import Head from 'next/head'
 import MenuItemComponent from './partials/menu-item'
+import { MenuItem } from '@/types'
 
 /**
  * @name MenuPage
@@ -12,7 +12,7 @@ import MenuItemComponent from './partials/menu-item'
  * @author Giuseppe Del Campo
  */
 const MenuPage = () => {
-  const items: Array<MenuItem> = [
+  const menuItems: Array<MenuItem> = [
     {
       label: 'Island Operations',
       icon: <></>,
@@ -43,7 +43,7 @@ const MenuPage = () => {
       </Head>
 
       <MenuLayout bg="bodyBg" color="bodyText">
-        {items.map((item) => (
+        {menuItems.map((item) => (
           <MenuItemComponent key={item.label} item={item} />
         ))}
       </MenuLayout>
