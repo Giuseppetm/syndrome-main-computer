@@ -16,7 +16,7 @@ const SuperResultPage = () => {
 
   const superData = supers.find((s) => s.slug === slug)
 
-  if (!superData) throw new Error('Super not found; check the slug you inserted or the defined data.')
+  // if (!superData) throw new Error('Super not found; check the slug you inserted or the defined data.')
 
   return (
     <>
@@ -24,7 +24,7 @@ const SuperResultPage = () => {
         <title>Super Result Page</title>
         <meta name="description" content="" />
       </Head>
-      Super Result Page {superData.name}
+      Super Result Page {superData?.name}
     </>
   )
 }

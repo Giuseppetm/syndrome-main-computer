@@ -1,8 +1,8 @@
 import { encounters } from '@/data'
 
 export enum ROUTES {
-  HOME = '/',
-  AUTHENTICATION = '/authentication',
+  HOME = '/home',
+  AUTHENTICATION = '/',
   MENU = '/menu',
   MENU_SUPERS = '/menu/supers',
   ENCOUNTER = '/encounter',
