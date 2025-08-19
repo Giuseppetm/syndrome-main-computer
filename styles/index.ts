@@ -5,6 +5,7 @@ import { authenticationPageRecipe } from './pages/authentication'
 import { terminalInputComponentRecipe } from './components/terminal-input'
 import { menuPageRecipe } from './pages/menu'
 import { menuItemComponentRecipe } from './layouts/menu/partials/menu-item'
+import { encounterFrameComponentRecipe } from './layouts/encounter/partials/frame'
 
 const system = createSystem(defaultConfig, {
   theme: {
@@ -19,6 +20,7 @@ const system = createSystem(defaultConfig, {
           primary: { value: '#4D7676' },
           secondary: { value: '#859E9D' },
           tertiary: { value: '#5E706E' },
+          gradient: { value: 'radial-gradient(circle at center, #5f8f92 0%, #2f4f4f 100%)' },
         },
         spacing: {
           '1': { value: '4px' },
@@ -43,7 +45,7 @@ const system = createSystem(defaultConfig, {
     },
     semanticTokens: {
       colors: {
-        bodyBg: { value: '{colors.background.primary}' },
+        bodyBg: { value: '{colors.background.gradient}' },
         bodyText: { value: '{colors.text.black}' },
       },
     },
@@ -67,6 +69,7 @@ const system = createSystem(defaultConfig, {
       // Components
       terminalInputComponent: terminalInputComponentRecipe,
       menuItemComponent: menuItemComponentRecipe,
+      encounterFrameComponent: encounterFrameComponentRecipe,
     },
   },
 })

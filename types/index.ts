@@ -7,16 +7,16 @@ export type MenuItem = {
 }
 
 export interface Super {
-  name: string
   slug: string
+  name: string
+  description: string
   threatRating: number
-  powers: string
   img: string
 }
 
 export interface Omnidroid {
   name: string
-  features: string
+  description: string
   img: string
 }
 

@@ -50,7 +50,7 @@ interface KronosLayoutProps {
  *
  * @author Giuseppe Del Campo
  */
-const KronosLayout = ({ children, baseWidth = 1920, baseHeight = 1080, background = 'black' }: KronosLayoutProps) => {
+const KronosLayout = ({ children, baseWidth = 1920, baseHeight = 1080, background = 'radial-gradient(circle at center, #131414 0%, #131313 100%)' }: KronosLayoutProps) => {
   const [scale, setScale] = useState(1)
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const KronosLayout = ({ children, baseWidth = 1920, baseHeight = 1080, backgroun
   }, [baseWidth, baseHeight])
 
   return (
-    <Box w="100vw" h="100vh" bg={background} overflow="hidden" position="relative">
+    <Box w="100vw" h="100vh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative">
       <Box position="absolute" top="50%" left="50%" w={`${baseWidth}px`} h={`${baseHeight}px`} transform={`translate(-50%, -50%) scale(${scale})`} transformOrigin="center" bg="gray.900" boxShadow="lg">
         {children}
       </Box>

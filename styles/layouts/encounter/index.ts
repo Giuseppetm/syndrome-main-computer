@@ -1,10 +1,13 @@
 import { defineSlotRecipe } from '@chakra-ui/react'
 
 export const encounterLayoutRecipe = defineSlotRecipe({
-  slots: ['container'],
+  slots: ['grid'],
   base: {
-    container: {
-      backgroundColor: 'yellow.400',
+    grid: {
+      w: 'full',
+      h: 'full',
+      bg: 'bodyBg',
+      color: 'bodyText',
     },
   },
 })
