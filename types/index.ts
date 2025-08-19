@@ -16,13 +16,14 @@ export interface Super {
 
 export interface Omnidroid {
   name: string
+  slug: string
   description: string
   img: string
 }
 
 export interface Encounter {
   superSlug: string
-  omnidroidName: string
+  omnidroidSlug: string
   superDefeated: boolean
   omnidroidDefeated: boolean
 }

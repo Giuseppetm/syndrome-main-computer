@@ -1,12 +1,91 @@
 import { defineSlotRecipe } from '@chakra-ui/react'
 
 export const encounterFrameComponentRecipe = defineSlotRecipe({
-  slots: ['container'],
+  slots: [
+    'container',
+    'header',
+    'footer',
+    'headerTitle',
+    'threatRating',
+    'terminatedLabel',
+    'footerTitle',
+    'footerDescription',
+    'threatRatingLabel',
+    'threatRatingValue',
+    'imageWrapper',
+    'image',
+  ],
   base: {
     container: {
       w: 'full',
       h: 'full',
       bg: 'transparent',
+    },
+    header: {
+      w: 'full',
+      justifyContent: 'space-between',
+      pl: '8',
+      pr: '4',
+      py: '5',
+    },
+    headerTitle: {
+      textStyle: 'bold',
+      textTransform: 'uppercase',
+      fontSize: '42px',
+    },
+    threatRating: {
+      alignItems: 'flex-end',
+    },
+    threatRatingLabel: {
+      textStyle: 'regular',
+      textTransform: 'uppercase',
+      color: '{colors.text.white}',
+      letterSpacing: '1px',
+      fontSize: '16px',
+    },
+    threatRatingValue: {
+      color: '{colors.text.white}',
+      textStyle: 'bold',
+      fontSize: '40px',
+    },
+    terminatedLabel: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 1,
+      textTransform: 'uppercase',
+      color: '{colors.text.white}',
+      bg: '{colors.text.red}',
+      textStyle: 'bold',
+      w: 'full',
+      textAlign: 'center',
+      fontSize: '95px',
+      py: '2',
+      lineHeight: 1,
+    },
+    imageWrapper: {
+      w: 'full',
+      position: 'relative',
+    },
+    image: {},
+    footer: {
+      pt: '5',
+      px: '100px',
+      pb: '12',
+      color: '{colors.text.white}',
+      textAlign: 'center',
+    },
+    footerTitle: {
+      textStyle: 'bold',
+      fontSize: '40px',
+      letterSpacing: '3px',
+    },
+    footerDescription: {
+      textStyle: 'regular',
+      textTransform: 'uppercase',
+      fontSize: '20px',
+      letterSpacing: '2px',
     },
   },
 })

@@ -13,16 +13,29 @@ const EncounterLayout = ({ superData, omnidroidData, encounterData }: EncounterL
   const styles = useSlotRecipe({ key: 'encounterLayout' })({}) as Record<string, BoxProps & GridProps>
 
   return (
-    <Grid {...styles.grid} templateColumns="1fr 2px 1fr">
+    <Grid {...styles.grid} templateColumns="1fr 1px 1fr">
       {/* Super */}
       <GridItem>
-        <EncounterFrame name={superData.name} description={superData.description} type={'super'} isTerminated={encounterData.superDefeated} image={superData.img} />
+        <EncounterFrame
+          name={superData.name}
+          description={superData.description}
+          threatRating={superData.threatRating}
+          type={'super'}
+          isTerminated={encounterData.superDefeated}
+          image={superData.img}
+        />
       </GridItem>
       {/* Separator */}
       <GridItem bg={'{colors.text.white}'} />
       {/* Omnidroid */}
       <GridItem>
-        <EncounterFrame name={omnidroidData.name} description={omnidroidData.description} type={'omnidroid'} isTerminated={encounterData.omnidroidDefeated} image={omnidroidData.img} />
+        <EncounterFrame
+          name={omnidroidData.name}
+          description={omnidroidData.description}
+          type={'omnidroid'}
+          isTerminated={encounterData.omnidroidDefeated}
+          image={omnidroidData.img}
+        />
       </GridItem>
     </Grid>
   )

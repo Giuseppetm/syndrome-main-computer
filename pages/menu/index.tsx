@@ -41,8 +41,16 @@ const MenuPage = () => {
   return (
     <>
       <Head>
-        <title>Menu Page</title>
-        <meta name="description" content="" />
+        <title>Main Menu | Syndrome Main Computer</title>
+        <meta
+          name="description"
+          content="Access the central control menu of Syndrome's main computer. Navigate to Island Operations, Finances, Omnidroid Metatraining, and Supers management."
+        />
+        <meta property="og:title" content="Main Menu | Syndrome Main Computer" />
+        <meta
+          property="og:description"
+          content="Navigate through Syndrome's central computer. Manage island operations, finances, Omnidroid systems, and Supers data."
+        />
       </Head>
 
       <VStack {...styles.container}>

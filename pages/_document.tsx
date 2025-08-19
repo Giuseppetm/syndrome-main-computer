@@ -9,6 +9,7 @@ export default function Document() {
     <Html lang="en" suppressHydrationWarning>
       <Head>
         <link rel="icon" href="/The-Incredibles-Logo.png" />
+        <meta property="og:type" content="website" />
 
         {/* Preload fonts */}
         <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />

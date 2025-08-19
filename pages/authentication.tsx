@@ -66,12 +66,27 @@ const AuthenticationPage = () => {
   return (
     <>
       <Head>
-        <title>Authentication Page</title>
-        <meta name="description" content="" />
+        <title>Authentication Required | Syndrome Main Computer</title>
+        <meta
+          name="description"
+          content="Access the Syndrome Main Computer system with your secure credentials. Authentication is required to proceed to the main menu."
+        />
+        <meta property="og:title" content="Authentication Required | Syndrome Main Computer" />
+        <meta property="og:description" content="Secure login to access the Syndrome Main Computer system. Enter the password to continue." />
       </Head>
+
       <VStack {...styles.container}>
         <VStack {...styles.terminalPasswordWrapper}>
-          <TerminalInput {...styles.passwordInput} ref={passwordInput} autoFocus type="text" password={password} autoComplete="off" onChange={handleChange} maxLength={10} />
+          <TerminalInput
+            {...styles.passwordInput}
+            ref={passwordInput}
+            autoFocus
+            type="text"
+            password={password}
+            autoComplete="off"
+            onChange={handleChange}
+            maxLength={10}
+          />
         </VStack>
       </VStack>
 

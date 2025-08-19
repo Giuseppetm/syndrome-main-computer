@@ -6,6 +6,8 @@ import { terminalInputComponentRecipe } from './components/terminal-input'
 import { menuPageRecipe } from './pages/menu'
 import { menuItemComponentRecipe } from './layouts/menu/partials/menu-item'
 import { encounterFrameComponentRecipe } from './layouts/encounter/partials/frame'
+import { islandOperationsPageRecipe } from './pages/island-operations'
+import { searchSuperPageRecipe } from './pages/search-super'
 
 const system = createSystem(defaultConfig, {
   theme: {
@@ -66,6 +68,8 @@ const system = createSystem(defaultConfig, {
       // Pages
       authenticationPage: authenticationPageRecipe,
       menuPage: menuPageRecipe,
+      islandOperationsPage: islandOperationsPageRecipe,
+      searchSuperPage: searchSuperPageRecipe,
       // Components
       terminalInputComponent: terminalInputComponentRecipe,
       menuItemComponent: menuItemComponentRecipe,

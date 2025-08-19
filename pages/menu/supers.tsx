@@ -37,8 +37,16 @@ const MenuSupersPage = () => {
   return (
     <>
       <Head>
-        <title>Menu Page</title>
-        <meta name="description" content="" />
+        <title>Supers Management Menu | Syndrome Main Computer</title>
+        <meta
+          name="description"
+          content="Access the central control menu of Syndrome's main computer. Navigate to Supers management and Super search control."
+        />
+        <meta property="og:title" content="Supers Management Menu | Syndrome Main Computer" />
+        <meta
+          property="og:description"
+          content="Access the central control menu of Syndrome's main computer. Navigate to Supers management and Super search control."
+        />
       </Head>
 
       <VStack {...styles.container}>
