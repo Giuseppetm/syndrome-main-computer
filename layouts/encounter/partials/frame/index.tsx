@@ -109,10 +109,12 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
           </HStack>
         )}
       </HStack>
+
       <Box {...styles.imageWrapper}>
         <AspectRatio ratio={5.5 / 4}>
           <AnimatedImage src={`/images/${imageFolder}/${image}`} alt={`${name}, ${description}`} />
         </AspectRatio>
+
         {isTerminated && (
           /* @ts-expect-error Text props are okay here */
           <MotionText
@@ -126,6 +128,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
           </MotionText>
         )}
       </Box>
+
       <VStack {...styles.footer}>
         <Text {...styles.footerTitle}>{footerTitle}</Text>
         <Text {...styles.footerDescription}>

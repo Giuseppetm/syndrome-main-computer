@@ -5,6 +5,11 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import MenuItemComponent from '@/layouts/menu/partials/menu-item'
 import ControlsHint from '@/components/controls-hint'
+import { motion } from 'framer-motion'
+
+const MotionHStack = motion(HStack)
+const MotionBox = motion(Box)
+const MotionStack = motion(Stack)
 
 interface MenuLayoutProps extends StackProps {
   /**
@@ -55,7 +60,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
   const [navItem, setNavItem] = useState<number | null>()
 
   const itemsCount = items.length
-  const FIRST_SELECTION_DELAY = 300
+  const FIRST_SELECTION_DELAY = itemsCount * 200
 
   /**
    * Automatically select the first menu item after a short delay.
@@ -66,7 +71,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
     }, FIRST_SELECTION_DELAY)
 
     return () => clearTimeout(timer)
-  }, [items])
+  }, [items, FIRST_SELECTION_DELAY])
 
   /**
    * Keyboard navigation handler.
@@ -116,17 +121,63 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
   }, [navItem, itemsCount, router, items, page])
 
   return (
-    <HStack {...styles.wrapper}>
-      <Box {...styles.lateralLines} left={page === 'menu' ? '430px' : '603px'} />
+    <>
+      {/* @ts-expect-error Motion doesn't understand chakra props. */}
+      <MotionBox
+        {...styles.lateralLines}
+        left={page === 'menu' ? '430px' : '603px'}
+        h="100%" // altezza di riferimento
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+        style={{ transformOrigin: 'center' }}
+      />
 
-      <Stack as="nav" gap={6} {...styles.navigator} {...props}>
-        {items.map((item, index) => (
-          <MenuItemComponent key={item.label} item={item} isActive={index === navItem} onMouseEnter={() => setNavItem(index)} />
-        ))}
-      </Stack>
+      {/* @ts-expect-error Motion doesn't understand chakra props. */}
+      <MotionHStack
+        {...styles.wrapper}
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+        style={{ transformOrigin: 'center' }}
+      >
+        {/* @ts-expect-error Motion doesn't understand chakra props. */}
+        <MotionStack
+          as="nav"
+          gap={6}
+          {...styles.navigator}
+          {...props}
+          initial="hidden"
+          animate="show"
+          variants={{
+            hidden: {},
+            show: {
+              transition: {
+                staggerChildren: 0.2, // 0.2s one after the other
+              },
+            },
+          }}
+        >
+          {items.map((item, index) => (
+            <motion.div
+              key={item.label}
+              variants={{
+                hidden: { opacity: 0, color: '#fff' },
+                show: {
+                  opacity: 1,
+                  color: '#000',
+                  transition: { duration: 0.1, ease: 'easeOut' },
+                },
+              }}
+            >
+              <MenuItemComponent item={item} isActive={index === navItem} onMouseEnter={() => setNavItem(index)} />
+            </motion.div>
+          ))}
+        </MotionStack>
+      </MotionHStack>
 
       <ControlsHint />
-    </HStack>
+    </>
   )
 }
 

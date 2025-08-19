@@ -5,6 +5,9 @@ import { BoxProps, InputProps, StackProps, useSlotRecipe, VStack } from '@chakra
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+
+const MotionVStack = motion(VStack)
 
 /**
  * @name AuthenticationPage
@@ -17,8 +20,11 @@ import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 const AuthenticationPage = () => {
   const styles = useSlotRecipe({ key: 'authenticationPage' })({}) as Record<string, BoxProps & StackProps & InputProps>
   const router = useRouter()
+  const [submitting, setSubmitting] = useState(false)
   const [password, setPassword] = useState('PASSWORD')
   const passwordInput = useRef<HTMLInputElement>(null)
+
+  const SUBMIT_TIMEOUT = 300
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (password !== 'PASSWORD') {
@@ -28,7 +34,10 @@ const AuthenticationPage = () => {
 
   const handleSubmit = useCallback(() => {
     if (password.toLowerCase() === 'kronos') {
-      router.push(ROUTES.MENU)
+      setSubmitting(true)
+      setTimeout(() => {
+        router.push(ROUTES.MENU)
+      }, SUBMIT_TIMEOUT)
     }
   }, [password, router])
 
@@ -75,7 +84,13 @@ const AuthenticationPage = () => {
         <meta property="og:description" content="Secure login to access the Syndrome Main Computer system. Enter the password to continue." />
       </Head>
 
-      <VStack {...styles.container}>
+      {/* @ts-expect-error Motion doesn't understand chakra props. */}
+      <MotionVStack
+        {...styles.container}
+        initial={{ opacity: 0, filter: 'brightness(0%)' }}
+        animate={{ opacity: 1, filter: 'brightness(100%)' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
         <VStack {...styles.terminalPasswordWrapper}>
           <TerminalInput
             {...styles.passwordInput}
@@ -86,9 +101,10 @@ const AuthenticationPage = () => {
             autoComplete="off"
             onChange={handleChange}
             maxLength={10}
+            style={{ color: submitting ? 'white' : 'inherit', transition: 'color 0.3s ease' }}
           />
         </VStack>
-      </VStack>
+      </MotionVStack>
 
       <SkipButton label={'Skip Authentication'} onClick={() => router.push(ROUTES.MENU)} />
     </>
