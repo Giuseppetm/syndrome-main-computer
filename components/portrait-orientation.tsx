@@ -1,13 +1,14 @@
-import { CloseIcon, RotateDeviceIcon } from '@/assets/icons'
-import { Box, IconButton, Text, VStack } from '@chakra-ui/react'
+import { RotateSmartphoneIcon } from '@/assets/icons'
+import { Box, Icon, IconButton, Text, VStack } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { X } from 'lucide-react'
 
 interface PortraitOrientationOverlayProps {
   /** Visibility status. */
   isVisible: boolean
   /** Optional custom message to display below the icon. */
   message?: string
-  /** On close callback */
+  /** Close overlay callback */
   onClose?: () => void
 }
 
@@ -50,14 +51,15 @@ const PortraitOrientationOverlay = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
         >
-          {/* Close button in the top-right corner */}
           <IconButton variant="solid" aria-label="Close orientation notice" position="absolute" top={4} right={4} color="white" onClick={onClose}>
-            <CloseIcon boxSize={5} color="white" />
+            <Icon as={X} boxSize={5} />
           </IconButton>
 
           <VStack gap={4} color="white" textAlign="center">
-            <RotateDeviceIcon boxSize={16} />
-            <Text fontSize="lg">{message}</Text>
+            <RotateSmartphoneIcon />
+            <Text fontSize="lg" maxW={400} px={4}>
+              {message}
+            </Text>
           </VStack>
         </MotionBox>
       )}

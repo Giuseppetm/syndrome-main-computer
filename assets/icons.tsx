@@ -1,4 +1,5 @@
-import { createIcon } from '@chakra-ui/react'
+import { createIcon, Box } from '@chakra-ui/react'
+import { RotateCcw, Smartphone } from 'lucide-react'
 
 export const MountainIcon = createIcon({
   displayName: 'MountainIcon',
@@ -143,22 +144,13 @@ export const SearchIcon = createIcon({
   ),
 })
 
-export const RotateDeviceIcon = createIcon({
-  displayName: 'RotateDeviceIcon',
-  viewBox: '0 0 64 64',
-  path: (
-    <>
-      {/* Phone in portrait */}
-      <rect x="20" y="8" width="24" height="48" rx="4" ry="4" stroke="currentColor" strokeWidth="3" fill="none" />
-      {/* Rotation arrow */}
-      <path d="M8,32a24,24 0 1,1 48,0" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="6 6" />
-      <path d="M52 28 l6 6 l-6 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-    </>
-  ),
-})
-
-export const CloseIcon = createIcon({
-  displayName: 'CloseIcon',
-  viewBox: '0 0 24 24',
-  path: <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />,
-})
+export const RotateSmartphoneIcon = () => {
+  return (
+    <Box position="relative" w="40px" h="40px">
+      <Smartphone size={32} strokeWidth={2} />
+      <Box position="absolute" right={-2} top={-2}>
+        <RotateCcw size={18} strokeWidth={2} />
+      </Box>
+    </Box>
+  )
+}
