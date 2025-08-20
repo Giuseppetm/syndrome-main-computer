@@ -68,7 +68,7 @@ const KronosLayout = ({
   const [isReady, setIsReady] = useState(false)
   const [minimumDelayPassed, setMinimumDelayPassed] = useState(false)
 
-  const SPINNER_TIMEOUT = 1000
+  const SPINNER_TIMEOUT = 1500
 
   useEffect(() => {
     const handleResize = () => {
@@ -105,23 +105,21 @@ const KronosLayout = ({
         </Center>
       )}
 
-      {!showSpinner && scale !== null && (
-        <Box
-          position="absolute"
-          top="50%"
-          left="50%"
-          w={`${baseWidth}px`}
-          h={`${baseHeight}px`}
-          transform={`translate(-50%, -50%) scale(${scale})`}
-          transformOrigin="center"
-          bg="gray.900"
-          boxShadow="lg"
-          transition="opacity 0.5s ease"
-          opacity={1}
-        >
-          {children}
-        </Box>
-      )}
+      <Box
+        position="absolute"
+        top="50%"
+        left="50%"
+        w={`${baseWidth}px`}
+        h={`${baseHeight}px`}
+        transform={`translate(-50%, -50%) scale(${scale})`}
+        transformOrigin="center"
+        bg="gray.900"
+        boxShadow="lg"
+        transition="opacity 0.5s ease"
+        opacity={1}
+      >
+        {children}
+      </Box>
 
       <AboutHint />
 
