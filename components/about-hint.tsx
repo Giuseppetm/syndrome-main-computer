@@ -82,6 +82,7 @@ const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl =
           transition={{ duration: 0.6, ease: 'easeInOut' }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
+          fontFamily={'sans-serif'}
           {...props}
         >
           <IconButton aria-label="Close" size="sm" variant="plain" color="white" position="absolute" top="6px" right="6px" onClick={handleClose}>

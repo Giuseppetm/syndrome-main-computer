@@ -125,7 +125,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
       {/* @ts-expect-error Motion doesn't understand chakra props. */}
       <MotionBox
         {...styles.lateralLines}
-        left={page === 'menu' ? '430px' : '603px'}
+        left={page === 'menu' ? '402px' : '584px'}
         h="100%"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import PortraitOrientationOverlay from '@/components/portrait-orientation'
 import AboutHint from '@/components/about-hint'
 
-interface KronosLayoutProps {
+interface KronosLayoutProps extends BoxProps {
   /**
    * The content to render inside the fixed 16:9 layout.
    */
@@ -61,6 +61,7 @@ const KronosLayout = ({
   baseWidth = 1920,
   baseHeight = 1080,
   background = 'radial-gradient(circle at center, #131414 0%, #131313 100%)',
+  ...props
 }: KronosLayoutProps) => {
   const [scale, setScale] = useState(1)
   const [isPortrait, setIsPortrait] = useState(false)
@@ -86,7 +87,7 @@ const KronosLayout = ({
   }, [baseWidth, baseHeight])
 
   return (
-    <Box w="100dvw" h="100dvh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative">
+    <Box w="100dvw" h="100dvh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative" {...props}>
       <Box
         position="absolute"
         top="50%"

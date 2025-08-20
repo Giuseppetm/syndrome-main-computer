@@ -66,6 +66,7 @@ const PortraitOrientationOverlay = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
+          fontFamily={'sans-serif'}
         >
           <IconButton variant="solid" aria-label="Close orientation notice" position="absolute" top={4} right={4} color="white" onClick={handleClose}>
             <Icon as={X} boxSize={5} />

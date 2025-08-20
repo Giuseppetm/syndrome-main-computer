@@ -24,7 +24,23 @@ export interface ControlsHintProps extends BoxProps {
  */
 const ControlsHint: React.FC<ControlsHintProps> = ({ bottom = '20px', ...props }) => {
   return (
-    <Box position="absolute" bottom={bottom} left="50%" transform="translateX(-50%)" zIndex={1000} bg="gray.700" color="white" px={4} py={2} rounded="full" shadow="md" fontSize="sm" textAlign="center" {...props}>
+    <Box
+      position="absolute"
+      bottom={bottom}
+      left="50%"
+      transform="translateX(-50%)"
+      zIndex={1000}
+      bg="gray.700"
+      color="white"
+      px={4}
+      py={2}
+      rounded="full"
+      shadow="md"
+      fontSize="sm"
+      textAlign="center"
+      fontFamily={'sans-serif'}
+      {...props}
+    >
       <Text>
         Use <b>↑ ↓</b> to navigate — <b>Enter</b> to select — <b>Esc</b> to exit
       </Text>

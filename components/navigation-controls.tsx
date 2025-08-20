@@ -112,6 +112,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
       py={2}
       rounded="full"
       shadow="md"
+      fontFamily={'sans-serif'}
       {...props}
     >
       <HStack gap={3}>
