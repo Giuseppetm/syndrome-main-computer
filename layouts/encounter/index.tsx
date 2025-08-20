@@ -2,6 +2,9 @@ import { Encounter, Omnidroid, Super } from '@/types'
 import { BoxProps, Grid, GridItem, useSlotRecipe } from '@chakra-ui/react'
 import EncounterFrame from './partials/frame'
 import { GridProps } from '@chakra-ui/system'
+import { motion } from 'framer-motion'
+
+const MotionGrid = motion(Grid)
 
 interface EncounterLayoutProps {
   /**
@@ -47,7 +50,14 @@ const EncounterLayout = ({ superData, omnidroidData, encounterData }: EncounterL
   const styles = useSlotRecipe({ key: 'encounterLayout' })({}) as Record<string, BoxProps & GridProps>
 
   return (
-    <Grid {...styles.grid} templateColumns="1fr 1px 1fr">
+    /** @ts-expect-error Usual motion stuff */
+    <MotionGrid
+      {...styles.grid}
+      templateColumns="1fr 1px 1fr"
+      initial={{ opacity: 0, filter: 'invert(100%)' }}
+      animate={{ opacity: 1, filter: 'invert(0%)' }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
+    >
       {/* Super */}
       <GridItem>
         <EncounterFrame
@@ -73,7 +83,7 @@ const EncounterLayout = ({ superData, omnidroidData, encounterData }: EncounterL
           image={omnidroidData.img}
         />
       </GridItem>
-    </Grid>
+    </MotionGrid>
   )
 }
 
