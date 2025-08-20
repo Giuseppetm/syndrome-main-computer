@@ -6,7 +6,7 @@ import { ROUTES } from '@/utils/routes'
 import { ArrowLeft, ArrowRight, Home, Pause, Play } from 'lucide-react'
 
 export interface NavigationControlsProps extends BoxProps {
-  autoDelay?: number // ms tra una navigazione e l'altra (default: 5s)
+  autoDelay?: number // Auto navigation delay
 }
 
 /**
@@ -23,8 +23,9 @@ export interface NavigationControlsProps extends BoxProps {
  *
  * @author Giuseppe Del Campo
  */
-const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 1000, ...props }) => {
+const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 800, ...props }) => {
   const router = useRouter()
+
   const { superSlug, omnidroidSlug, autoplay } = router.query as {
     superSlug?: string
     omnidroidSlug?: string

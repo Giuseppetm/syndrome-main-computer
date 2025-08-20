@@ -88,6 +88,9 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
   const headerTitle = type === 'super' ? 'Opponent' : 'Prototype'
   const footerSpecifications = type === 'super' ? 'powers' : 'features'
 
+  const TERMINATED_DURATION = 0.2
+  const TEXT_MODULE_DURATION = 0.5
+
   let footerTitle = name
 
   // Handle Omnidroid footer title format
@@ -112,7 +115,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
               key={`${name}-${description}-threatRatingLabel`}
               initial={{ filter: 'invert(100%)' }}
               animate={{ filter: 'invert(0%)' }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
+              transition={{ duration: TEXT_MODULE_DURATION, ease: 'easeOut' }}
             >
               Threat rating:
             </MotionText>
@@ -122,7 +125,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
               key={`${name}-${description}-threatRatingValue:${threatRating}`}
               initial={{ filter: 'invert(100%)' }}
               animate={{ filter: 'invert(0%)' }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
+              transition={{ duration: TEXT_MODULE_DURATION, ease: 'easeOut' }}
             >
               {threatRating}
             </MotionText>
@@ -142,7 +145,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
             {...styles.terminatedLabel}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.3, ease: 'easeInOut' }}
+            transition={{ duration: TERMINATED_DURATION, delay: 0.3, ease: 'easeInOut' }}
           >
             Terminated
           </MotionText>
@@ -156,7 +159,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
           key={`${name}-${description}-footerTitle`}
           initial={{ filter: 'invert(100%)' }}
           animate={{ filter: 'invert(0%)' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: TEXT_MODULE_DURATION, ease: 'easeOut' }}
         >
           {footerTitle}
         </MotionText>
@@ -166,7 +169,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
           key={`${name}-${description}-footerDescription`}
           initial={{ filter: 'invert(100%)' }}
           animate={{ filter: 'invert(0%)' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: TEXT_MODULE_DURATION, ease: 'easeOut' }}
         >
           {footerSpecifications}: {description}
         </MotionText>
