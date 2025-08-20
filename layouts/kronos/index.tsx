@@ -86,7 +86,7 @@ const KronosLayout = ({
   }, [baseWidth, baseHeight])
 
   return (
-    <Box w="100vw" h="100vh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative">
+    <Box w="100dvw" h="100dvh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative">
       <Box
         position="absolute"
         top="50%"
