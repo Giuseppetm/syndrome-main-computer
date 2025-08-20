@@ -16,14 +16,6 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta name="author" content="Giuseppe Del Campo" />
 
-        {/* Preload fonts */}
-        <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Eurostile-ExtendedTwo.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.woff" as="font" type="font/woff" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Eurostile-ExtendedTwo.woff" as="font" type="font/woff" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Eurostile-ExtendedTwo.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
         {/* Preload all static images */}
         {preloadImages.map((src) => (
           <link key={src} rel="preload" as="image" href={src} />
