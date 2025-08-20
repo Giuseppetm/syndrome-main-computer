@@ -25,8 +25,8 @@ export const searchSuperPageRecipe = defineSlotRecipe({
       h: 'full',
       justifyContent: 'center',
       bg: '{colors.background.quaternary}',
-      px: 3,
-      maxWidth: '240px',
+      px: 4,
+      maxWidth: '250px',
     },
     searchLabel: {
       textTransform: 'uppercase',

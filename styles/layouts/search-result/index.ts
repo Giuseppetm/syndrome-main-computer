@@ -14,7 +14,7 @@ export const searchResultLayoutRecipe = defineSlotRecipe({
       w: 'full',
     },
     infoWrapper: {
-      py: 24,
+      pt: 36,
       px: 7,
       bg: '{colors.background.secondary}',
       minHeight: 738,
