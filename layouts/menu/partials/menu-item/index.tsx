@@ -59,8 +59,15 @@ const MenuItemComponent = ({ item, isActive, onMouseEnter }: MenuItemProps) => {
   }) as Record<string, BoxProps & TextProps & LinkProps>
 
   return (
-    // @ts-expect-error HStack is used as Link here
-    <HStack {...styles.wrapper} as={Link} gap={0} href={item.href} onMouseEnter={onMouseEnter} cursor={item.href === '' ? 'disabled' : 'pointer'}>
+    <HStack
+      {...styles.wrapper}
+      as={item.href !== '' ? Link : HStack}
+      gap={0}
+      // @ts-expect-error HStack is used as Link here
+      href={item.href}
+      onMouseEnter={onMouseEnter}
+      cursor={item.href === '' ? 'disabled' : 'pointer'}
+    >
       <Box {...styles.iconWrapper}>{item.icon}</Box>
       <Text {...styles.label}>{item.label}</Text>
     </HStack>
