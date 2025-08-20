@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Box, Text, Link, BoxProps, IconButton } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
@@ -12,13 +12,19 @@ const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box)
 
 const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl = 'https://github.com/Giuseppetm', ...props }) => {
   const [visible, setVisible] = useState(true)
+  const [isHovering, setIsHovering] = useState(false)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
 
   const HIDE_TIMEOUT = 6000
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), HIDE_TIMEOUT)
-    return () => clearTimeout(timer)
-  }, [])
+    if (!isHovering && visible) {
+      timerRef.current = setTimeout(() => setVisible(false), HIDE_TIMEOUT)
+    }
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
+  }, [isHovering, visible])
 
   const handleClose = () => setVisible(false)
 
@@ -43,6 +49,8 @@ const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl =
           exit={{ opacity: 0, y: -20 }}
           // @ts-expect-error Usual motion stuff
           transition={{ duration: 0.6, ease: 'easeInOut' }}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
           {...props}
         >
           <IconButton aria-label="Close" size="sm" variant="plain" color="white" position="absolute" top="6px" right="6px" onClick={handleClose}>

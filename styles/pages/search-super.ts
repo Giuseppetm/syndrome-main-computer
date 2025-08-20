@@ -19,7 +19,7 @@ export const searchSuperPageRecipe = defineSlotRecipe({
     inputWrapper: {
       bg: '{colors.background.secondary}',
       flex: 1,
-      px: 10,
+      px: 14,
     },
     searchLabelWrapper: {
       h: 'full',
