@@ -8,6 +8,7 @@ import { menuItemComponentRecipe } from './layouts/menu/partials/menu-item'
 import { encounterFrameComponentRecipe } from './layouts/encounter/partials/frame'
 import { islandOperationsPageRecipe } from './pages/island-operations'
 import { searchSuperPageRecipe } from './pages/search-super'
+import { searchResultLayoutRecipe } from './layouts/search-result'
 
 const system = createSystem(defaultConfig, {
   theme: {
@@ -66,6 +67,7 @@ const system = createSystem(defaultConfig, {
       // Layouts
       menuLayout: menuLayoutRecipe,
       encounterLayout: encounterLayoutRecipe,
+      searchResultLayout: searchResultLayoutRecipe,
       // Pages
       authenticationPage: authenticationPageRecipe,
       menuPage: menuPageRecipe,

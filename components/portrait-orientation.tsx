@@ -2,6 +2,7 @@ import { RotateSmartphoneIcon } from '@/assets/icons'
 import { Box, Icon, IconButton, Text, VStack } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 interface PortraitOrientationOverlayProps {
   /** Visibility status. */
@@ -28,9 +29,24 @@ const PortraitOrientationOverlay = ({
   onClose,
   message = 'Please rotate your device to landscape or use a desktop / tablet for the best experience.',
 }: PortraitOrientationOverlayProps) => {
+  const [showOverlay, setShowOverlay] = useState(false)
+
+  const handleClose = () => {
+    localStorage.setItem('portraitOverlaySeen', 'true')
+    setShowOverlay(false)
+    onClose?.()
+  }
+
+  useEffect(() => {
+    const alreadySeen = localStorage.getItem('portraitOverlaySeen')
+    if (!alreadySeen && isVisible) {
+      setShowOverlay(true)
+    }
+  }, [isVisible])
+
   return (
     <AnimatePresence>
-      {isVisible && (
+      {showOverlay && (
         <MotionBox
           key="portrait-orientation-overlay"
           position="fixed"
@@ -51,7 +67,7 @@ const PortraitOrientationOverlay = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
         >
-          <IconButton variant="solid" aria-label="Close orientation notice" position="absolute" top={4} right={4} color="white" onClick={onClose}>
+          <IconButton variant="solid" aria-label="Close orientation notice" position="absolute" top={4} right={4} color="white" onClick={handleClose}>
             <Icon as={X} boxSize={5} />
           </IconButton>
 

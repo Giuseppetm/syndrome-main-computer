@@ -1,4 +1,5 @@
 import { supersResult } from '@/data/supers'
+import SearchResultLayout from '@/layouts/search-result'
 import { SuperResult } from '@/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -20,14 +21,20 @@ const SuperResultPage = ({ superData }: SuperResultPageProps) => {
     return <div>Super not found</div>
   }
 
+  const title = `Search Result - ${superData.name} | Syndrome Main Computer`
+  const description = `Search result for ${superData.name}: ${superData.description}, Last active record: ${superData.lastActiveRecord}, Threat Rating: {superData.threatRating}`
+
   return (
     <>
       <Head>
-        <title>Super Result Page</title>
-        <meta name="description" content={`Details about ${superData.name}`} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`/images/search-results/${superData.img}`} />
       </Head>
-      <h1>Super Result Page: {superData.name}</h1>
-      <p>{superData.description}</p>
+
+      <SearchResultLayout superData={superData} />
     </>
   )
 }

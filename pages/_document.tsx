@@ -1,4 +1,3 @@
-import Fonts from '@/assets/fonts'
 import { omnidroids, supers, supersResult } from '@/data'
 import { Head, Html, Main, NextScript } from 'next/document'
 
@@ -12,7 +11,6 @@ export default function Document() {
 
   return (
     <Html lang="en" suppressHydrationWarning>
-      <Fonts />
       <Head>
         <link rel="icon" href="/The-Incredibles-Logo.png" />
         <meta property="og:type" content="website" />
@@ -20,6 +18,10 @@ export default function Document() {
         {/* Preload fonts */}
         <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Eurostile-ExtendedTwo.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.woff" as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Eurostile-ExtendedTwo.woff" as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Eurostile-ExtendedTwo.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 
         {/* Preload all static images */}
         {preloadImages.map((src) => (
