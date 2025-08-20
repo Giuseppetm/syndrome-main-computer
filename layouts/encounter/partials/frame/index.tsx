@@ -3,6 +3,7 @@ import { AspectRatio, Box, HStack, StackProps, Text, TextProps, useSlotRecipe, V
 import { motion } from 'framer-motion'
 
 const MotionText = motion(Text)
+const MotionVStack = motion(VStack)
 
 interface EncounterFrameProps {
   /**
@@ -98,7 +99,8 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
   }
 
   return (
-    <VStack {...styles.container} gap={0}>
+    /* @ts-expect-error Usual motion stuff */
+    <MotionVStack {...styles.container} gap={0} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
       <HStack {...styles.header}>
         <Text {...styles.headerTitle}>{headerTitle}</Text>
 
@@ -169,7 +171,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
           {footerSpecifications}: {description}
         </MotionText>
       </VStack>
-    </VStack>
+    </MotionVStack>
   )
 }
 
