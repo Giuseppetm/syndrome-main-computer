@@ -2,7 +2,7 @@ import { RotateSmartphoneIcon } from '@/assets/icons'
 import { Box, Icon, IconButton, Text, VStack } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface PortraitOrientationOverlayProps {
   /** Visibility status. */
@@ -30,16 +30,16 @@ const PortraitOrientationOverlay = ({
   message = 'Please rotate your device to landscape or use a desktop / tablet for the best experience.',
 }: PortraitOrientationOverlayProps) => {
   const [showOverlay, setShowOverlay] = useState(false)
+  const hasBeenSeenRef = useRef(false)
 
   const handleClose = () => {
-    localStorage.setItem('portraitOverlaySeen', 'true')
+    hasBeenSeenRef.current = true
     setShowOverlay(false)
     onClose?.()
   }
 
   useEffect(() => {
-    const alreadySeen = localStorage.getItem('portraitOverlaySeen')
-    if (!alreadySeen && isVisible) {
+    if (!hasBeenSeenRef.current && isVisible) {
       setShowOverlay(true)
     }
   }, [isVisible])
