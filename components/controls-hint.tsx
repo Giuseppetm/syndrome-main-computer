@@ -1,11 +1,25 @@
 import React from 'react'
-import { Box, Text, BoxProps } from '@chakra-ui/react'
+import { Box, Text, BoxProps, HStack, IconButton } from '@chakra-ui/react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export interface ControlsHintProps extends BoxProps {
   /**
    * Distance from the bottom (default: 20px)
    */
   bottom?: string | number
+  /**
+   * Show browser navigation buttons (back/forward)
+   */
+  showNavButtons?: boolean
+  /**
+   * Show controls hint.
+   */
+  showControlsHint?: boolean
+  /**
+   * Custom label.
+   */
+  label?: string
 }
 
 /**
@@ -17,12 +31,14 @@ export interface ControlsHintProps extends BoxProps {
  *
  * @example
  * ```tsx
- * <ControlsHint />
+ * <ControlsHint showNavButtons />
  * ```
  *
  * @author Giuseppe Del Campo
  */
-const ControlsHint: React.FC<ControlsHintProps> = ({ bottom = '20px', ...props }) => {
+const ControlsHint: React.FC<ControlsHintProps> = ({ bottom = '20px', showControlsHint = true, showNavButtons = false, label, ...props }) => {
+  const router = useRouter()
+
   return (
     <Box
       position="absolute"
@@ -38,12 +54,41 @@ const ControlsHint: React.FC<ControlsHintProps> = ({ bottom = '20px', ...props }
       shadow="md"
       fontSize="sm"
       textAlign="center"
-      fontFamily={'sans-serif'}
+      fontFamily="sans-serif"
       {...props}
     >
-      <Text>
-        Use <b>↑ ↓</b> to navigate — <b>Enter</b> to select — <b>Esc</b> to exit
-      </Text>
+      <HStack gap={3}>
+        {showNavButtons && (
+          <HStack gap={1}>
+            <IconButton
+              size="sm"
+              aria-label="Go back"
+              onClick={() => router.back()}
+              px={2}
+              _disabled={{ bg: 'gray.600', color: 'gray.300', cursor: 'not-allowed', opacity: 1 }}
+            >
+              <ArrowLeft size={16} /> Page back
+            </IconButton>
+            <IconButton
+              size="sm"
+              aria-label="Go forward"
+              onClick={() => router.forward()}
+              px={2}
+              _disabled={{ bg: 'gray.600', color: 'gray.300', cursor: 'not-allowed', opacity: 1 }}
+            >
+              <ArrowRight size={16} /> Page forward
+            </IconButton>
+          </HStack>
+        )}
+        {showControlsHint && (
+          <Text
+            whiteSpace="nowrap"
+            dangerouslySetInnerHTML={{
+              __html: label ?? 'Use <b>↑ ↓</b> to navigate — <b>Enter</b> to select — <b>Esc</b> to go back.',
+            }}
+          />
+        )}
+      </HStack>
     </Box>
   )
 }

@@ -14,6 +14,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/The-Incredibles-Logo.png" />
         <meta property="og:type" content="website" />
+        <meta name="author" content="Giuseppe Del Campo" />
 
         {/* Preload fonts */}
         <link rel="preload" href="/fonts/Eurostile-BoldExtendedTwo.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />

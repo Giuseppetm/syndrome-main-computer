@@ -176,7 +176,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
         </MotionStack>
       </MotionHStack>
 
-      <ControlsHint />
+      <ControlsHint showNavButtons={true} />
     </>
   )
 }

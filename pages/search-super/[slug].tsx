@@ -1,6 +1,9 @@
+import ControlsHint from '@/components/controls-hint'
+import { SITE_URL } from '@/data/metadata'
 import { supersResult } from '@/data/supers'
 import SearchResultLayout from '@/layouts/search-result'
 import { SuperResult } from '@/types'
+import { ROUTES } from '@/utils/routes'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
@@ -52,9 +55,12 @@ const SuperResultPage = ({ superData }: SuperResultPageProps) => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={`/images/search-results/${superData.img}`} />
+        <meta property="og:url" content={`${SITE_URL}${ROUTES.SEARCH_SUPER}/${superData.slug}`} />
       </Head>
 
       <SearchResultLayout superData={superData} />
+
+      <ControlsHint showNavButtons showControlsHint label={'Here you can read the informations about a super.'} />
     </>
   )
 }

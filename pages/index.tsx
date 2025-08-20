@@ -6,6 +6,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { SITE_URL } from '@/data/metadata'
 
 const MotionVStack = motion(VStack)
 
@@ -73,18 +74,10 @@ const AuthenticationPage = () => {
       }
     }
 
-    const escHandler = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        router.push(ROUTES.HOME)
-      }
-    }
-
     window.addEventListener('keydown', listener)
-    window.addEventListener('keyup', escHandler)
 
     return () => {
       window.removeEventListener('keydown', listener)
-      window.removeEventListener('keyup', escHandler)
     }
   }, [password, router, handleSubmit])
 
@@ -105,6 +98,7 @@ const AuthenticationPage = () => {
         />
         <meta property="og:title" content="Authentication Required | Syndrome Main Computer" />
         <meta property="og:description" content="Secure login to access the Syndrome Main Computer system. Enter the password to continue." />
+        <meta property="og:url" content={`${SITE_URL}`} />
       </Head>
 
       {/* @ts-expect-error Motion doesn't understand chakra props. */}

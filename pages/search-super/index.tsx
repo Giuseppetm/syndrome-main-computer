@@ -6,6 +6,8 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { encounters, supers, supersResult } from '@/data'
 import { ROUTES } from '@/utils/routes'
+import ControlsHint from '@/components/controls-hint'
+import { SITE_URL } from '@/data/metadata'
 
 const MotionBox = motion(Box)
 const MotionHStack = motion(HStack)
@@ -39,6 +41,10 @@ const MotionHStack = motion(HStack)
 const SearchSuperPage = () => {
   const styles = useSlotRecipe({ key: 'searchSuperPage' })({}) as Record<string, BoxProps & StackProps & TextProps>
   const router = useRouter()
+
+  const title = 'Search Super | Syndrome Main Computer'
+  const description =
+    'Search for Supers in the Omnidroid database. Discover which Supers were defeated in encounters and which ones are still active.'
 
   const [searchValue, setSearchValue] = useState('')
   const searchInput = useRef<HTMLInputElement | null>(null)
@@ -79,8 +85,11 @@ const SearchSuperPage = () => {
   return (
     <>
       <Head>
-        <title>Search Super Page</title>
-        <meta name="description" content="" />
+        <title>Search Super | Syndrome Main Computer</title>
+        <meta name="description" content={description} />
+        <meta property="og:url" content={`${SITE_URL}${ROUTES.SEARCH_SUPER}`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
       </Head>
 
       <VStack {...styles.container}>
@@ -132,6 +141,8 @@ const SearchSuperPage = () => {
           </Box>
         </MotionHStack>
       </VStack>
+
+      <ControlsHint showControlsHint showNavButtons label={'Type the name of a super to proceed.'} />
     </>
   )
 }

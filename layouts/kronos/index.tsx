@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, BoxProps } from '@chakra-ui/react'
+import { Box, BoxProps, Center, Spinner } from '@chakra-ui/react'
 import PortraitOrientationOverlay from '@/components/portrait-orientation'
 import AboutHint from '@/components/about-hint'
 
@@ -63,8 +63,12 @@ const KronosLayout = ({
   background = 'radial-gradient(circle at center, #131414 0%, #131313 100%)',
   ...props
 }: KronosLayoutProps) => {
-  const [scale, setScale] = useState(1)
+  const [scale, setScale] = useState<number | null>(null)
   const [isPortrait, setIsPortrait] = useState(false)
+  const [isReady, setIsReady] = useState(false)
+  const [minimumDelayPassed, setMinimumDelayPassed] = useState(false)
+
+  const SPINNER_TIMEOUT = 1000
 
   useEffect(() => {
     const handleResize = () => {
@@ -73,10 +77,10 @@ const KronosLayout = ({
       const s = Math.min(vw / baseWidth, vh / baseHeight)
       setScale(s)
       setIsPortrait(vh > vw)
+      setIsReady(true)
     }
 
     handleResize()
-
     window.addEventListener('resize', handleResize)
     window.addEventListener('orientationchange', handleResize)
 
@@ -86,21 +90,38 @@ const KronosLayout = ({
     }
   }, [baseWidth, baseHeight])
 
+  useEffect(() => {
+    const t = setTimeout(() => setMinimumDelayPassed(true), SPINNER_TIMEOUT)
+    return () => clearTimeout(t)
+  }, [])
+
+  const showSpinner = !isReady || !minimumDelayPassed
+
   return (
     <Box w="100dvw" h="100dvh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative" {...props}>
-      <Box
-        position="absolute"
-        top="50%"
-        left="50%"
-        w={`${baseWidth}px`}
-        h={`${baseHeight}px`}
-        transform={`translate(-50%, -50%) scale(${scale})`}
-        transformOrigin="center"
-        bg="gray.900"
-        boxShadow="lg"
-      >
-        {children}
-      </Box>
+      {showSpinner && (
+        <Center w="100%" h="100%">
+          <Spinner size="xl" color="white" borderWidth="3px" animationDuration="0.6s" css={{ '--spinner-track-color': 'colors.gray.600' }} />
+        </Center>
+      )}
+
+      {!showSpinner && scale !== null && (
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          w={`${baseWidth}px`}
+          h={`${baseHeight}px`}
+          transform={`translate(-50%, -50%) scale(${scale})`}
+          transformOrigin="center"
+          bg="gray.900"
+          boxShadow="lg"
+          transition="opacity 0.5s ease"
+          opacity={1}
+        >
+          {children}
+        </Box>
+      )}
 
       <AboutHint />
 

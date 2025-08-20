@@ -29,7 +29,7 @@ export interface SkipButtonProps extends ButtonProps {
  */
 const SkipButton: React.FC<SkipButtonProps> = ({ label = 'Skip', bottom = '20px', ...props }) => {
   return (
-    <Box position="absolute" bottom={bottom} left="50%" transform="translateX(-50%)" zIndex={1000}>
+    <Box position="absolute" bottom={bottom} left="50%" transform="translateX(-50%)" zIndex={1000} fontFamily="sans-serif">
       <Button colorScheme="gray" variant="solid" size="md" rounded="full" shadow="md" {...props}>
         {label}
       </Button>

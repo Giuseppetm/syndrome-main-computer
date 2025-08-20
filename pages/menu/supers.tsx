@@ -1,9 +1,10 @@
 import { MenuItem } from '@/types'
-import { getFirstEncounterRoute } from '@/utils/routes'
+import { getFirstEncounterRoute, ROUTES } from '@/utils/routes'
 import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { SearchIcon, SuperIcon } from '@/assets/icons'
 import MenuLayout from '../../layouts/menu'
 import Head from 'next/head'
+import { SITE_URL } from '@/data/metadata'
 
 /**
  * @name MenuSupersPage
@@ -52,6 +53,7 @@ const MenuSupersPage = () => {
           property="og:description"
           content="Access the central control menu of Syndrome's main computer. Navigate to Supers management and Super search control."
         />
+        <meta property="og:url" content={`${SITE_URL}${ROUTES.MENU_SUPERS}`} />
       </Head>
 
       <VStack {...styles.container}>

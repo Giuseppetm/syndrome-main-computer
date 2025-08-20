@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { MenuItem } from '@/types'
 import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon } from '@/assets/icons'
+import { SITE_URL } from '@/data/metadata'
+import { ROUTES } from '@/utils/routes'
 
 /**
  * @name MenuPage
@@ -66,6 +68,7 @@ const MenuPage = () => {
           property="og:description"
           content="Navigate through Syndrome's central computer. Manage island operations, finances, Omnidroid systems, and Supers data."
         />
+        <meta property="og:url" content={`${SITE_URL}${ROUTES.MENU}`} />
       </Head>
 
       <VStack {...styles.container}>

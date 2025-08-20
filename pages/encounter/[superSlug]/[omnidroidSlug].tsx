@@ -4,6 +4,8 @@ import Head from 'next/head'
 import { Encounter, Omnidroid, Super } from '@/types'
 import { GetServerSideProps, NextPage } from 'next'
 import NavigationControls from '@/components/navigation-controls'
+import { SITE_URL } from '@/data/metadata'
+import { ROUTES } from '@/utils/routes'
 
 /**
  * Props for {@link SuperOmnidroidPage}.
@@ -51,6 +53,7 @@ const SuperOmnidroidPage: NextPage<SuperOmnidroidPageProps> = ({ encounterData, 
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={`/images/supers/${superData.img}`} />
+        <meta property="og:url" content={`${SITE_URL}${ROUTES.ENCOUNTER}/${superData.slug}/${omnidroidData.slug}`} />
       </Head>
 
       <EncounterLayout superData={superData} omnidroidData={omnidroidData} encounterData={encounterData} />
