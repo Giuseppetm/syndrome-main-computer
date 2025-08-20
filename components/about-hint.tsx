@@ -1,0 +1,77 @@
+import React, { useEffect, useState } from 'react'
+import { Box, Text, Link, BoxProps, IconButton } from '@chakra-ui/react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { X } from 'lucide-react'
+
+export interface AboutHintProps extends BoxProps {
+  top?: string | number
+  creatorProfileUrl?: string
+}
+
+const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box)
+
+const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl = 'https://github.com/Giuseppetm', ...props }) => {
+  const [visible, setVisible] = useState(true)
+
+  const HIDE_TIMEOUT = 6000
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(false), HIDE_TIMEOUT)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const handleClose = () => setVisible(false)
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <MotionBox
+          position="fixed"
+          top={top}
+          insetX={0}
+          mx="auto"
+          zIndex={999}
+          bg="#4D7676"
+          px={10}
+          py={4}
+          rounded="lg"
+          shadow="lg"
+          textAlign="center"
+          maxW="600px"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          // @ts-expect-error Usual motion stuff
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+          {...props}
+        >
+          <IconButton aria-label="Close" size="sm" variant="plain" color="white" position="absolute" top="6px" right="6px" onClick={handleClose}>
+            <X />
+          </IconButton>
+
+          <Text fontSize="md" mb={2}>
+            <b>Syndrome Main Computer</b> is a faithful recreation of Syndrome’s computer interface from <i>The Incredibles</i> (2004), built as a
+            modern web app with React, Next.js and Chakra UI.{' '}
+            <Link
+              href="https://github.com/Giuseppetm/syndrome-main-computer"
+              color="white"
+              target="_blank"
+              fontWeight="semibold"
+              _hover={{ color: '#A6A8A8' }}
+            >
+              View on GitHub
+            </Link>
+          </Text>
+          <Text fontSize="sm">
+            Created by{' '}
+            <Link href={creatorProfileUrl} color="#851f1d" target="_blank" fontWeight="bold" _hover={{ color: '#af1d1d' }}>
+              Giuseppe Del Campo
+            </Link>
+          </Text>
+        </MotionBox>
+      )}
+    </AnimatePresence>
+  )
+}
+
+export default AboutHint

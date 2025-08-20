@@ -27,3 +27,13 @@ export interface Encounter {
   superDefeated: boolean
   omnidroidDefeated: boolean
 }
+
+export interface SuperResult {
+  name: string
+  slug: string
+  img: string
+  description: string
+  lastActiveRecord: string
+  locationKnown: boolean
+  threatRating: string
+}

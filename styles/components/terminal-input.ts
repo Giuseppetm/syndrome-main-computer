@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from '@chakra-ui/react'
 
 export const terminalInputComponentRecipe = defineSlotRecipe({
-  slots: ['wrapper', 'passwordInput', 'blinkUnderscore'],
+  slots: ['wrapper', 'valueInput', 'blinkUnderscore'],
   base: {
     wrapper: {
       color: '{colors.text.primary}',
@@ -12,10 +12,10 @@ export const terminalInputComponentRecipe = defineSlotRecipe({
       display: 'inline-flex',
       gap: '1',
     },
-    passwordInput: {
+    valueInput: {
       zIndex: 10,
       h: 'auto',
-      border: 'none',
+      border: 0,
       outline: 'none',
       textTransform: 'uppercase',
       textStyle: 'bold',
@@ -23,10 +23,23 @@ export const terminalInputComponentRecipe = defineSlotRecipe({
       letterSpacing: '50px',
       caretColor: 'transparent',
       px: '0',
+      _focus: {
+        border: 0,
+        outline: 'none',
+      },
     },
     blinkUnderscore: {
       textStyle: 'bold',
       fontSize: '60px',
+    },
+  },
+  variants: {
+    mode: {
+      search: {
+        valueInput: {
+          letterSpacing: '5px',
+        },
+      },
     },
   },
 })

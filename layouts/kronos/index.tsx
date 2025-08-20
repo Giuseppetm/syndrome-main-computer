@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Box } from '@chakra-ui/react'
 import PortraitOrientationOverlay from '@/components/portrait-orientation'
+import AboutHint from '@/components/about-hint'
 
 interface KronosLayoutProps {
   /**
@@ -99,6 +100,8 @@ const KronosLayout = ({
       >
         {children}
       </Box>
+
+      <AboutHint />
 
       <PortraitOrientationOverlay isVisible={isPortrait} onClose={() => setIsPortrait(false)} />
     </Box>

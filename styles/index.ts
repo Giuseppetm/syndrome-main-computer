@@ -22,6 +22,7 @@ const system = createSystem(defaultConfig, {
           primary: { value: '#4D7676' },
           secondary: { value: '#859E9D' },
           tertiary: { value: '#5E706E' },
+          quaternary: { value: '#364F50' },
           gradient: { value: 'radial-gradient(circle at center, #5f8f92 0%, #2f4f4f 100%)' },
         },
         spacing: {

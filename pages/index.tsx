@@ -92,12 +92,13 @@ const AuthenticationPage = () => {
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
         <VStack {...styles.terminalPasswordWrapper}>
+          {/* @ts-expect-error Variant is fine here. */}
           <TerminalInput
             {...styles.passwordInput}
             ref={passwordInput}
             autoFocus
             type="text"
-            password={password}
+            value={password}
             autoComplete="off"
             onChange={handleChange}
             maxLength={10}

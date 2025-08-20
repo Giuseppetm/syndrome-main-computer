@@ -126,7 +126,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
       <MotionBox
         {...styles.lateralLines}
         left={page === 'menu' ? '430px' : '603px'}
-        h="100%" // altezza di riferimento
+        h="100%"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}

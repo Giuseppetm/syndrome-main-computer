@@ -140,7 +140,7 @@ const EncounterFrame = ({ type, threatRating, isTerminated, name, description, i
             {...styles.terminatedLabel}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.3, ease: 'easeInOut' }}
           >
             Terminated
           </MotionText>

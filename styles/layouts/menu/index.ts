@@ -22,6 +22,7 @@ export const menuLayoutRecipe = defineSlotRecipe({
       zIndex: 10,
       left: '430px',
       width: '183px',
+      pointerEvents: 'none',
     },
   },
 })

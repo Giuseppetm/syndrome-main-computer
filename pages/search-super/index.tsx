@@ -1,8 +1,54 @@
-import { BoxProps, Stack, StackProps, Text, useSlotRecipe } from '@chakra-ui/react'
+import { BoxProps, Box, StackProps, useSlotRecipe, HStack, Text, TextProps, VStack } from '@chakra-ui/react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import TerminalInput from '@/components/terminal-input'
 import Head from 'next/head'
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
+import { encounters, supers, supersResult } from '@/data'
+import { ROUTES } from '@/utils/routes'
+
+const MotionBox = motion(Box)
+const MotionHStack = motion(HStack)
 
 const SearchSuperPage = () => {
-  const styles = useSlotRecipe({ key: 'searchSuperPage' })({}) as Record<string, BoxProps & StackProps>
+  const styles = useSlotRecipe({ key: 'searchSuperPage' })({}) as Record<string, BoxProps & StackProps & TextProps>
+  const router = useRouter()
+
+  const [searchValue, setSearchValue] = useState('')
+  const searchInput = useRef<HTMLInputElement | null>(null)
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value)
+  }
+
+  const handleSubmit = () => {
+    const query = searchValue.trim().toLowerCase()
+    if (!query) return
+
+    const superData = supers.find((s) => s.name.toLowerCase() === query)
+
+    if (superData) {
+      const completedEncounter = encounters.find((e) => e.superSlug.toLowerCase() === superData.slug && e.superDefeated)
+
+      if (completedEncounter) {
+        router.push(`${ROUTES.ENCOUNTER}/${completedEncounter.superSlug}/${completedEncounter.omnidroidSlug}?autoplay=0`)
+        return
+      }
+    }
+
+    const pendingSuper = supersResult.find((s) => s.slug.toLowerCase() === query)
+
+    if (pendingSuper) {
+      router.push(`${ROUTES.SEARCH_SUPER}/${pendingSuper.slug}`)
+      return
+    }
+
+    alert('Super not found.')
+  }
+
+  useEffect(() => {
+    searchInput.current?.focus()
+  }, [])
 
   return (
     <>
@@ -11,12 +57,55 @@ const SearchSuperPage = () => {
         <meta name="description" content="" />
       </Head>
 
-      <Stack {...styles.container}>
-        <Text textStyle="regular" color="{colors.text.white}" fontSize="48px" textAlign={'center'}>
-          Rework of several site sections is in progress. <br />
-          Enjoy the menu, authentication and supers sections, they are already available.
-        </Text>
-      </Stack>
+      <VStack {...styles.container}>
+        {/* Horizontal lines */}
+        {/* @ts-expect-error Usual motion stuff. */}
+        <MotionBox
+          {...styles.horizontalLines}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          style={{ transformOrigin: 'center' }}
+        />
+
+        {/* Vertical lines */}
+        {/* @ts-expect-error Usual motion stuff. */}
+        <MotionBox
+          {...styles.verticalLines}
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
+          style={{ transformOrigin: 'center' }}
+        />
+
+        {/* @ts-expect-error Usual motion stuff. */}
+        <MotionHStack
+          {...styles.wrapper}
+          gap={0}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.6 }}
+        >
+          <VStack {...styles.searchLabelWrapper}>
+            <Text {...styles.searchLabel}>Search:</Text>
+          </VStack>
+
+          <Box {...styles.inputWrapper}>
+            <TerminalInput
+              value={searchValue}
+              ref={searchInput}
+              autoFocus
+              type="text"
+              alignment="start"
+              autoComplete="off"
+              onChange={handleChange}
+              variant="search"
+              maxLength={14}
+              onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+            />
+          </Box>
+        </MotionHStack>
+      </VStack>
     </>
   )
 }

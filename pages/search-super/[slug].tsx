@@ -1,6 +1,11 @@
-import { supers } from '@/data/supers'
+import { supersResult } from '@/data/supers'
+import { SuperResult } from '@/types'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+
+interface SuperResultPageProps {
+  superData: SuperResult | null
+}
 
 /**
  * @name SuperResultPage
@@ -10,23 +15,37 @@ import { useRouter } from 'next/router'
  *
  * @author Giuseppe Del Campo
  */
-const SuperResultPage = () => {
-  const router = useRouter()
-  const { slug } = router.query
-
-  const superData = supers.find((s) => s.slug === slug)
-
-  // if (!superData) throw new Error('Super not found; check the slug you inserted or the defined data.')
+const SuperResultPage = ({ superData }: SuperResultPageProps) => {
+  if (!superData) {
+    return <div>Super not found</div>
+  }
 
   return (
     <>
       <Head>
         <title>Super Result Page</title>
-        <meta name="description" content="" />
+        <meta name="description" content={`Details about ${superData.name}`} />
       </Head>
-      Super Result Page {superData?.name}
+      <h1>Super Result Page: {superData.name}</h1>
+      <p>{superData.description}</p>
     </>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: supersResult.map((s) => ({ params: { slug: s.slug } })),
+    fallback: false,
+  }
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const slug = context.params?.slug as string
+  const superData = supersResult.find((s) => s.slug === slug) || null
+
+  return {
+    props: { superData },
+  }
 }
 
 export default SuperResultPage

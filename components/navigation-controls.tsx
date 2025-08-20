@@ -3,6 +3,7 @@ import { Box, Button, HStack, BoxProps } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { encounters } from '@/data'
 import { ROUTES } from '@/utils/routes'
+import { ArrowLeft, ArrowRight, Home, Pause, Play } from 'lucide-react'
 
 export interface NavigationControlsProps extends BoxProps {
   autoDelay?: number // ms tra una navigazione e l'altra (default: 5s)
@@ -24,12 +25,13 @@ export interface NavigationControlsProps extends BoxProps {
  */
 const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 1000, ...props }) => {
   const router = useRouter()
-  const { superSlug, omnidroidSlug } = router.query as {
+  const { superSlug, omnidroidSlug, autoplay } = router.query as {
     superSlug?: string
     omnidroidSlug?: string
+    autoplay?: string
   }
 
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(autoplay !== '0')
 
   const currentIndex = encounters.findIndex((e) => e.superSlug === superSlug && e.omnidroidSlug === omnidroidSlug)
 
@@ -41,10 +43,10 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
     (index: number) => {
       if (index >= 0 && index < encounters.length) {
         const next = encounters[index]
-        router.push(`${ROUTES.ENCOUNTER}/${next.superSlug}/${next.omnidroidSlug}`)
+        router.push(`${ROUTES.ENCOUNTER}/${next.superSlug}/${next.omnidroidSlug}?autoplay=${isPlaying ? 1 : 0}`)
       }
     },
-    [router]
+    [router, isPlaying]
   )
 
   const goNext = useCallback(() => {
@@ -67,8 +69,19 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
       } else if (e.key === 'ArrowLeft') {
         if (currentIndex > 0) goPrev()
       } else if (e.key === ' ') {
-        e.preventDefault() // evita lo scroll della pagina
-        setIsPlaying((prev) => !prev)
+        e.preventDefault()
+        setIsPlaying((prev) => {
+          const newValue = !prev
+          router.replace(
+            {
+              pathname: router.pathname,
+              query: { ...router.query, autoplay: newValue ? 1 : 0 },
+            },
+            undefined,
+            { shallow: true }
+          )
+          return newValue
+        })
       }
     }
     window.addEventListener('keydown', handleKey)
@@ -102,30 +115,45 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
       {...props}
     >
       <HStack gap={3}>
-        {/* Go to previous route */}
+        {/* Back to menu */}
         <Button size="sm" onClick={goBackToMenu} colorScheme="gray">
-          Back to menu
+          <HStack>
+            <Home size={16} />
+            <span>Menu</span>
+          </HStack>
         </Button>
 
         {/* Pause / Resume */}
         {isPlaying ? (
           <Button size="sm" onClick={() => setIsPlaying(false)} colorScheme="yellow">
-            Pause
+            <HStack>
+              <Pause size={16} />
+              <span>Pause</span>
+            </HStack>
           </Button>
         ) : (
           <Button size="sm" onClick={() => setIsPlaying(true)} colorScheme="green">
-            Resume
+            <HStack>
+              <Play size={16} />
+              <span>Resume</span>
+            </HStack>
           </Button>
         )}
 
-        {/* Prev encounter */}
+        {/* Prev */}
         <Button size="sm" onClick={goPrev} disabled={currentIndex <= 0} colorScheme="gray">
-          Previous
+          <HStack>
+            <ArrowLeft size={16} />
+            <span>Prev</span>
+          </HStack>
         </Button>
 
-        {/* Next encounter */}
+        {/* Next */}
         <Button size="sm" onClick={goNext} disabled={currentIndex >= encounters.length - 1} colorScheme="gray">
-          Forward
+          <HStack>
+            <ArrowRight size={16} />
+            <span>Next</span>
+          </HStack>
         </Button>
       </HStack>
     </Box>

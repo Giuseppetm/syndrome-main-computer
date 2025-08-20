@@ -1,3 +1,4 @@
+import Fonts from '@/assets/fonts'
 import { omnidroids, supers } from '@/data'
 import { Head, Html, Main, NextScript } from 'next/document'
 
@@ -7,6 +8,7 @@ export default function Document() {
 
   return (
     <Html lang="en" suppressHydrationWarning>
+      <Fonts />
       <Head>
         <link rel="icon" href="/The-Incredibles-Logo.png" />
         <meta property="og:type" content="website" />
