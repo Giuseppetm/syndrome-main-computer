@@ -36,6 +36,9 @@ export const terminalInputComponentRecipe = defineSlotRecipe({
   variants: {
     mode: {
       search: {
+        wrapper: {
+          py: 2,
+        },
         valueInput: {
           letterSpacing: '5px',
         },

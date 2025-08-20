@@ -46,7 +46,7 @@ export const searchSuperPageRecipe = defineSlotRecipe({
       borderTopColor: '{colors.text.white}',
       borderBottom: '1px solid',
       borderBottomColor: '{colors.text.white}',
-      h: '93px',
+      h: '98px',
       w: 'full',
       zIndex: 10,
       pointerEvents: 'none',
