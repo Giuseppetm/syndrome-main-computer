@@ -12,7 +12,27 @@ interface SuperResultPageProps {
  * @name SuperResultPage
  *
  * @description
- * Page rendered in case the super was not terminated by an Omnidroid.
+ * Renders the **Search Result page** for a given Super in case they were **not terminated by an Omnidroid**.
+ *
+ * Displays detailed information such as:
+ * - Name
+ * - Description
+ * - Last Active Record
+ * - Threat Rating
+ *
+ * @remarks
+ * - The data is pre-rendered at build time using Next.js **Static Generation** (`getStaticPaths` + `getStaticProps`).
+ * - If a Super slug does not match any entry in `supersResult`, the page will render a "Super not found" message.
+ *
+ * Features:
+ * - Dynamically generated SEO metadata (title, description, Open Graph tags).
+ * - Uses {@link SearchResultLayout} for consistent UI layout and styling.
+ *
+ * @returns
+ * A statically generated search result page for a given Super.
+ *
+ * @see SearchResultLayout Layout component for displaying Super result details.
+ * @see supersResult Dataset of all Supers with their attributes.
  *
  * @author Giuseppe Del Campo
  */

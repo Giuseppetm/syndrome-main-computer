@@ -13,7 +13,30 @@ const MotionVStack = motion(VStack)
  * @name AuthenticationPage
  *
  * @description
- * Page rendered when user needs to authenticate.
+ * Page that handles user authentication before accessing th Syndrome Main Computer system.
+ *
+ * Users are prompted to enter a password inside a **terminal-like input field**.
+ * - The default placeholder `"PASSWORD"` is shown initially and then cleared.
+ * - When the user types and presses **Enter**, the input is validated:
+ *   - If the password is `"kronos"` (case-insensitive), authentication succeeds and
+ *     the user is redirected to the Main Menu.
+ *   - Otherwise, nothing happens until the correct password is entered.
+ * - The user can also press **Escape** at any moment to return to the Home page.
+ * - A "Skip Authentication" button is provided for bypassing login during testing.
+ *
+ * @constants
+ * - `SUBMIT_TIMEOUT` — delay (ms) before redirecting after correct authentication.
+ *
+ * @state
+ * - `password` — current value of the input field.
+ * - `submitting` — toggles when the form is submitting, used to style the text color.
+ *
+ * @returns
+ * Renders the authentication screen with input, animations,
+ * keyboard event handling, and skip option.
+ *
+ * @see SkipButton Component allowing direct bypass to the Menu.
+ * @see TerminalInput Custom input styled as a terminal field.
  *
  * @author Giuseppe Del Campo
  */

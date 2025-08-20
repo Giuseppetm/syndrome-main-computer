@@ -9,10 +9,17 @@ import Head from 'next/head'
  * @name MenuSupersPage
  *
  * @description
- * Page rendered for supers menu.
+ * Supers-specific navigation page within the **Syndrome Main Computer** interface.
+ * Provides access to:
+ * - The complete **Supers List** (starting from the first available encounter).
+ * - The **Search Super** tool for manually querying specific Supers.
  *
  * @remarks
- * This page has been added and differs from the `Kronos Unveiled` movie sequence.
+ * This menu differs from the *Kronos Unveiled* movie sequence
+ * and has been added for extended functionality in the web application.
+ *
+ * @see MenuPage For the main system menu.
+ * @see getFirstEncounterRoute Utility function resolving the first super encounter route.
  *
  * @author Giuseppe Del Campo
  */
@@ -31,8 +38,6 @@ const MenuSupersPage = () => {
       href: '/search-super',
     },
   ]
-
-  // TODO: Il click su /supers deve portare un argomento che abilita la navigazione automatica ai prossimi super
 
   return (
     <>

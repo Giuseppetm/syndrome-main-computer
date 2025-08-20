@@ -8,13 +8,28 @@ import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon } from '@/assets/ico
  * @name MenuPage
  *
  * @description
- * Page rendered for main menu.
+ * Main navigation page of the **Syndrome Main Computer** interface.
+ * Provides entry points to key system modules such as:
+ * - **Island Operations**
+ * - **Finances**
+ * - **Omnidroid Metatraining**
+ * - **Supers Database**
+ *
+ * @remarks
+ * Delegates menu rendering to {@link MenuLayout}.
  *
  * @author Giuseppe Del Campo
  */
 const MenuPage = () => {
   const styles = useSlotRecipe({ key: 'menuPage' })({}) as Record<string, BoxProps & StackProps>
 
+  /**
+   * Main menu configuration.
+   * Each item contains:
+   * - `label`: Display text
+   * - `icon`: Visual representation
+   * - `href`: Navigation path
+   */
   const menuItems: Array<MenuItem> = [
     {
       label: 'Island Operations',

@@ -6,10 +6,41 @@ import Image from 'next/image'
 const MotionGrid = motion<Omit<GridProps, 'transition'>>(Grid)
 const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box)
 
+/**
+ * Props for {@link SearchResultLayout}.
+ */
 interface SearchResultLayoutProps {
+  /**
+   * Full data about a Super, including image, name,
+   * description, location status, last record, and threat rating.
+   */
   superData: SuperResult
 }
 
+/**
+ * @name SearchResultLayout
+ *
+ * @description
+ * Displays the search result layout for a given Super.
+ * The layout is divided into three main sections:
+ *
+ * - **Left column**: Contains the Super’s image inside
+ *   a fixed aspect ratio.
+ * - **Middle column**: A vertical separator line.
+ * - **Right column**: Shows the Super’s information:
+ *   name, location status (animated), description,
+ *   last active record, and threat rating.
+ *
+ * The entire grid fades in with a short animation,
+ * and the *location status* text appears with a delayed fade-in.
+ *
+ * @example
+ * ```tsx
+ * <SearchResultLayout superData={super} />
+ * ```
+ *
+ * @author Giuseppe Del Campo
+ */
 const SearchResultLayout = ({ superData }: SearchResultLayoutProps) => {
   const styles = useSlotRecipe({ key: 'searchResultLayout' })({}) as Record<string, BoxProps & GridProps & TextProps & StackProps>
   const imageFolder = 'search-results'

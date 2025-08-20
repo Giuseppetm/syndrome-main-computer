@@ -10,6 +10,32 @@ import { ROUTES } from '@/utils/routes'
 const MotionBox = motion(Box)
 const MotionHStack = motion(HStack)
 
+/**
+ * @name SearchSuperPage
+ *
+ * @description
+ * Page that provides a **terminal-like interface** to search for Supers.
+ *
+ * The user types the Super's name into an input field and, based on the query:
+ * - If the Super exists **and has been defeated by an Omnidroid**, they are redirected
+ *   to the corresponding {@link Encounter} page.
+ * - If the Super exists in the dataset but was **not defeated**, they are redirected
+ *   to the {@link SuperResultPage}.
+ * - If the Super does not exist in the datasets, an alert is shown ("Super not found.").
+ *
+ * @state
+ * - `searchValue` — stores the current input value.
+ * - `searchInput` — ref to the input element, used for auto-focus.
+ *
+ * @returns
+ * Renders the Search Super page with an interactive terminal-like input.
+ *
+ * @see EncounterPage For Supers defeated by an Omnidroid.
+ * @see SuperResultPage For Supers still active / not defeated.
+ * @see TerminalInput Custom component used to render the styled input field.
+ *
+ * @author Giuseppe Del Campo
+ */
 const SearchSuperPage = () => {
   const styles = useSlotRecipe({ key: 'searchSuperPage' })({}) as Record<string, BoxProps & StackProps & TextProps>
   const router = useRouter()

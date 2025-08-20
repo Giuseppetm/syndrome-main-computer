@@ -5,9 +5,23 @@ import { Encounter, Omnidroid, Super } from '@/types'
 import { GetServerSideProps, NextPage } from 'next'
 import NavigationControls from '@/components/navigation-controls'
 
+/**
+ * Props for {@link SuperOmnidroidPage}.
+ */
 interface SuperOmnidroidPageProps {
+  /**
+   * Encounter data, representing a battle between a Super and an Omnidroid.
+   */
   encounterData: Encounter
+
+  /**
+   * Data object describing the Super involved in the encounter.
+   */
   superData: Super
+
+  /**
+   * Data object describing the Omnidroid involved in the encounter.
+   */
   omnidroidData: Omnidroid
 }
 
@@ -15,7 +29,13 @@ interface SuperOmnidroidPageProps {
  * @name SuperOmnidroidPage
  *
  * @description
- * Page rendered for Super and Omnidroid encounter.
+ * Renders the details of a specific encounter between a **Super** and an **Omnidroid**.
+ *
+ * @remarks
+ * Features:
+ * - Dynamically sets SEO metadata (`<title>`, `<meta>` tags, Open Graph).
+ * - Displays encounter details via {@link EncounterLayout}.
+ * - Provides navigation with {@link NavigationControls}.
  *
  * @author Giuseppe Del Campo
  */
@@ -40,6 +60,12 @@ const SuperOmnidroidPage: NextPage<SuperOmnidroidPageProps> = ({ encounterData, 
   )
 }
 
+/**
+ * Fetches encounter, super, and omnidroid data at request time
+ * based on dynamic route parameters (`superSlug` and `omnidroidSlug`).
+ *
+ * Returns `notFound: true` if no matching data is found.
+ */
 export const getServerSideProps: GetServerSideProps<SuperOmnidroidPageProps> = async (context) => {
   const { superSlug, omnidroidSlug } = context.params as {
     superSlug: string

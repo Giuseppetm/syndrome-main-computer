@@ -3,13 +3,44 @@ import { Box, Text, Link, BoxProps, IconButton } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
+const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box)
+
+/**
+ * Props for {@link AboutHint}.
+ */
 export interface AboutHintProps extends BoxProps {
+  /**
+   * Distance from the top of the viewport where the hint should appear.
+   * @default "20px"
+   */
   top?: string | number
+
+  /**
+   * URL to the creator’s profile.
+   * Defaults to Giuseppe Del Campo’s GitHub profile.
+   * @default "https://github.com/Giuseppetm"
+   */
   creatorProfileUrl?: string
 }
 
-const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box)
-
+/**
+ * @name AboutHint
+ *
+ * @description
+ * A dismissible overlay banner that appears at the top of the screen
+ * and provides information about the **Syndrome Main Computer** project.
+ *
+ * The banner:
+ * - Fades and slides in on mount, and fades/slides out on dismiss.
+ * - Automatically hides after 6 seconds unless hovered.
+ * - Can be dismissed immediately with the close button.
+ * - Displays project information and links to GitHub and the creator’s profile.
+ *
+ * @example
+ * ```tsx
+ * <AboutHint top="30px" creatorProfileUrl="https://twitter.com/myprofile" />
+ * ```
+ */
 const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl = 'https://github.com/Giuseppetm', ...props }) => {
   const [visible, setVisible] = useState(true)
   const [isHovering, setIsHovering] = useState(false)
