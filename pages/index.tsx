@@ -99,6 +99,7 @@ const AuthenticationPage = () => {
         <meta property="og:title" content="Authentication Required | Syndrome Main Computer" />
         <meta property="og:description" content="Secure login to access the Syndrome Main Computer system. Enter the password to continue." />
         <meta property="og:url" content={`${SITE_URL}`} />
+        <meta property="og:image" content={`/images/preview.png`} />
       </Head>
 
       {/* @ts-expect-error Motion doesn't understand chakra props. */}
