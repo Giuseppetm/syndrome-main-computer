@@ -17,7 +17,7 @@ export default function Document() {
         <meta name="author" content="Giuseppe Del Campo" />
 
         {/* Ads */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626937566773847" crossorigin="anonymous" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626937566773847" crossOrigin="anonymous" />
         <meta name="google-adsense-account" content="ca-pub-2626937566773847"></meta>
 
         {/* Preload all static images */}
