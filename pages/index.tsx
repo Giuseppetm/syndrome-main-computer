@@ -48,6 +48,9 @@ const AuthenticationPage = () => {
   const [password, setPassword] = useState('PASSWORD')
   const passwordInput = useRef<HTMLInputElement>(null)
 
+  const title = `"The Incredibles" - Syndrome Main Computer`
+  const description = `A faithful, modern-day web recreation of Syndrome’s iconic main computer (Kronos unveiled sequence), built with Next.js and React 19. This project brings to life the cinematic interface from The Incredibles with cutting-edge web technologies.`
+
   const SUBMIT_TIMEOUT = 300
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -91,16 +94,16 @@ const AuthenticationPage = () => {
   return (
     <>
       <NextSeo
-        title={`"The Incredibles" - Syndrome Main Computer`}
-        description={`"The Incredibles" – A faithful, modern-day web recreation of Syndrome’s iconic main computer (Kronos unveiled sequence), built with Next.js and React 19. This project brings to life the cinematic interface from The Incredibles with cutting-edge web technologies.`}
+        title={title}
+        description={description}
         openGraph={{
-          title: `"The Incredibles" - Syndrome Main Computer`,
-          description: `"The Incredibles" – A faithful, modern-day web recreation of Syndrome’s iconic main computer (Kronos unveiled sequence), built with Next.js and React 19. This project brings to life the cinematic interface from The Incredibles with cutting-edge web technologies.`,
+          title: title,
+          description: description,
           url: `${SITE_URL}`,
           images: [
             {
               url: '/images/seo/preview.png',
-              alt: `"The Incredibles" - Syndrome Main Computer`,
+              alt: title,
               width: 1239,
               height: 630,
             },
