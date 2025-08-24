@@ -8,7 +8,7 @@
 I am a big fan of *The Incredibles* movie (2004), and I've always been fascinated by the [user interface](https://www.youtube.com/watch?v=IRPI3lSACFc) Syndrome had on his computer in the giant room. I’ve been working in the last few days on the new version of my interactive project. The goal was to create an immersive, retro-futuristic console experience using modern web technologies, while staying faithful to the cinematic atmosphere.
 
 ## 🎦 Live Demo
-👉 [**LIVE PREVIEW**](https://syndromemaincomputer.netlify.app/)  
+👉 [**LIVE PREVIEW**](https://syndromemaincomputer.app/)  
 
 📺 I also made a YouTube video comparing the original movie sequence with this project:  
 https://www.youtube.com/watch?v=2-cToQpNnaU
