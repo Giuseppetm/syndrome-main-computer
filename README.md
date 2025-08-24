@@ -1,14 +1,12 @@
 # Syndrome Main Computer ("The Incredibles", Kronos Unveiled Sequence)
 
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)  [![Netlify Status](https://api.netlify.com/api/v1/badges/3564b000-f9d8-47ee-9c26-78ab0b0b5a7c/deploy-status)](https://app.netlify.com/sites/syndromemaincomputer/deploys)  [![GitHub issues](https://img.shields.io/github/issues/Giuseppetm/syndrome-main-computer)](https://github.com/Giuseppetm/syndrome-main-computer/issues)
-
 ![Preview](https://github.com/user-attachments/assets/f38cf82d-9b7b-42b3-b693-b6e83ea720f9)
 
 ## 📖 About the project
 I am a big fan of *The Incredibles* movie (2004), and I've always been fascinated by the [user interface](https://www.youtube.com/watch?v=IRPI3lSACFc) Syndrome had on his computer in the giant room. I’ve been working in the last few days on the new version of my interactive project. The goal was to create an immersive, retro-futuristic console experience using modern web technologies, while staying faithful to the cinematic atmosphere.
 
 ## 🎦 Live Demo
-👉 [**LIVE PREVIEW**](https://syndromemaincomputer.netlify.app/)  
+👉 [**LIVE PREVIEW**](https://syndromemaincomputer.app/)  
 
 📺 I also made a YouTube video comparing the original movie sequence with this project:  
 https://www.youtube.com/watch?v=2-cToQpNnaU
