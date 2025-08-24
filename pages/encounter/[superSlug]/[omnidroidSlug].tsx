@@ -6,6 +6,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import NavigationControls from '@/components/navigation-controls'
 import { SITE_URL } from '@/data/metadata'
 import { ROUTES } from '@/utils/routes'
+import { NextSeo } from 'next-seo'
 
 /**
  * Props for {@link SuperOmnidroidPage}.
@@ -47,14 +48,26 @@ const SuperOmnidroidPage: NextPage<SuperOmnidroidPageProps> = ({ encounterData, 
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={`/images/supers/${superData.img}`} />
-        <meta property="og:url" content={`${SITE_URL}${ROUTES.ENCOUNTER}/${superData.slug}/${omnidroidData.slug}`} />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title: title,
+          description: description,
+          url: `${SITE_URL}${ROUTES.ENCOUNTER}/${superData.slug}/${omnidroidData.slug}`,
+          images: [
+            {
+              url: `/images/supers/${superData.img}`,
+              alt: title,
+            },
+          ],
+        }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
+      />
 
       <EncounterLayout superData={superData} omnidroidData={omnidroidData} encounterData={encounterData} />
 

@@ -105,6 +105,11 @@ const AuthenticationPage = () => {
             },
           ],
         }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
       />
 
       {/* @ts-expect-error Motion doesn't understand chakra props. */}

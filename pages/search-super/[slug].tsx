@@ -64,6 +64,11 @@ const SuperResultPage = ({ superData }: SuperResultPageProps) => {
             },
           ],
         }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
       />
 
       <SearchResultLayout superData={superData} />

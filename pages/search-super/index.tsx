@@ -99,6 +99,11 @@ const SearchSuperPage = () => {
             },
           ],
         }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
       />
 
       <VStack {...styles.container}>
