@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Box, Button, Heading, Text, Link, HStack, VStack } from '@chakra-ui/react'
-import { Coffee } from 'lucide-react'
+import { Box, Button, Heading, Text, Link, HStack, VStack, IconButton } from '@chakra-ui/react'
+import { Coffee, X } from 'lucide-react'
 
 const DonationPopup = () => {
   const [visible, setVisible] = useState(false)
   const BMC_URL = 'https://buymeacoffee.com/giuseppetm'
-  const hideTimeout = 30000
+  const hideTimeout = 15000
 
   useEffect(() => {
     setVisible(true)
@@ -31,6 +31,19 @@ const DonationPopup = () => {
       zIndex={1400}
       fontFamily="sans-serif"
     >
+      <IconButton
+        aria-label="Close"
+        size="sm"
+        variant="plain"
+        color="black"
+        position="absolute"
+        top="6px"
+        right="6px"
+        onClick={() => setVisible(false)}
+      >
+        <X />
+      </IconButton>
+
       <VStack align="stretch" gap={4}>
         <HStack gap={3} align="start">
           <Coffee size={40} />
