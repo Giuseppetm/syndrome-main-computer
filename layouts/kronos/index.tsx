@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Box, BoxProps, Center, Spinner } from '@chakra-ui/react'
 import PortraitOrientationOverlay from '@/components/portrait-orientation'
 import AboutHint from '@/components/about-hint'
+import DonationPopup from '@/components/donation-hint'
 
 interface KronosLayoutProps extends BoxProps {
   /**
@@ -122,6 +123,8 @@ const KronosLayout = ({
       </Box>
 
       <AboutHint />
+
+      <DonationPopup />
 
       <PortraitOrientationOverlay isVisible={isPortrait} onClose={() => setIsPortrait(false)} />
     </Box>

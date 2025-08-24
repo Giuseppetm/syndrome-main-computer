@@ -2,7 +2,7 @@ import { RotateSmartphoneIcon } from '@/assets/icons'
 import { Box, Icon, IconButton, Text, VStack } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface PortraitOrientationOverlayProps {
   /** Visibility status. */
@@ -32,17 +32,28 @@ const PortraitOrientationOverlay = ({
   const [showOverlay, setShowOverlay] = useState(false)
   const hasBeenSeenRef = useRef(false)
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     hasBeenSeenRef.current = true
     setShowOverlay(false)
     onClose?.()
-  }
+  }, [onClose])
 
   useEffect(() => {
     if (!hasBeenSeenRef.current && isVisible) {
       setShowOverlay(true)
     }
   }, [isVisible])
+
+  // Automtically closes after 2.5 seconds
+  useEffect(() => {
+    let timer: NodeJS.Timeout
+    if (showOverlay) {
+      timer = setTimeout(() => {
+        handleClose()
+      }, 2500)
+    }
+    return () => clearTimeout(timer)
+  }, [showOverlay, handleClose])
 
   return (
     <AnimatePresence>

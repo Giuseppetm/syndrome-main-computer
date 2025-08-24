@@ -46,7 +46,7 @@ const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl =
   const [isHovering, setIsHovering] = useState(false)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
-  const HIDE_TIMEOUT = 6000
+  const HIDE_TIMEOUT = 10000
 
   useEffect(() => {
     if (!isHovering && visible) {
