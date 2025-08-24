@@ -6,7 +6,6 @@ import { SuperResult } from '@/types'
 import { ROUTES } from '@/utils/routes'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
-import Head from 'next/head'
 
 interface SuperResultPageProps {
   superData: SuperResult | null

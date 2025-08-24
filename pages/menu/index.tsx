@@ -1,5 +1,4 @@
 import MenuLayout from '../../layouts/menu'
-import Head from 'next/head'
 import { MenuItem } from '@/types'
 import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon } from '@/assets/icons'

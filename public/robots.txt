@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://syndromemaincomputer.app
+
+# Sitemaps
+Sitemap: https://syndromemaincomputer.app/sitemap.xml

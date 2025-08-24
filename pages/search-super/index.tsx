@@ -1,7 +1,6 @@
 import { BoxProps, Box, StackProps, useSlotRecipe, HStack, Text, TextProps, VStack } from '@chakra-ui/react'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import TerminalInput from '@/components/terminal-input'
-import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { encounters, supers, supersResult } from '@/data'

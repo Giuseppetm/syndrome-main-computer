@@ -3,7 +3,6 @@ import { getFirstEncounterRoute, ROUTES } from '@/utils/routes'
 import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { SearchIcon, SuperIcon } from '@/assets/icons'
 import MenuLayout from '../../layouts/menu'
-import Head from 'next/head'
 import { SITE_URL } from '@/data/metadata'
 import { NextSeo } from 'next-seo'
 

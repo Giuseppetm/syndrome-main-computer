@@ -1,6 +1,5 @@
 import { encounters, omnidroids, supers } from '@/data'
 import EncounterLayout from '@/layouts/encounter'
-import Head from 'next/head'
 import { Encounter, Omnidroid, Super } from '@/types'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import NavigationControls from '@/components/navigation-controls'
