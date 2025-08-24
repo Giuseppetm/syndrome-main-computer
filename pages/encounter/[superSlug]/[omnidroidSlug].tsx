@@ -2,7 +2,7 @@ import { encounters, omnidroids, supers } from '@/data'
 import EncounterLayout from '@/layouts/encounter'
 import Head from 'next/head'
 import { Encounter, Omnidroid, Super } from '@/types'
-import { GetServerSideProps, NextPage } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import NavigationControls from '@/components/navigation-controls'
 import { SITE_URL } from '@/data/metadata'
 import { ROUTES } from '@/utils/routes'
@@ -63,13 +63,27 @@ const SuperOmnidroidPage: NextPage<SuperOmnidroidPageProps> = ({ encounterData, 
   )
 }
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = encounters.map((encounter) => ({
+    params: {
+      superSlug: encounter.superSlug,
+      omnidroidSlug: encounter.omnidroidSlug,
+    },
+  }))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
 /**
- * Fetches encounter, super, and omnidroid data at request time
+ * Fetches encounter, super, and omnidroid data
  * based on dynamic route parameters (`superSlug` and `omnidroidSlug`).
  *
  * Returns `notFound: true` if no matching data is found.
  */
-export const getServerSideProps: GetServerSideProps<SuperOmnidroidPageProps> = async (context) => {
+export const getStaticProps: GetStaticProps<SuperOmnidroidPageProps> = async (context) => {
   const { superSlug, omnidroidSlug } = context.params as {
     superSlug: string
     omnidroidSlug: string
