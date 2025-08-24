@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en" suppressHydrationWarning>
       <Head>
-        <link rel="icon" href="/The-Incredibles-Logo.png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <meta property="og:type" content="website" />
         <meta name="author" content="Giuseppe Del Campo" />
 
