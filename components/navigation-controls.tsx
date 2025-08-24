@@ -23,7 +23,7 @@ export interface NavigationControlsProps extends BoxProps {
  *
  * @author Giuseppe Del Campo
  */
-const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 800, ...props }) => {
+const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 1000, ...props }) => {
   const router = useRouter()
 
   const { superSlug, omnidroidSlug, autoplay } = router.query as {
