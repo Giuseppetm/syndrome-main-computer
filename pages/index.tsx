@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { SITE_URL } from '@/data/metadata'
+import { NextSeo } from 'next-seo'
 
 const MotionVStack = motion(VStack)
 
@@ -90,17 +91,21 @@ const AuthenticationPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Authentication Required | Syndrome Main Computer</title>
-        <meta
-          name="description"
-          content="Access the Syndrome Main Computer system with your secure credentials. Authentication is required to proceed to the main menu."
-        />
-        <meta property="og:title" content="Authentication Required | Syndrome Main Computer" />
-        <meta property="og:description" content="Secure login to access the Syndrome Main Computer system. Enter the password to continue." />
-        <meta property="og:url" content={`${SITE_URL}`} />
-        <meta property="og:image" content={`/images/preview.png`} />
-      </Head>
+      <NextSeo
+        title={`"The Incredibles" - Syndrome Main Computer`}
+        description={`"The Incredibles" – A faithful, modern-day web recreation of Syndrome’s iconic main computer (Kronos unveiled sequence), built with Next.js and React 19. This project brings to life the cinematic interface from The Incredibles with cutting-edge web technologies.`}
+        openGraph={{
+          title: `"The Incredibles" - Syndrome Main Computer`,
+          description: `"The Incredibles" – A faithful, modern-day web recreation of Syndrome’s iconic main computer (Kronos unveiled sequence), built with Next.js and React 19. This project brings to life the cinematic interface from The Incredibles with cutting-edge web technologies.`,
+          url: `${SITE_URL}`,
+          images: [
+            {
+              url: '/images/preview.png',
+              alt: `"The Incredibles" - Syndrome Main Computer`,
+            },
+          ],
+        }}
+      />
 
       {/* @ts-expect-error Motion doesn't understand chakra props. */}
       <MotionVStack

@@ -5,6 +5,7 @@ import { SearchIcon, SuperIcon } from '@/assets/icons'
 import MenuLayout from '../../layouts/menu'
 import Head from 'next/head'
 import { SITE_URL } from '@/data/metadata'
+import { NextSeo } from 'next-seo'
 
 /**
  * @name MenuSupersPage
@@ -27,6 +28,9 @@ import { SITE_URL } from '@/data/metadata'
 const MenuSupersPage = () => {
   const styles = useSlotRecipe({ key: 'menuPage' })({}) as Record<string, BoxProps & StackProps>
 
+  const title = 'Supers Management Menu | Syndrome Main Computer'
+  const description = "Access the central control menu of Syndrome's main computer. Navigate to Supers management and Super search control."
+
   const superMenuItems: Array<MenuItem> = [
     {
       label: 'Supers List',
@@ -42,19 +46,21 @@ const MenuSupersPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Supers Management Menu | Syndrome Main Computer</title>
-        <meta
-          name="description"
-          content="Access the central control menu of Syndrome's main computer. Navigate to Supers management and Super search control."
-        />
-        <meta property="og:title" content="Supers Management Menu | Syndrome Main Computer" />
-        <meta
-          property="og:description"
-          content="Access the central control menu of Syndrome's main computer. Navigate to Supers management and Super search control."
-        />
-        <meta property="og:url" content={`${SITE_URL}${ROUTES.MENU_SUPERS}`} />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title: title,
+          description: description,
+          url: `${SITE_URL}${ROUTES.MENU_SUPERS}`,
+          images: [
+            {
+              url: `/images/kronos/omnidroid_v10.png`,
+              alt: title,
+            },
+          ],
+        }}
+      />
 
       <VStack {...styles.container}>
         <MenuLayout items={superMenuItems} page={'menu-supers'} />

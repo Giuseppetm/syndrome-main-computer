@@ -8,6 +8,7 @@ import { encounters, supers, supersResult } from '@/data'
 import { ROUTES } from '@/utils/routes'
 import ControlsHint from '@/components/controls-hint'
 import { SITE_URL } from '@/data/metadata'
+import { NextSeo } from 'next-seo'
 
 const MotionBox = motion(Box)
 const MotionHStack = motion(HStack)
@@ -84,13 +85,21 @@ const SearchSuperPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Search Super | Syndrome Main Computer</title>
-        <meta name="description" content={description} />
-        <meta property="og:url" content={`${SITE_URL}${ROUTES.SEARCH_SUPER}`} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title: title,
+          description: description,
+          url: `${SITE_URL}${ROUTES.SEARCH_SUPER}`,
+          images: [
+            {
+              url: '/images/search-results/frozone.png',
+              alt: title,
+            },
+          ],
+        }}
+      />
 
       <VStack {...styles.container}>
         {/* Horizontal lines */}

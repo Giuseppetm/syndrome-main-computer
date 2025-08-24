@@ -5,6 +5,7 @@ import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon } from '@/assets/icons'
 import { SITE_URL } from '@/data/metadata'
 import { ROUTES } from '@/utils/routes'
+import { NextSeo } from 'next-seo'
 
 /**
  * @name MenuPage
@@ -24,6 +25,9 @@ import { ROUTES } from '@/utils/routes'
  */
 const MenuPage = () => {
   const styles = useSlotRecipe({ key: 'menuPage' })({}) as Record<string, BoxProps & StackProps>
+
+  const title = `Main Menu | Syndrome Main Computer`
+  const description = `Access the central control menu of Syndrome's main computer. Navigate to Island Operations, Finances, Omnidroid Metatraining, and Supers management.`
 
   /**
    * Main menu configuration.
@@ -57,19 +61,21 @@ const MenuPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Main Menu | Syndrome Main Computer</title>
-        <meta
-          name="description"
-          content="Access the central control menu of Syndrome's main computer. Navigate to Island Operations, Finances, Omnidroid Metatraining, and Supers management."
-        />
-        <meta property="og:title" content="Main Menu | Syndrome Main Computer" />
-        <meta
-          property="og:description"
-          content="Navigate through Syndrome's central computer. Manage island operations, finances, Omnidroid systems, and Supers data."
-        />
-        <meta property="og:url" content={`${SITE_URL}${ROUTES.MENU}`} />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title: title,
+          description: description,
+          url: `${SITE_URL}${ROUTES.MENU}`,
+          images: [
+            {
+              url: `/images/kronos/omnidroid_v10.png`,
+              alt: title,
+            },
+          ],
+        }}
+      />
 
       <VStack {...styles.container}>
         <MenuLayout items={menuItems} page={'menu'} />

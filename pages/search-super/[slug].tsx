@@ -5,6 +5,7 @@ import SearchResultLayout from '@/layouts/search-result'
 import { SuperResult } from '@/types'
 import { ROUTES } from '@/utils/routes'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { NextSeo } from 'next-seo'
 import Head from 'next/head'
 
 interface SuperResultPageProps {
@@ -49,14 +50,21 @@ const SuperResultPage = ({ superData }: SuperResultPageProps) => {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={`/images/search-results/${superData.img}`} />
-        <meta property="og:url" content={`${SITE_URL}${ROUTES.SEARCH_SUPER}/${superData.slug}`} />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title: title,
+          description: description,
+          url: `${SITE_URL}${ROUTES.SEARCH_SUPER}/${superData.slug}`,
+          images: [
+            {
+              url: `/images/search-results/${superData.img}`,
+              alt: title,
+            },
+          ],
+        }}
+      />
 
       <SearchResultLayout superData={superData} />
 
