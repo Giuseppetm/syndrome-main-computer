@@ -1,1 +1,1 @@
-export const SITE_URL = 'https://syndromemaincomputer.netlify.app'
+export const SITE_URL = 'https://syndromemaincomputer.app'
