@@ -102,6 +102,8 @@ const AuthenticationPage = () => {
             {
               url: '/images/preview.png',
               alt: `"The Incredibles" - Syndrome Main Computer`,
+              width: 1200,
+              height: 610,
             },
           ],
         }}
