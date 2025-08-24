@@ -1,7 +1,5 @@
 # Syndrome Main Computer ("The Incredibles", Kronos Unveiled Sequence)
 
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![GitHub issues](https://img.shields.io/github/issues/Giuseppetm/syndrome-main-computer)](https://github.com/Giuseppetm/syndrome-main-computer/issues)
-
 ![Preview](https://github.com/user-attachments/assets/f38cf82d-9b7b-42b3-b693-b6e83ea720f9)
 
 ## 📖 About the project
