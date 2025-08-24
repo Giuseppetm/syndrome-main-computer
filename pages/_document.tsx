@@ -18,7 +18,7 @@ export default function Document() {
 
         {/* Ads */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626937566773847" crossOrigin="anonymous" />
-        <meta name="google-adsense-account" content="ca-pub-2626937566773847"></meta>
+        <meta name="google-adsense-account" content="ca-pub-2626937566773847" />
 
         {/* Preload all static images */}
         {preloadImages.map((src) => (
