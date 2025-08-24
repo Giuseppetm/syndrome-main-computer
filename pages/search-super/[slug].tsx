@@ -90,6 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: { superData },
+    revalidate: 2592000,
   }
 }
 

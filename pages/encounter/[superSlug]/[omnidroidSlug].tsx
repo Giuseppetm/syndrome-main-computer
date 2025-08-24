@@ -115,6 +115,7 @@ export const getStaticProps: GetStaticProps<SuperOmnidroidPageProps> = async (co
       superData,
       omnidroidData,
     },
+    revalidate: 2592000,
   }
 }
 
