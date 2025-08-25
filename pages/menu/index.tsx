@@ -1,7 +1,5 @@
 import MenuLayout from '../../layouts/menu'
-import { MenuItem } from '@/types'
 import { BoxProps, StackProps, useSlotRecipe, VStack } from '@chakra-ui/react'
-import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon } from '@/assets/icons'
 import { SITE_URL } from '@/data/metadata'
 import { ROUTES } from '@/utils/routes'
 import { NextSeo } from 'next-seo'
@@ -11,11 +9,16 @@ import { NextSeo } from 'next-seo'
  *
  * @description
  * Main navigation page of the **Syndrome Main Computer** interface.
+ *
  * Provides entry points to key system modules such as:
  * - **Island Operations**
  * - **Finances**
  * - **Omnidroid Metatraining**
- * - **Supers Database**
+ * - **Supers Database** (navigates into Supers submenu)
+ *
+ * Supers-specific navigation provides access to:
+ * - The complete **Supers List** (starting from the first available encounter).
+ * - The **Search Super** tool for manually querying specific Supers.
  *
  * @remarks
  * Delegates menu rendering to {@link MenuLayout}.
@@ -27,36 +30,6 @@ const MenuPage = () => {
 
   const title = `Main Menu | Syndrome Main Computer`
   const description = `Access the central control menu of Syndrome's main computer. Navigate to Island Operations, Finances, Omnidroid Metatraining, and Supers management.`
-
-  /**
-   * Main menu configuration.
-   * Each item contains:
-   * - `label`: Display text
-   * - `icon`: Visual representation
-   * - `href`: Navigation path
-   */
-  const menuItems: Array<MenuItem> = [
-    {
-      label: 'Island Operations',
-      icon: <MountainIcon boxSize={14} color="black" />,
-      href: '/island-operations',
-    },
-    {
-      label: 'Finances',
-      icon: <DollarIcon boxSize={14} color="black" />,
-      href: '',
-    },
-    {
-      label: 'Omnidroid Metatraining',
-      icon: <OmnidroidIcon boxSize={14} color="black" />,
-      href: '',
-    },
-    {
-      label: 'Supers',
-      icon: <SuperIcon boxSize={14} color="black" />,
-      href: '/menu/supers',
-    },
-  ]
 
   return (
     <>
@@ -82,7 +55,7 @@ const MenuPage = () => {
       />
 
       <VStack {...styles.container}>
-        <MenuLayout items={menuItems} page={'menu'} />
+        <MenuLayout />
       </VStack>
     </>
   )

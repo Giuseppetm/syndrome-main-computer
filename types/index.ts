@@ -4,6 +4,7 @@ export type MenuItem = {
   label: string
   icon: ReactElement
   href: string
+  onClick?: () => void
 }
 
 export interface Super {

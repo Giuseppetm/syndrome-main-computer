@@ -20,6 +20,11 @@ interface MenuItemProps {
    * Optional callback triggered when the user hovers over the menu item.
    */
   onMouseEnter?: MouseEventHandler<HTMLDivElement>
+
+  /**
+   * Optional callback triggered when the user clicks the menu item.
+   */
+  onClick?: () => void
 }
 
 /**
@@ -53,7 +58,7 @@ interface MenuItemProps {
  * @author
  * Giuseppe Del Campo
  */
-const MenuItemComponent = ({ item, isActive, onMouseEnter }: MenuItemProps) => {
+const MenuItemComponent = ({ item, isActive, onMouseEnter, onClick }: MenuItemProps) => {
   const styles = useSlotRecipe({ key: 'menuItemComponent' })({
     state: isActive ? 'active' : 'inactive',
   }) as Record<string, BoxProps & TextProps & LinkProps>
@@ -61,12 +66,13 @@ const MenuItemComponent = ({ item, isActive, onMouseEnter }: MenuItemProps) => {
   return (
     <HStack
       {...styles.wrapper}
-      as={item.href !== '' ? Link : HStack}
+      as={item.href !== '' ? Link : 'button'}
       gap={0}
       // @ts-expect-error HStack is used as Link here
       href={item.href}
       onMouseEnter={onMouseEnter}
-      cursor={item.href === '' ? 'disabled' : 'pointer'}
+      onClick={onClick}
+      cursor={item.href === '' && item.onClick === undefined ? 'disabled' : 'pointer'}
     >
       <Box {...styles.iconWrapper}>{item.icon}</Box>
       <Text {...styles.label}>{item.label}</Text>

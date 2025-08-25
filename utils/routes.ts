@@ -3,7 +3,6 @@ import { encounters } from '@/data'
 export enum ROUTES {
   AUTHENTICATION = '/',
   MENU = '/menu',
-  MENU_SUPERS = '/menu/supers',
   ENCOUNTER = '/encounter',
   SEARCH_SUPER = '/search-super',
   SUPER_RESULT = '/super-result',

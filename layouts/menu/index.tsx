@@ -1,32 +1,17 @@
 import { MenuItem } from '@/types'
-import { ROUTES } from '@/utils/routes'
+import { getFirstEncounterRoute, ROUTES } from '@/utils/routes'
 import { Box, BoxProps, HStack, Stack, StackProps, useSlotRecipe } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon, SearchIcon } from '@/assets/icons'
+import { motion } from 'framer-motion'
 import MenuItemComponent from '@/layouts/menu/partials/menu-item'
 import ControlsHint from '@/components/controls-hint'
-import { motion } from 'framer-motion'
+import { ArrowLeft } from 'lucide-react'
 
 const MotionHStack = motion(HStack)
 const MotionBox = motion(Box)
 const MotionStack = motion(Stack)
-
-interface MenuLayoutProps extends StackProps {
-  /**
-   * Array of menu items to render.
-   * Each item should implement the {@link MenuItem} interface.
-   */
-  items: Array<MenuItem>
-
-  /**
-   * Defines the context in which the menu is used.
-   * - `'menu'`: main menu
-   * - `'menu-supers'`: submenu for supers
-   *
-   * This value affects navigation behavior, e.g. what happens on `Escape`.
-   */
-  page: 'menu' | 'menu-supers'
-}
 
 /**
  * @name MenuLayout
@@ -53,11 +38,57 @@ interface MenuLayoutProps extends StackProps {
  * />
  * ```
  */
-const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
+const MenuLayout = ({ ...props }) => {
   const styles = useSlotRecipe({ key: 'menuLayout' })({}) as Record<string, StackProps & BoxProps>
   const router = useRouter()
 
+  const [activeMenu, setActiveMenu] = useState<'main' | 'supers'>('main')
   const [navItem, setNavItem] = useState<number | null>()
+
+  const mainMenuItems: Array<MenuItem> = [
+    {
+      label: 'Island Operations',
+      icon: <MountainIcon boxSize={14} color="black" />,
+      href: '/island-operations',
+    },
+    {
+      label: 'Finances',
+      icon: <DollarIcon boxSize={14} color="black" />,
+      href: '',
+    },
+    {
+      label: 'Omnidroid Metatraining',
+      icon: <OmnidroidIcon boxSize={14} color="black" />,
+      href: '',
+    },
+    {
+      label: 'Supers',
+      icon: <SuperIcon boxSize={14} color="black" />,
+      href: '',
+      onClick: () => setActiveMenu('supers'),
+    },
+  ]
+
+  const superMenuItems: Array<MenuItem> = [
+    {
+      label: 'Supers List',
+      icon: <SuperIcon boxSize={14} color="black" />,
+      href: getFirstEncounterRoute(),
+    },
+    {
+      label: 'Search Super',
+      icon: <SearchIcon color="black" />,
+      href: '/search-super',
+    },
+    {
+      label: 'Back to Main Menu',
+      icon: <ArrowLeft size={47} color="black" />,
+      href: '',
+      onClick: () => setActiveMenu('main'),
+    },
+  ]
+
+  const items = activeMenu === 'main' ? mainMenuItems : superMenuItems
 
   const itemsCount = items.length
   const FIRST_SELECTION_DELAY = itemsCount * 200
@@ -71,7 +102,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
     }, FIRST_SELECTION_DELAY)
 
     return () => clearTimeout(timer)
-  }, [items, FIRST_SELECTION_DELAY])
+  }, [FIRST_SELECTION_DELAY])
 
   /**
    * Keyboard navigation handler.
@@ -101,14 +132,16 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
             const currentItem = items[navItem ?? 0]
             if (currentItem && currentItem.href) {
               router.push(currentItem.href)
+            } else if (currentItem && currentItem.onClick) {
+              currentItem.onClick()
             }
           }
           break
         case 'Escape':
-          if (page === 'menu') {
+          if (activeMenu === 'main') {
             router.push(ROUTES.AUTHENTICATION)
-          } else if (page === 'menu-supers') {
-            router.push(ROUTES.MENU)
+          } else if (activeMenu === 'supers') {
+            setActiveMenu('main')
           }
           break
         default:
@@ -118,14 +151,14 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
 
     window.addEventListener('keyup', handler)
     return () => window.removeEventListener('keyup', handler)
-  }, [navItem, itemsCount, router, items, page])
+  }, [navItem, itemsCount, router, activeMenu, items])
 
   return (
     <>
       {/* @ts-expect-error Motion doesn't understand chakra props. */}
       <MotionBox
         {...styles.lateralLines}
-        left={page === 'menu' ? '402px' : '584px'}
+        left={activeMenu === 'main' ? '402px' : '493px'}
         h="100%"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
@@ -140,6 +173,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
         animate={{ scaleY: 1 }}
         transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
         style={{ transformOrigin: 'center' }}
+        key={activeMenu}
       >
         {/* @ts-expect-error Motion doesn't understand chakra props. */}
         <MotionStack
@@ -170,7 +204,7 @@ const MenuLayout = ({ items, page, ...props }: MenuLayoutProps) => {
                 },
               }}
             >
-              <MenuItemComponent item={item} isActive={index === navItem} onMouseEnter={() => setNavItem(index)} />
+              <MenuItemComponent item={item} isActive={index === navItem} onMouseEnter={() => setNavItem(index)} onClick={item.onClick} />
             </motion.div>
           ))}
         </MotionStack>

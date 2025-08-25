@@ -17,6 +17,7 @@ export const menuItemComponentRecipe = defineSlotRecipe({
     },
     iconWrapper: {
       px: '16',
+      maxWidth: '178px',
     },
   },
   variants: {

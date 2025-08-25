@@ -37,7 +37,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
   const currentIndex = encounters.findIndex((e) => e.superSlug === superSlug && e.omnidroidSlug === omnidroidSlug)
 
   const goBackToMenu = useCallback(() => {
-    router.push(ROUTES.MENU_SUPERS)
+    router.push(ROUTES.MENU)
   }, [router])
 
   const goToIndex = useCallback(
