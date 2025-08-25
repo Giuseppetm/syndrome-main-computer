@@ -16,10 +16,6 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta name="author" content="Giuseppe Del Campo" />
 
-        {/* Ads */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2626937566773847" crossOrigin="anonymous" />
-        <meta name="google-adsense-account" content="ca-pub-2626937566773847" />
-
         {/* Preload all static images */}
         {preloadImages.map((src) => (
           <link key={src} rel="preload" as="image" href={src} />
