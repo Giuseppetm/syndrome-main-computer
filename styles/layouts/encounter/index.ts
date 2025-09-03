@@ -1,7 +1,6 @@
 import { defineSlotRecipe } from '@chakra-ui/react'
-import { encounterFrameComponentRecipe } from './partials/frame'
 
-const encounterLayoutRecipeBase = defineSlotRecipe({
+const encounterLayoutRecipe = defineSlotRecipe({
   slots: ['grid'],
   base: {
     grid: {
@@ -12,10 +11,5 @@ const encounterLayoutRecipeBase = defineSlotRecipe({
     },
   },
 })
-
-const encounterLayoutRecipe = {
-  ...encounterLayoutRecipeBase,
-  ...encounterFrameComponentRecipe,
-}
 
 export { encounterLayoutRecipe }
