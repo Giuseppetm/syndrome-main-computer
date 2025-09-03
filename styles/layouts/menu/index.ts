@@ -4,7 +4,7 @@ export const menuLayoutRecipe = defineSlotRecipe({
   slots: ['wrapper', 'navigator', 'lateralLines'],
   base: {
     wrapper: {
-      bg: '{colors.background.secondary}',
+      bg: '{colors.background.gradientSecondary}',
       w: 'full',
       justifyContent: 'center',
     },

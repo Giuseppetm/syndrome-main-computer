@@ -11,7 +11,7 @@ export const authenticationPageRecipe = defineSlotRecipe({
       color: 'bodyText',
     },
     terminalPasswordWrapper: {
-      bg: '{colors.background.secondary}',
+      bg: '{colors.background.gradientSecondary}',
       w: 'full',
     },
   },

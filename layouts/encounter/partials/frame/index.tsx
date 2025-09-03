@@ -1,6 +1,7 @@
 import AnimatedImage from '@/components/animated-image'
 import { AspectRatio, Box, HStack, StackProps, Text, TextProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import React from 'react'
 
 const MotionText = motion(Text)
 const MotionVStack = motion(VStack)
@@ -81,7 +82,7 @@ interface EncounterFrameProps {
  * @author
  * Giuseppe Del Campo
  */
-const EncounterFrame = ({ type, threatRating, isTerminated, name, description, image }: EncounterFrameProps) => {
+const EncounterFrame: React.FC<EncounterFrameProps> = ({ type, threatRating, isTerminated, name, description, image }) => {
   const styles = useSlotRecipe({ key: 'encounterFrameComponent' })({}) as Record<string, StackProps & TextProps>
 
   const imageFolder = type === 'super' ? 'supers' : 'omnidroids'

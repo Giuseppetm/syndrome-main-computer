@@ -1,0 +1,81 @@
+import { defineSlotRecipe } from '@chakra-ui/react'
+
+export const kronosHeaderComponentRecipe = defineSlotRecipe({
+  slots: [
+    'omnidroidLabel',
+    'finalDesignLabel',
+    'versionLabel',
+    'versionNumber',
+    'phaseNumberLabel',
+    'phaseDescriptionContainer',
+    'phaseLabel',
+    'phaseSteps',
+    'phaseStepLabel',
+  ],
+  base: {
+    omnidroidLabel: {
+      color: '{colors.text.black}',
+      textTransform: 'uppercase',
+      fontSize: '74px',
+      textStyle: 'bold',
+      lineHeight: 1,
+    },
+    finalDesignLabel: {
+      color: '{colors.text.black}',
+      textTransform: 'uppercase',
+      textStyle: 'bold',
+      fontSize: '28px',
+      lineHeight: 1,
+      letterSpacing: '31px',
+      ml: 1,
+    },
+    versionLabel: {
+      textStyle: 'bold',
+      fontSize: '72px',
+      color: '{colors.background.quaternary}',
+      lineHeight: 1,
+    },
+    versionNumber: {
+      textStyle: 'bold',
+      fontSize: '110px',
+      color: '{colors.background.quaternary}',
+      lineHeight: 1,
+      ml: '-9',
+      letterSpacing: '-12px',
+    },
+    phaseNumberLabel: {
+      color: '{colors.text.white}',
+      bg: '{colors.background.quaternary}',
+      textTransform: 'uppercase',
+      lineHeight: 1,
+      textStyle: 'bold',
+      fontSize: '84px',
+      px: 4,
+    },
+    phaseDescriptionContainer: {
+      border: `2px solid {colors.background.quaternary}`,
+      px: 5,
+      pt: 1,
+      pb: 2,
+      minWidth: '380px',
+    },
+    phaseLabel: {
+      color: '{colors.background.quaternary}',
+      textTransform: 'uppercase',
+      textStyle: 'bold',
+      lineHeight: 1,
+      letterSpacing: '3px',
+      fontSize: '16px',
+    },
+    phaseSteps: {
+      ml: 0.5,
+    },
+    phaseStepLabel: {
+      color: '{colors.background.quaternary}',
+      lineHeight: 1,
+      textTransform: 'uppercase',
+      fontSize: '11px',
+      letterSpacing: '2px',
+    },
+  },
+})

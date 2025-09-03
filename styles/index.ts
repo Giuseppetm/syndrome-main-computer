@@ -9,6 +9,10 @@ import { encounterFrameComponentRecipe } from './layouts/encounter/partials/fram
 import { islandOperationsPageRecipe } from './pages/island-operations'
 import { searchSuperPageRecipe } from './pages/search-super'
 import { searchResultLayoutRecipe } from './layouts/search-result'
+import { kronosLayoutRecipe } from './layouts/kronos'
+import { kronosControlsComponentRecipe } from './layouts/kronos/partials/controls'
+import { kronosHeaderComponentRecipe } from './layouts/kronos/partials/header'
+import { kronosContentComponentRecipe } from './layouts/kronos/partials/content'
 
 const system = createSystem(defaultConfig, {
   theme: {
@@ -18,6 +22,7 @@ const system = createSystem(defaultConfig, {
           black: { value: '#181818' },
           white: { value: '#A6A8A8' },
           red: { value: '#AE0F0D' },
+          secondaryRed: { value: '#BA3E37' },
         },
         background: {
           primary: { value: '#4D7676' },
@@ -25,6 +30,9 @@ const system = createSystem(defaultConfig, {
           tertiary: { value: '#5E706E' },
           quaternary: { value: '#364F50' },
           gradient: { value: 'radial-gradient(circle at center, #5f8f92 0%, #2f4f4f 100%)' },
+          gradientSecondary: {
+            value: 'radial-gradient(circle,rgba(139, 162, 159, 1) 0%, rgba(107, 126, 124, 1) 100%)',
+          },
         },
         spacing: {
           '1': { value: '4px' },
@@ -68,6 +76,7 @@ const system = createSystem(defaultConfig, {
       menuLayout: menuLayoutRecipe,
       encounterLayout: encounterLayoutRecipe,
       searchResultLayout: searchResultLayoutRecipe,
+      kronosLayout: kronosLayoutRecipe,
       // Pages
       authenticationPage: authenticationPageRecipe,
       menuPage: menuPageRecipe,
@@ -77,6 +86,9 @@ const system = createSystem(defaultConfig, {
       terminalInputComponent: terminalInputComponentRecipe,
       menuItemComponent: menuItemComponentRecipe,
       encounterFrameComponent: encounterFrameComponentRecipe,
+      kronosControlsComponent: kronosControlsComponentRecipe,
+      kronosHeaderComponent: kronosHeaderComponentRecipe,
+      kronosContentComponent: kronosContentComponentRecipe,
     },
   },
 })

@@ -42,7 +42,7 @@ const MenuPage = () => {
           url: `${SITE_URL}${ROUTES.MENU}`,
           images: [
             {
-              url: `/images/kronos/omnidroid_v10.png`,
+              url: `/images/seo/menu.png`,
               alt: title,
             },
           ],
