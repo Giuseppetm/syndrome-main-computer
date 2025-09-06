@@ -29,7 +29,7 @@ https://www.youtube.com/watch?v=2-cToQpNnaU
 | ![image](https://user-images.githubusercontent.com/52317197/183285812-e3ca04b4-5910-4e93-a205-a2e1802cf891.png)                     | <img width="2274" height="1276" alt="image" src="https://github.com/user-attachments/assets/d90b41b9-c458-4e56-94d3-70d31cbc0256" /> |
 | ![image](https://user-images.githubusercontent.com/52317197/183285822-b19b219d-2150-4602-ae2b-4493d1cf5905.png)                     | <img width="1450" height="812" alt="image" src="https://github.com/user-attachments/assets/4b15ba6b-eaa1-42c4-a424-0ab165db4f75" />  |
 | ![image](https://user-images.githubusercontent.com/52317197/183285831-9b332c47-6481-428f-84d6-19910f33e55d.png)                     | <img width="1407" height="791" alt="image" src="https://github.com/user-attachments/assets/bae12564-9d6f-4817-b3fd-47a4062bc34c" />  |
-| ![image](https://user-images.githubusercontent.com/52317197/183285839-488de04d-21e2-47a5-95a2-932441236c3d.png)                     | Rework is actually in progress.                      |
+| ![image](https://user-images.githubusercontent.com/52317197/183285839-488de04d-21e2-47a5-95a2-932441236c3d.png)                     | <img width="1363" height="766" alt="image" src="https://github.com/user-attachments/assets/4f702957-7b4c-4f3f-a694-4c65ba3afb06" />  |
 | ![image](https://user-images.githubusercontent.com/52317197/183285854-762ccc22-7d46-49a2-b308-61483377d223.png)                     | Rework is actually in progress.                      |
 
 ---
