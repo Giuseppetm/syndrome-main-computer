@@ -149,8 +149,8 @@ const MenuLayout = ({ ...props }) => {
       }
     }
 
-    window.addEventListener('keyup', handler)
-    return () => window.removeEventListener('keyup', handler)
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
   }, [navItem, itemsCount, router, activeMenu, items])
 
   return (

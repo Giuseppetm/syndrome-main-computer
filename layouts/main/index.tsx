@@ -69,7 +69,7 @@ const MainLayout = ({
   const [isReady, setIsReady] = useState(false)
   const [minimumDelayPassed, setMinimumDelayPassed] = useState(false)
 
-  const SPINNER_TIMEOUT = 1500
+  const SPINNER_TIMEOUT = 1000
 
   useEffect(() => {
     const handleResize = () => {
@@ -107,6 +107,7 @@ const MainLayout = ({
       )}
 
       <Box
+        key={!showSpinner ? 'content-ready' : 'loading'}
         position="absolute"
         top="50%"
         left="50%"
@@ -117,7 +118,7 @@ const MainLayout = ({
         bg="gray.900"
         boxShadow="lg"
         transition="opacity 0.5s ease"
-        opacity={1}
+        opacity={showSpinner ? 0 : 1}
       >
         {children}
       </Box>

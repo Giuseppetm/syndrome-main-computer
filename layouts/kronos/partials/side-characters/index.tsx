@@ -82,7 +82,7 @@ const SideCharacters: React.FC<SideCharactersProps> = ({ position, ...props }) =
    * Initializes left and right side characters.
    */
   useEffect(() => {
-    setLeftSideCharacters({ p1: generateDigits(150, true), p2: generateDigits(150, true) })
+    setLeftSideCharacters({ p1: generateDigits(150, true), p2: generateDigits(160, true) })
     const rightSideRes = []
 
     for (let i = 0; i < 17; i++) {

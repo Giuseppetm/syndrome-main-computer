@@ -6,6 +6,7 @@ import { Box, BoxProps, StackProps, Text, TextProps, useSlotRecipe } from '@chak
 import { motion } from 'framer-motion'
 
 const MotionBox = motion(Box)
+const MotionText = motion(Text)
 
 const fadeTextVariant = {
   hidden: { opacity: 0, filter: 'brightness(3)', color: '#ffffff' },
@@ -40,7 +41,9 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
 
   return (
     <Box {...styles.container}>
-      <KronosHeader step={step} />
+      <MotionBox key={step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: 'easeInOut' }}>
+        <KronosHeader step={step} />
+      </MotionBox>
 
       {step === KronosStep.IDLE && (
         <Box {...styles.idle}>
@@ -75,11 +78,113 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
         </Box>
       )}
 
-      {step === KronosStep.ACTIVATION && (
-        <Box {...styles.activation}>
-          <Image src={'/images/kronos/phase_3.png'} width={1200} height={500} alt={stepLabel[step]} />
-        </Box>
+      {step === KronosStep.LOADING && (
+        <MotionBox
+          key={step + KronosStep.LOADING}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+        >
+          <Box pos="absolute" top={420} left={500} zIndex={2}>
+            <Image src={'/images/kronos/small-omnidroid-upscale-v2.png'} width={230} height={100} alt={stepLabel[step] + ' - Small Omnidroid'} />
+          </Box>
+
+          <Box pos="absolute" top={245} left={880} zIndex={2}>
+            <Image src={'/images/kronos/ship-v2.png'} width={430} height={100} alt={stepLabel[step] + ' - Ship'} />
+          </Box>
+
+          <MotionText
+            pos="absolute"
+            top={290}
+            left={570}
+            textTransform="uppercase"
+            color="{colors.background.quaternary}"
+            fontSize="14px"
+            letterSpacing="1px"
+            key={step + KronosStep.LOADING}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            Omnidroid
+          </MotionText>
+
+          <MotionText
+            pos="absolute"
+            top={290}
+            left={1200}
+            textTransform="uppercase"
+            color="{colors.background.quaternary}"
+            fontSize="14px"
+            letterSpacing="1px"
+            key={step + KronosStep.LOADING}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            Omnidroid
+            <br />
+            Slider
+          </MotionText>
+
+          <MotionText
+            pos="absolute"
+            top={640}
+            left={1205}
+            textTransform="uppercase"
+            color="{colors.background.quaternary}"
+            fontSize="14px"
+            letterSpacing="1px"
+            key={step + KronosStep.LOADING}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            Delivery
+            <br />
+            Vehicle
+          </MotionText>
+
+          <MotionBox
+            pos="absolute"
+            top={420}
+            left={616}
+            initial={{ width: 0 }}
+            animate={{ width: 530 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeInOut' }}
+            height="108px"
+            bg="{colors.text.white}"
+            zIndex={1}
+          />
+
+          <MotionBox
+            pos="absolute"
+            top={415}
+            left={1021}
+            zIndex={3}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{
+              duration: 0.2,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: 0.7,
+            }}
+            w={115}
+            h={115}
+            bg="{colors.text.white}"
+            borderRadius="full"
+          />
+        </MotionBox>
       )}
+
+      {step === KronosStep.DELIVERY && <></>}
+
+      {step === KronosStep.ACTIVATION && <></>}
     </Box>
   )
 }
