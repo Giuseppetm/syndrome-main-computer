@@ -18,7 +18,7 @@ const AnimatedLabel: React.FC<AnimatedLabelProps> = ({ top, left, text, delay = 
       top={top}
       left={left}
       textTransform="uppercase"
-      color="colors.background.quaternary"
+      color="{colors.background.quaternary}"
       fontSize="14px"
       letterSpacing="1px"
       initial={{ opacity: 0 }}

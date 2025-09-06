@@ -93,6 +93,7 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
           <AnimatedLabel top={290} left={1200} text={['Omnidroid', 'Slider']} />
           <AnimatedLabel top={640} left={1205} text={['Delivery', 'Vehicle']} />
 
+          {/* Animated Line */}
           <MotionBox
             pos="absolute"
             top={420}
@@ -105,6 +106,7 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
             zIndex={1}
           />
 
+          {/* Blinking Circle */}
           <MotionBox
             pos="absolute"
             top={415}
@@ -128,7 +130,11 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
 
       {step === KronosStep.DELIVERY && <KronosStep2 />}
 
-      {step === KronosStep.ACTIVATION && <></>}
+      {step === KronosStep.ACTIVATION && (
+        <Box pt={48}>
+          <Image src={'/images/kronos/phase-3.png'} width={1200} height={600} alt={stepLabel[step]} />
+        </Box>
+      )}
     </Box>
   )
 }
