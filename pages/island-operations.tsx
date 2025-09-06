@@ -31,6 +31,8 @@ const IslandOperationsPage = () => {
             {
               url: '/images/seo/kronos.png',
               alt: title,
+              width: 1239,
+              height: 630,
             },
           ],
         }}
