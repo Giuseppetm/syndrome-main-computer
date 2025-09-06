@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { KronosStep, stepLabel } from '../..'
+import { KronosStep } from '../..'
 import { HStack, Stack, Text, Flex, useSlotRecipe, StackProps, TextProps, Box } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 
