@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Box, Text, Link, BoxProps, IconButton } from '@chakra-ui/react'
+import { Box, Text, Link, BoxProps, IconButton, HStack } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import { Info, X } from 'lucide-react'
 
 const MotionBox = motion<Omit<BoxProps, 'transition'>>(Box)
 
@@ -14,13 +14,6 @@ export interface AboutHintProps extends BoxProps {
    * @default "20px"
    */
   top?: string | number
-
-  /**
-   * URL to the creator’s profile.
-   * Defaults to Giuseppe Del Campo’s GitHub profile.
-   * @default "https://github.com/Giuseppetm"
-   */
-  creatorProfileUrl?: string
 }
 
 /**
@@ -34,19 +27,19 @@ export interface AboutHintProps extends BoxProps {
  * - Fades and slides in on mount, and fades/slides out on dismiss.
  * - Automatically hides after 6 seconds unless hovered.
  * - Can be dismissed immediately with the close button.
- * - Displays project information and links to GitHub and the creator’s profile.
+ * - Displays project information.
  *
  * @example
  * ```tsx
  * <AboutHint top="30px" creatorProfileUrl="https://twitter.com/myprofile" />
  * ```
  */
-const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl = 'https://github.com/Giuseppetm', ...props }) => {
+const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', ...props }) => {
   const [visible, setVisible] = useState(true)
   const [isHovering, setIsHovering] = useState(false)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
-  const HIDE_TIMEOUT = 10000
+  const HIDE_TIMEOUT = 3000
 
   useEffect(() => {
     if (!isHovering && visible) {
@@ -68,13 +61,14 @@ const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl =
           insetX={0}
           mx="auto"
           zIndex={999}
-          bg="#4D7676"
-          px={10}
-          py={4}
-          rounded="lg"
-          shadow="lg"
-          textAlign="center"
-          maxW="600px"
+          bg="white"
+          borderWidth="1px"
+          borderColor="gray.200"
+          shadow="xl"
+          rounded="2xl"
+          p={6}
+          w={{ base: '90%', sm: '500px' }}
+          textAlign="left"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
@@ -85,29 +79,27 @@ const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', creatorProfileUrl =
           fontFamily={'sans-serif'}
           {...props}
         >
-          <IconButton aria-label="Close" size="sm" variant="plain" color="white" position="absolute" top="6px" right="6px" onClick={handleClose}>
+          <IconButton aria-label="Close" size="sm" variant="plain" color="black" position="absolute" top="6px" right="6px" onClick={handleClose}>
             <X />
           </IconButton>
 
-          <Text fontSize="md" mb={2}>
-            <b>Syndrome Main Computer</b> is a faithful recreation of Syndrome’s computer interface from <i>The Incredibles</i> (2004), built as a
-            modern web app with React, Next.js and Chakra UI.{' '}
-            <Link
-              href="https://github.com/Giuseppetm/syndrome-main-computer"
-              color="white"
-              target="_blank"
-              fontWeight="semibold"
-              _hover={{ color: '#A6A8A8' }}
-            >
-              View on GitHub
-            </Link>
-          </Text>
-          <Text fontSize="sm">
-            Created by{' '}
-            <Link href={creatorProfileUrl} color="#851f1d" target="_blank" fontWeight="bold" _hover={{ color: '#af1d1d' }}>
-              Giuseppe Del Campo
-            </Link>
-          </Text>
+          <HStack gap={3} align="start">
+            <Info size={40} />
+
+            <Text fontSize="sm">
+              <b>Syndrome Main Computer</b> is a faithful recreation of Syndrome’s computer interface from <i>The Incredibles</i> (2004), built as a
+              modern web app with React, Next.js and Chakra UI.{' '}
+              <Link
+                href="https://github.com/Giuseppetm/syndrome-main-computer"
+                color="white"
+                target="_blank"
+                fontWeight="semibold"
+                _hover={{ color: '#A6A8A8' }}
+              >
+                View on GitHub
+              </Link>
+            </Text>
+          </HStack>
         </MotionBox>
       )}
     </AnimatePresence>
