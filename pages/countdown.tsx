@@ -10,8 +10,7 @@ const Countdown = () => {
       </Head>
       <Stack>
         <Text textStyle="regular" color="{colors.text.white}" fontSize="48px" textAlign={'center'}>
-          Rework of several site sections is in progress. <br />
-          Enjoy the menu, authentication and supers sections, they are already available.
+          Countdown page is a work in progress. Enjoy the rest of the project in the meantime.
         </Text>
       </Stack>
     </>

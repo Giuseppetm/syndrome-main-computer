@@ -11,6 +11,18 @@ interface AnimatedLabelProps extends TextProps {
   delay?: number
 }
 
+/**
+ * @name AnimatedLabel
+ *
+ * @description
+ * Displays animated labels at key locations on the Kronos map.
+ * Each label fades in with a delay and contains two lines of text.
+ *
+ * - Positioned absolutely with custom top/left values
+ * - Supports text alignment and delay configuration
+ *
+ * @author Giuseppe Del Campo
+ */
 const AnimatedLabel: React.FC<AnimatedLabelProps> = ({ top, left, text, delay = 0, ...props }) => {
   return (
     <MotionText

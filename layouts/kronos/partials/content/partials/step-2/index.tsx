@@ -9,13 +9,25 @@ const MotionBox = motion(Box)
 const MotionSvg = motion('svg')
 const MotionPath = motion('path')
 
+/**
+ * @name KronosStep2
+ *
+ * @description
+ * Represents the second step in the Kronos Project animation sequence.
+ *
+ * Features:
+ * - Displays the city hills background as the delivery context.
+ * - Shows animated labels describing different points ("Launch Point", "Delivery Vehicle", "Slider Deployment", "Landing Point").
+ * - Animates a semi-circular path representing the trajectory of the delivery vehicle.
+ * - Animates a ship icon moving smoothly along the path with rotation adjustments.
+ *
+ * @author Giuseppe Del Campo
+ */
 const KronosStep2: React.FC = () => {
-  const whiteColor = '#A6A8A8'
-  const trackColor = 'transparent'
-
   const MOVEMENT_DURATION = 1.5
   const FADE_DURATION = 0.5
 
+  const trackColor = 'transparent'
   const strokeWidth = 98
   const radius = 420
   const pathLength = Math.PI * radius
@@ -27,9 +39,7 @@ const KronosStep2: React.FC = () => {
   const horizontalFactor = 0.95 // 1 = normale larghezza, <1 = più “stretto” orizzontalmente
 
   const x = useTransform(progress, (t) => centerX + radius * Math.cos(Math.PI - Math.PI * t) * horizontalFactor - 35)
-
   const bottom = useTransform(progress, (t) => centerY + radius * Math.sin(Math.PI - Math.PI * t) * verticalFactor - 35)
-
   const rotation = useTransform(progress, [0, 1], [15, 160])
 
   useEffect(() => {
@@ -71,7 +81,7 @@ const KronosStep2: React.FC = () => {
           <MotionPath
             d={`M ${strokeWidth / 2} ${radius} A ${radius} ${radius} 0 0 1 ${radius * 2 + strokeWidth / 2} ${radius}`}
             fill="none"
-            stroke={whiteColor}
+            stroke={'#A6A8A8'}
             strokeWidth={strokeWidth}
             strokeLinecap="butt"
             strokeDasharray={pathLength}
