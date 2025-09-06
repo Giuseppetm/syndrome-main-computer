@@ -65,9 +65,9 @@ const KronosConsole: React.FC<KronosConsoleProps> = ({ step, setStep }) => {
   useEffect(() => {
     const stepTimeouts: Record<KronosStep, number> = {
       [KronosStep.IDLE]: 0,
-      [KronosStep.LOADING]: 2000,
-      [KronosStep.DELIVERY]: 2000,
-      [KronosStep.ACTIVATION]: 2000,
+      [KronosStep.LOADING]: 1500,
+      [KronosStep.DELIVERY]: 1500,
+      [KronosStep.ACTIVATION]: 1500,
     }
 
     if (paused || step === KronosStep.IDLE) return

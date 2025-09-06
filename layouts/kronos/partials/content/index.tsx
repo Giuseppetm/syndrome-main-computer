@@ -4,9 +4,10 @@ import KronosHeader from '../header'
 import { KronosStep, stepLabel } from '../..'
 import { Box, BoxProps, StackProps, Text, TextProps, useSlotRecipe } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import KronosStep2 from './partials/step-2'
+import AnimatedLabel from './partials/animated-label'
 
 const MotionBox = motion(Box)
-const MotionText = motion(Text)
 
 const fadeTextVariant = {
   hidden: { opacity: 0, filter: 'brightness(3)', color: '#ffffff' },
@@ -40,7 +41,7 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
   const styles = useSlotRecipe({ key: 'kronosContentComponent' })({}) as Record<string, StackProps & TextProps & BoxProps>
 
   return (
-    <Box {...styles.container}>
+    <Box {...styles.container} key={step}>
       <MotionBox key={step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: 'easeInOut' }}>
         <KronosHeader step={step} />
       </MotionBox>
@@ -79,13 +80,7 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
       )}
 
       {step === KronosStep.LOADING && (
-        <MotionBox
-          key={step + KronosStep.LOADING}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
-        >
+        <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: 'easeInOut' }}>
           <Box pos="absolute" top={420} left={500} zIndex={2}>
             <Image src={'/images/kronos/small-omnidroid-upscale-v2.png'} width={230} height={100} alt={stepLabel[step] + ' - Small Omnidroid'} />
           </Box>
@@ -94,60 +89,9 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
             <Image src={'/images/kronos/ship-v2.png'} width={430} height={100} alt={stepLabel[step] + ' - Ship'} />
           </Box>
 
-          <MotionText
-            pos="absolute"
-            top={290}
-            left={570}
-            textTransform="uppercase"
-            color="{colors.background.quaternary}"
-            fontSize="14px"
-            letterSpacing="1px"
-            key={step + KronosStep.LOADING}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-          >
-            Omnidroid
-          </MotionText>
-
-          <MotionText
-            pos="absolute"
-            top={290}
-            left={1200}
-            textTransform="uppercase"
-            color="{colors.background.quaternary}"
-            fontSize="14px"
-            letterSpacing="1px"
-            key={step + KronosStep.LOADING}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-          >
-            Omnidroid
-            <br />
-            Slider
-          </MotionText>
-
-          <MotionText
-            pos="absolute"
-            top={640}
-            left={1205}
-            textTransform="uppercase"
-            color="{colors.background.quaternary}"
-            fontSize="14px"
-            letterSpacing="1px"
-            key={step + KronosStep.LOADING}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-          >
-            Delivery
-            <br />
-            Vehicle
-          </MotionText>
+          <AnimatedLabel top={290} left={570} text={['Omnidroid']} />
+          <AnimatedLabel top={290} left={1200} text={['Omnidroid', 'Slider']} />
+          <AnimatedLabel top={640} left={1205} text={['Delivery', 'Vehicle']} />
 
           <MotionBox
             pos="absolute"
@@ -182,7 +126,7 @@ const KronosContent: React.FC<KronosContentProps> = ({ step }) => {
         </MotionBox>
       )}
 
-      {step === KronosStep.DELIVERY && <></>}
+      {step === KronosStep.DELIVERY && <KronosStep2 />}
 
       {step === KronosStep.ACTIVATION && <></>}
     </Box>
