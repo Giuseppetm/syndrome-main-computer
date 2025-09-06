@@ -80,7 +80,7 @@ const KronosLayout = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          <Text {...styles.sequenceLabel}>{step !== KronosStep.IDLE ? stepLabel[step] : 'This is a work in progress!'}</Text>
+          <Text {...styles.sequenceLabel}>{step !== KronosStep.IDLE && stepLabel[step]}</Text>
         </MotionHStack>
 
         <GridItem bg={'{colors.text.white}'} />
