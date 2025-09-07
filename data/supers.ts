@@ -12,7 +12,6 @@ export const supers: Array<Super> = [
   { name: 'Hyper shock', slug: 'hyper-shock', threatRating: 7.5, description: 'Seismic wave generation', img: 'hyper_shock.png' },
   { name: 'Apogee', slug: 'apogee', threatRating: 6.5, description: 'Gravity control, levitation', img: 'apogee.png' },
   { name: 'Tradewind', slug: 'tradewind', threatRating: 5.8, description: 'Elemental control of wind and storms', img: 'tradewind.png' },
-  { name: 'Vectress', slug: 'vectress', threatRating: 6.1, description: 'Sub-sonic bursts, flight', img: 'vectress.png' },
   { name: 'Gazerbeam', slug: 'gazerbeam', threatRating: 6.3, description: 'Lazer vision', img: 'gazerbeam.png' },
   { name: 'Stormicide', slug: 'stormicide', threatRating: 6.7, description: 'Electrical discharge gale bursts', img: 'stormicide.png' },
   { name: 'Gamma jack', slug: 'gamma-jack', threatRating: 7.9, description: 'Controlled radiation burst', img: 'gamma_jack.png' },
