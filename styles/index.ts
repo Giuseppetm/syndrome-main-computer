@@ -13,6 +13,8 @@ import { kronosLayoutRecipe } from './layouts/kronos'
 import { kronosControlsComponentRecipe } from './layouts/kronos/partials/controls'
 import { kronosHeaderComponentRecipe } from './layouts/kronos/partials/header'
 import { kronosContentComponentRecipe } from './layouts/kronos/partials/content'
+import { countdownPageRecipe } from './pages/countdown'
+import { timerComponentRecipe } from './components/timer'
 
 const system = createSystem(defaultConfig, {
   theme: {
@@ -82,6 +84,7 @@ const system = createSystem(defaultConfig, {
       menuPage: menuPageRecipe,
       islandOperationsPage: islandOperationsPageRecipe,
       searchSuperPage: searchSuperPageRecipe,
+      countdownPage: countdownPageRecipe,
       // Components
       terminalInputComponent: terminalInputComponentRecipe,
       menuItemComponent: menuItemComponentRecipe,
@@ -89,6 +92,7 @@ const system = createSystem(defaultConfig, {
       kronosControlsComponent: kronosControlsComponentRecipe,
       kronosHeaderComponent: kronosHeaderComponentRecipe,
       kronosContentComponent: kronosContentComponentRecipe,
+      timerComponent: timerComponentRecipe,
     },
   },
 })

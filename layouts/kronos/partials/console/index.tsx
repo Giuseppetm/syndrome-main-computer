@@ -79,7 +79,7 @@ const KronosConsole: React.FC<KronosConsoleProps> = ({ step, setStep }) => {
       timer = setTimeout(() => setStep(KronosStep.ACTIVATION), stepTimeouts[KronosStep.DELIVERY])
     } else if (step === KronosStep.ACTIVATION) {
       timer = setTimeout(() => {
-        //router.push('/countdown')
+        router.push(ROUTES.COUNTDOWN)
       }, stepTimeouts[KronosStep.ACTIVATION])
     }
 

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { KronosStep } from '../..'
 import { Box } from '@chakra-ui/react'
 
@@ -20,18 +20,31 @@ const MotionBox = motion(Box)
  *
  * @author Giuseppe Del Campo
  */
-const FlashLayer: React.FC<{ step: KronosStep }> = ({ step }) => {
+const FlashLayer: React.FC<{ step?: KronosStep }> = ({ step }) => {
   const [flash, setFlash] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const FLASH_TIMEOUT = 100
 
   useEffect(() => {
     if (step === KronosStep.IDLE) return
+
     setFlash(true)
-    const timer = setTimeout(() => setFlash(false), FLASH_TIMEOUT)
-    return () => {
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
+    timeoutRef.current = setTimeout(() => {
       setFlash(false)
-      clearTimeout(timer)
+      timeoutRef.current = null
+    }, FLASH_TIMEOUT)
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+        timeoutRef.current = null
+      }
     }
   }, [step])
 
