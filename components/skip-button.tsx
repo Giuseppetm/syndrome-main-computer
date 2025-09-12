@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, ButtonProps, Box } from '@chakra-ui/react'
+import { useControlsStore } from '@/store/controls'
 
 export interface SkipButtonProps extends ButtonProps {
   /**
@@ -28,8 +29,10 @@ export interface SkipButtonProps extends ButtonProps {
  * @author Giuseppe Del Campo
  */
 const SkipButton: React.FC<SkipButtonProps> = ({ label = 'Skip', bottom = '20px', ...props }) => {
+  const { enableControls } = useControlsStore()
+
   return (
-    <Box position="absolute" bottom={bottom} left="50%" transform="translateX(-50%)" zIndex={1000} fontFamily="sans-serif">
+    <Box position="absolute" bottom={enableControls ? bottom : -100} left="50%" transform="translateX(-50%)" zIndex={1000} fontFamily="sans-serif">
       <Button colorScheme="gray" variant="solid" size="md" rounded="full" shadow="md" {...props}>
         {label}
       </Button>

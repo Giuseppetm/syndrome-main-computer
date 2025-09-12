@@ -5,9 +5,9 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon, SearchIcon } from '@/assets/icons'
 import { motion } from 'framer-motion'
+import { ArrowLeft } from 'lucide-react'
 import MenuItemComponent from '@/layouts/menu/partials/menu-item'
 import ControlsHint from '@/components/controls-hint'
-import { ArrowLeft } from 'lucide-react'
 
 const MotionHStack = motion(HStack)
 const MotionBox = motion(Box)

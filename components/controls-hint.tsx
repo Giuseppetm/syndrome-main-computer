@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Text, BoxProps, HStack, IconButton } from '@chakra-ui/react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useControlsStore } from '@/store/controls'
 
 export interface ControlsHintProps extends BoxProps {
   /**
@@ -38,11 +39,12 @@ export interface ControlsHintProps extends BoxProps {
  */
 const ControlsHint: React.FC<ControlsHintProps> = ({ bottom = '20px', showControlsHint = true, showNavButtons = false, label, ...props }) => {
   const router = useRouter()
+  const { enableControls } = useControlsStore()
 
   return (
     <Box
       position="absolute"
-      bottom={bottom}
+      bottom={enableControls ? bottom : -100}
       left="50%"
       transform="translateX(-50%)"
       zIndex={1000}

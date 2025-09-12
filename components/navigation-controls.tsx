@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { encounters } from '@/data'
 import { ROUTES } from '@/utils/routes'
 import { ArrowLeft, ArrowRight, Home, Pause, Play } from 'lucide-react'
+import { useControlsStore } from '@/store/controls'
 
 export interface NavigationControlsProps extends BoxProps {
   autoDelay?: number // Auto navigation delay
@@ -25,6 +26,7 @@ export interface NavigationControlsProps extends BoxProps {
  */
 const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 1000, ...props }) => {
   const router = useRouter()
+  const { enableControls } = useControlsStore()
 
   const { superSlug, omnidroidSlug, autoplay } = router.query as {
     superSlug?: string
@@ -103,7 +105,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
   return (
     <Box
       position="fixed"
-      bottom="20px"
+      bottom={enableControls ? '20px' : -100}
       left="50%"
       transform="translateX(-50%)"
       zIndex={1000}

@@ -1,12 +1,15 @@
+import { useControlsStore } from '@/store/controls'
 import { Box, Link, Text, HStack } from '@chakra-ui/react'
 import { SquareCode } from 'lucide-react'
 import { FC } from 'react'
 
 const CreatorHint: FC = () => {
+  const { enableControls } = useControlsStore()
+
   return (
     <Box
       position="fixed"
-      top="0.5rem"
+      top={enableControls ? '0.5rem' : -100}
       right="0.5rem"
       zIndex="overlay"
       bg="gray.700"

@@ -4,6 +4,7 @@ import PortraitOrientationOverlay from '@/components/portrait-orientation'
 import AboutHint from '@/components/about-hint'
 import DonationPopup from '@/components/donation-hint'
 import CreatorHint from '@/components/creator-hint'
+import ToggleControlsButton from '@/components/toggle-controls'
 
 interface MainLayoutProps extends BoxProps {
   /**
@@ -122,6 +123,10 @@ const MainLayout = ({
         opacity={showSpinner ? 0 : 1}
       >
         {children}
+
+        <ToggleControlsButton />
+
+        <CreatorHint />
       </Box>
 
       <AboutHint />
@@ -129,8 +134,6 @@ const MainLayout = ({
       <DonationPopup />
 
       <PortraitOrientationOverlay isVisible={isPortrait} onClose={() => setIsPortrait(false)} />
-
-      <CreatorHint />
     </Box>
   )
 }

@@ -1,9 +1,10 @@
+import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import { Box, Button, HStack, Text } from '@chakra-ui/react'
 import { Play, Pause, Timer, ArrowRight, ArrowLeft } from 'lucide-react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ROUTES } from '@/utils/routes'
+import { useControlsStore } from '@/store/controls'
 
 export enum KronosStep {
   IDLE = 0,
@@ -40,6 +41,7 @@ interface KronosConsoleProps {
 const KronosConsole: React.FC<KronosConsoleProps> = ({ step, setStep }) => {
   const [paused, setPaused] = useState(false)
   const router = useRouter()
+  const { enableControls } = useControlsStore()
 
   const startOrResume = useCallback(() => {
     if (step === KronosStep.IDLE) {
@@ -118,7 +120,7 @@ const KronosConsole: React.FC<KronosConsoleProps> = ({ step, setStep }) => {
   return (
     <Box
       position="fixed"
-      bottom="13px"
+      bottom={enableControls ? '13px' : -100}
       left="50%"
       transform="translateX(-50%)"
       zIndex={1000}
