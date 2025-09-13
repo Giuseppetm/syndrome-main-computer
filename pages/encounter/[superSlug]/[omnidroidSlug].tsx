@@ -1,11 +1,14 @@
-import { encounters, omnidroids, supers } from '@/data'
 import EncounterLayout from '@/layouts/encounter'
+import NavigationControls from '@/components/navigation-controls'
+import useSoundPlayer, { SoundKey } from '@/hooks/sound'
+import { useEffect, useRef } from 'react'
+import { encounters, omnidroids, supers } from '@/data'
 import { Encounter, Omnidroid, Super } from '@/types'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import NavigationControls from '@/components/navigation-controls'
 import { SITE_URL } from '@/data/metadata'
 import { ROUTES } from '@/utils/routes'
 import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 
 /**
  * Props for {@link SuperOmnidroidPage}.
@@ -44,6 +47,21 @@ interface SuperOmnidroidPageProps {
 const SuperOmnidroidPage: NextPage<SuperOmnidroidPageProps> = ({ encounterData, superData, omnidroidData }) => {
   const title = `Encounter: ${superData.name} vs ${omnidroidData.name} | Syndrome Main Computer`
   const description = `Explore the battle between ${superData.name} (Threat Rating: ${superData.threatRating}) and ${omnidroidData.name}.`
+
+  const router = useRouter()
+
+  const { play } = useSoundPlayer()
+
+  const previousSlugRef = useRef<string | null>(null)
+
+  useEffect(() => {
+    const currentSlug = `${router.query.superSlug}-${router.query.omnidroidSlug}`
+
+    if (previousSlugRef.current !== currentSlug) {
+      play(SoundKey.TERMINATED)
+      previousSlugRef.current = currentSlug
+    }
+  }, [router.query.superSlug, router.query.omnidroidSlug, play])
 
   return (
     <>

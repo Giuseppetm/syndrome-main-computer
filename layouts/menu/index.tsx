@@ -2,12 +2,13 @@ import { MenuItem } from '@/types'
 import { getFirstEncounterRoute, ROUTES } from '@/utils/routes'
 import { Box, BoxProps, HStack, Stack, StackProps, useSlotRecipe } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { DollarIcon, MountainIcon, OmnidroidIcon, SuperIcon, SearchIcon } from '@/assets/icons'
 import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
 import MenuItemComponent from '@/layouts/menu/partials/menu-item'
 import ControlsHint from '@/components/controls-hint'
+import useSoundPlayer, { SoundKey } from '@/hooks/sound'
 
 const MotionHStack = motion(HStack)
 const MotionBox = motion(Box)
@@ -41,6 +42,8 @@ const MotionStack = motion(Stack)
 const MenuLayout = ({ ...props }) => {
   const styles = useSlotRecipe({ key: 'menuLayout' })({}) as Record<string, StackProps & BoxProps>
   const router = useRouter()
+  const isLoaded = useRef<boolean>(false)
+  const { play } = useSoundPlayer()
 
   const [activeMenu, setActiveMenu] = useState<'main' | 'supers'>('main')
   const [navItem, setNavItem] = useState<number | null>()
@@ -54,17 +57,17 @@ const MenuLayout = ({ ...props }) => {
     {
       label: 'Finances',
       icon: <DollarIcon boxSize={14} color="black" />,
-      href: '',
+      href: null,
     },
     {
       label: 'Omnidroid Metatraining',
       icon: <OmnidroidIcon boxSize={14} color="black" />,
-      href: '',
+      href: null,
     },
     {
       label: 'Supers',
       icon: <SuperIcon boxSize={14} color="black" />,
-      href: '',
+      href: null,
       onClick: () => setActiveMenu('supers'),
     },
   ]
@@ -83,7 +86,7 @@ const MenuLayout = ({ ...props }) => {
     {
       label: 'Back to Main Menu',
       icon: <ArrowLeft size={47} color="black" />,
-      href: '',
+      href: null,
       onClick: () => setActiveMenu('main'),
     },
   ]
@@ -152,6 +155,13 @@ const MenuLayout = ({ ...props }) => {
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [navItem, itemsCount, router, activeMenu, items])
+
+  useEffect(() => {
+    if (!isLoaded.current) {
+      play(SoundKey.MENU_OPENING)
+      isLoaded.current = true
+    }
+  }, [play])
 
   return (
     <>

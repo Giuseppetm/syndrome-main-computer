@@ -1,12 +1,14 @@
 import { omnidroids, supers, supersResult } from '@/data'
+import { soundMap } from '@/hooks/sound'
 import { Head, Html, Main, NextScript } from 'next/document'
 
 export default function Document() {
-  // Collect all image paths from supers + omnidroids
+  // Collect all image paths from supers + omnidroids; also collect audio sounds.
   const preloadImages = [
     ...omnidroids.map((o) => `/images/omnidroids/${o.img}`),
     ...supers.map((s) => `/images/supers/${s.img}`),
     ...supersResult.map((s) => `/images/search-results/${s.img}`),
+    ...Object.values(soundMap),
   ]
 
   return (

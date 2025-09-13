@@ -69,7 +69,7 @@ const MenuItemComponent = ({ item, isActive, onMouseEnter, onClick }: MenuItemPr
       as={item.href !== '' ? Link : 'button'}
       gap={0}
       // @ts-expect-error HStack is used as Link here
-      href={item.href}
+      href={item.href ?? ''}
       onMouseEnter={onMouseEnter}
       onClick={onClick}
       cursor={item.href === '' && item.onClick === undefined ? 'disabled' : 'pointer'}

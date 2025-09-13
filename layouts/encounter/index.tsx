@@ -1,8 +1,8 @@
 import { Encounter, Omnidroid, Super } from '@/types'
 import { BoxProps, Grid, GridItem, useSlotRecipe } from '@chakra-ui/react'
-import EncounterFrame from './partials/frame'
 import { GridProps } from '@chakra-ui/system'
 import { motion } from 'framer-motion'
+import EncounterFrame from './partials/frame'
 
 const MotionGrid = motion(Grid)
 

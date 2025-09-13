@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Box, BoxProps, Center, Spinner } from '@chakra-ui/react'
 import PortraitOrientationOverlay from '@/components/portrait-orientation'
 import AboutHint from '@/components/about-hint'
 import DonationPopup from '@/components/donation-hint'
 import CreatorHint from '@/components/creator-hint'
-import ToggleControlsButton from '@/components/toggle-controls'
+import Controls from '@/components/controls'
+import { useMainStore } from '@/store'
 
 interface MainLayoutProps extends BoxProps {
   /**
@@ -70,8 +71,11 @@ const MainLayout = ({
   const [isPortrait, setIsPortrait] = useState(false)
   const [isReady, setIsReady] = useState(false)
   const [minimumDelayPassed, setMinimumDelayPassed] = useState(false)
+  const { enableContent } = useMainStore()
 
   const SPINNER_TIMEOUT = 1000
+
+  const showSpinner = useMemo(() => !isReady || !minimumDelayPassed, [isReady, minimumDelayPassed])
 
   useEffect(() => {
     const handleResize = () => {
@@ -98,7 +102,9 @@ const MainLayout = ({
     return () => clearTimeout(t)
   }, [])
 
-  const showSpinner = !isReady || !minimumDelayPassed
+  useEffect(() => {
+    if (!showSpinner) enableContent()
+  }, [showSpinner, enableContent])
 
   return (
     <Box w="100dvw" h="100dvh" bg={background} backdropFilter="blur(10px)" overflow="hidden" position="relative" {...props}>
@@ -124,7 +130,7 @@ const MainLayout = ({
       >
         {children}
 
-        <ToggleControlsButton />
+        <Controls />
 
         <CreatorHint />
       </Box>

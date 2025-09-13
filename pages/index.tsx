@@ -7,6 +7,8 @@ import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { SITE_URL } from '@/data/metadata'
 import { NextSeo } from 'next-seo'
+import { useMainStore } from '@/store'
+import useSoundPlayer, { SoundKey } from '@/hooks/sound'
 
 const MotionVStack = motion(VStack)
 
@@ -47,6 +49,9 @@ const AuthenticationPage = () => {
   const [submitting, setSubmitting] = useState(false)
   const [password, setPassword] = useState('PASSWORD')
   const passwordInput = useRef<HTMLInputElement>(null)
+  const pageLoaded = useRef<boolean>(false)
+  const { play } = useSoundPlayer()
+  const { isContentReady } = useMainStore()
 
   const title = `"The Incredibles" - Syndrome Main Computer`
   const description = `A faithful, modern-day web recreation of Syndrome’s iconic main computer (Kronos unveiled sequence), built with Next.js and React 19. This project brings to life the cinematic interface from The Incredibles with cutting-edge web technologies.`
@@ -61,12 +66,13 @@ const AuthenticationPage = () => {
 
   const handleSubmit = useCallback(() => {
     if (password.toLowerCase() === 'kronos') {
+      play(SoundKey.AUTHENTICATION_SUCCESS)
       setSubmitting(true)
       setTimeout(() => {
         router.push(ROUTES.MENU)
       }, SUBMIT_TIMEOUT)
     }
-  }, [password, router])
+  }, [password, router, play])
 
   useEffect(() => {
     const listener = (event: KeyboardEvent) => {
@@ -85,11 +91,17 @@ const AuthenticationPage = () => {
   }, [password, router, handleSubmit])
 
   useEffect(() => {
-    setTimeout(() => {
-      setPassword('')
-      passwordInput.current?.focus()
-    }, 1500)
-  }, [])
+    if (!pageLoaded.current && isContentReady) {
+      play(SoundKey.AUTHENTICATION)
+
+      setTimeout(() => {
+        setPassword('')
+        passwordInput.current?.focus()
+      }, 1500)
+
+      pageLoaded.current = true
+    }
+  }, [play, isContentReady])
 
   return (
     <>
