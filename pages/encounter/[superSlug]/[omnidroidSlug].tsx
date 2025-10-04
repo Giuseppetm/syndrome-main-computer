@@ -58,7 +58,9 @@ const SuperOmnidroidPage: NextPage<SuperOmnidroidPageProps> = ({ encounterData, 
     const currentSlug = `${router.query.superSlug}-${router.query.omnidroidSlug}`
 
     if (previousSlugRef.current !== currentSlug) {
-      play(SoundKey.TERMINATED)
+      setTimeout(() => {
+        play(SoundKey.TERMINATED)
+      }, 25)
       previousSlugRef.current = currentSlug
     }
   }, [router.query.superSlug, router.query.omnidroidSlug, play])
