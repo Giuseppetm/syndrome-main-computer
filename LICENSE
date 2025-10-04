@@ -1,25 +1,24 @@
 Copyright © 2025 Giuseppe Del Campo
 
-This software is provided free of charge for personal, educational, and non-commercial use only.
+This software is licensed under the GNU General Public License v3.0 (GPLv3).
 
-Commercial use of any kind — including but not limited to:
+You are free to use, modify, and distribute this software under the terms of the GPLv3, provided that:
+- You include this license in full with any redistribution.
+- You make source code available for any derivative work.
+- You do not impose additional restrictions beyond those in the GPLv3.
 
-- Monetization through advertising
+For details, see: https://www.gnu.org/licenses/gpl-3.0.html
+
+---
+
+⚠️ Commercial Use Notice
+
+Commercial use of this software — including but not limited to:
 - Integration into paid products or services
-- Sale, licensing, or distribution for profit
+- Monetization through advertising
+- Deployment on public platforms or cloud environments
 
-is strictly prohibited without prior written permission from the author.
+— requires a separate commercial license.
 
-The author retains all rights to commercial exploitation of this software.  
-To request a commercial license, contact: <giuseppe.delcampo@outlook.com>
-
-Modification and redistribution are permitted only if:
-
-- This license is included in full
-- The use remains strictly non-commercial
-
-Deployment of this project to any online platform (including but not limited to public URLs, hosting services, or cloud environments) is strictly prohibited without prior written authorization from the author.
-
-Any violation of these terms may result in legal action.
-
-All rights reserved.
+To request a commercial license, contact:
+📧 giuseppe.delcampo@outlook.com
