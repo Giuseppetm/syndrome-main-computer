@@ -91,10 +91,10 @@ const AboutHint: React.FC<AboutHintProps> = ({ top = '20px', ...props }) => {
               modern web app with React, Next.js and Chakra UI.{' '}
               <Link
                 href="https://github.com/Giuseppetm/syndrome-main-computer"
-                color="white"
+                color="#3a9191"
                 target="_blank"
                 fontWeight="semibold"
-                _hover={{ color: '#A6A8A8' }}
+                _hover={{ color: '#175252' }}
               >
                 View on GitHub
               </Link>
