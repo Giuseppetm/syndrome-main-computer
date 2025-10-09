@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PROJECT KRONOS</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 { font-size: 3em; }
+    .blink {
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>ACCESS GRANTED</h1>
+  <p>PROJECT KRONOS</p>
+  <p>Loading hero database...</p>
+  <p class="blink">TERMINATED FILES FOUND</p>
+</body>
+</html>
