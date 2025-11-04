@@ -1,17 +1,16 @@
-name: Build Windows
+name: Build Windows executable (Electron + Next SSR)
 
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -20,7 +19,7 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install dependencies (Production and Development)
         run: npm ci
 
       - name: Build Next for production
@@ -29,26 +28,26 @@ jobs:
       - name: Transpile electron main to ESM (do NOT bundle)
         run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
 
-      - name: Package Windows executable
+      - name: Package Windows executable (NSIS + Portable)
         env:
-          CSC_LINK: ${{ secrets.CSC_LINK }}
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          CSC_LINK: ${{ secrets.CSC_LINK || '' }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
         run: npx electron-builder --win --x64 --publish=never
 
-      - name: List dist contents
-        run: dir .\dist | Out-String
+      - name: List dist contents (for debug)
+        run: dir .\\dist | Out-String
 
-      - name: Create GitHub Release (from tag)
+      - name: Create GitHub Release and Upload Assets
         if: startsWith(github.ref, 'refs/tags/')
-        id: create_release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          body: 'Automated build: windows installer and exe'
+          body: 'Automated build: Windows installer (Setup) and portable executable.'
           draft: false
           prerelease: false
-          artifacts: 'dist/**/*'
+          artifacts: 'dist/**'
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Attach dist artifacts (fallback)
         if: always()
