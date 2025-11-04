@@ -19,7 +19,7 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install dependencies (Production and Development)
+      - name: Install dependencies
         run: npm ci
 
       - name: Build Next for production
@@ -28,25 +28,36 @@ jobs:
       - name: Transpile electron main to ESM (do NOT bundle)
         run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
 
-      - name: Package Windows executable (NSIS + Portable)
+      - name: Package Windows executable
         env:
           CSC_LINK: ${{ secrets.CSC_LINK || '' }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
         run: npx electron-builder --win --x64 --publish=never
 
-      - name: List dist contents (for debug)
-        run: dir .\\dist | Out-String
+      - name: Create artifacts directory
+        run: New-Item -Path "artifacts" -ItemType Directory
 
-      - name: Create GitHub Release and Upload Assets
+      - name: Create single ZIP archive
+        id: create_zip
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $zipFileName = "windows-build-$tag.zip"
+          Compress-Archive -Path dist\* -DestinationPath artifacts\$zipFileName
+          echo "zip_path=$zipFileName" >> $env:GITHUB_OUTPUT
+
+      - name: Create GitHub Release (from tag) and Upload ZIP
         if: startsWith(github.ref, 'refs/tags/')
+        id: create_release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          body: 'Automated build: Windows installer (Setup) and portable executable.'
+          body: 'Automated build: Windows installer and portable executable bundled in a single ZIP.'
           draft: false
           prerelease: false
-          artifacts: 'dist/**'
+          # Carica solo il file ZIP dalla cartella artifacts
+          artifacts: 'artifacts/*.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Attach dist artifacts (fallback)
