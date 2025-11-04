@@ -27,7 +27,7 @@ files:
 
 win:
   target: nsis
-  icon: public/favicon.ico
+  icon: public/images/seo/preview.png
 
 extraMetadata:
   main: electron/main.js
