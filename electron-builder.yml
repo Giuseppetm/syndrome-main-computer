@@ -1,18 +1,34 @@
-'build':
-  {
-    'appId': 'com.syndrome_main_computer',
-    'productName': 'Syndrome Main Computer',
-    'copyright': 'Copyright © 2025 Giuseppe Del Campo',
-    'directories': { 'output': 'dist', 'buildResources': 'resources' },
-    'files':
-      [
-        'dist/electron',
-        'dist/preload.js',
-        'node_modules',
-        'package.json',
-        { 'from': '.next', 'to': '.next', 'filter': ['**/*'] },
-        { 'from': 'public', 'to': 'public', 'filter': ['**/*'] },
-      ],
-    'win': { 'target': 'nsis', 'icon': 'public/favicon.ico' },
-    'extraMetadata': { 'main': 'electron/main.js', 'type': 'module' },
-  }
+appId: com.syndrome_main_computer
+productName: Syndrome Main Computer
+copyright: Copyright © 2025 Giuseppe Del Campo
+
+directories:
+  output: dist
+  buildResources: resources
+
+files:
+  - node_modules
+  - package.json
+
+  - from: .next
+    to: .next
+    filter:
+      - '**/*'
+
+  - from: public
+    to: public
+    filter:
+      - '**/*'
+
+  - from: electron
+    to: electron
+    filter:
+      - '**/*'
+
+win:
+  target: nsis
+  icon: public/favicon.ico
+
+extraMetadata:
+  main: electron/main.js
+  type: module
