@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build outputs
+electron/main.js
+dist/
+win-unpacked/
+mac/*.dmg
+mac/*.zip
+*.exe
