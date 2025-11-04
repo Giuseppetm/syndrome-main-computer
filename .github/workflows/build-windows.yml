@@ -1,47 +1,58 @@
-- name: Setup Node.js
-  uses: actions/setup-node@v4
-  with:
-    node-version: '18'
-    cache: 'npm'
+name: Build Windows
 
-- name: Install dependencies
-  run: npm ci
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
 
-# 1. Next.js Build
-- name: Build Next for production
-  run: npm run build
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-# 2. Electron Transpile
-- name: Transpile electron main to ESM (do NOT bundle)
-  run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
 
-# 3. Packaging
-- name: Package Windows executable
-  env:
-    CSC_LINK: ${{ secrets.CSC_LINK || '' }}
-    CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
-  run: npx electron-builder --win --x64 --publish=never
+      - name: Install dependencies
+        run: npm ci
 
-- name: List dist contents
-  run: dir .\\dist | Out-String
+      - name: Build Next for production
+        run: npm run build
 
-# 4. Create Release
-- name: Create GitHub Release (from tag)
-  if: startsWith(github.ref, 'refs/tags/')
-  id: create_release
-  uses: ncipollo/release-action@v1
-  with:
-    tag: ${{ github.ref_name }}
-    name: Release ${{ github.ref_name }}
-    body: 'Automated build: windows installer and exe'
-    draft: false
-    prerelease: false
-    artifacts: 'dist/**/*'
+      - name: Transpile electron main to ESM (do NOT bundle)
+        run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
 
-# 5. Attach dist artifacts (fallback)
-- name: Attach dist artifacts (fallback)
-  if: always()
-  uses: actions/upload-artifact@v4
-  with:
-    name: windows-dist
-    path: dist/**
+      - name: Package Windows executable
+        env:
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+        run: npx electron-builder --win --x64 --publish=never
+
+      - name: List dist contents
+        run: dir .\dist | Out-String
+
+      - name: Create GitHub Release (from tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: 'Automated build: windows installer and exe'
+          draft: false
+          prerelease: false
+          artifacts: 'dist/**/*'
+
+      - name: Attach dist artifacts (fallback)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-dist
+          path: dist/**
