@@ -27,6 +27,7 @@ files:
 win:
   target: portable
   icon: public/images/seo/preview.png
+  electronLanguages: ['en']
 
 extraMetadata:
   main: electron/main.js
