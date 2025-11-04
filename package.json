@@ -17,22 +17,6 @@
     "build:electron": "npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm",
     "desktop:pack-local": "npm run build && npm run build:electron && npx electron-builder --win --x64 --config.extraMetadata.main=electron/main.js --config.extraMetadata.type=module --publish=never"
   },
-  "main": "electron/main.ts",
-  "build": {
-    "appId": "com.giuseppe.syndrome",
-    "files": [
-      "package.json",
-      ".next/**",
-      "public/**",
-      "electron/**",
-      "node_modules/**"
-    ],
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    }
-  },
   "dependencies": {
     "@chakra-ui/react": "^3.24.2",
     "@chakra-ui/system": "^2.6.2",

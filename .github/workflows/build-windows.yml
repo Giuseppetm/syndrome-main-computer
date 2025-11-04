@@ -1,185 +1,47 @@
-name: Build Desktop binaries (Windows + Linux + macOS + ARM)
+- name: Setup Node.js
+  uses: actions/setup-node@v4
+  with:
+    node-version: '18'
+    cache: 'npm'
 
-on:
-  push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
+- name: Install dependencies
+  run: npm ci
 
-jobs:
-  build-windows-exe:
-    runs-on: windows-latest
-    outputs:
-      release-tag: ${{ github.ref_name }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+# 1. Next.js Build
+- name: Build Next for production
+  run: npm run build
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
+# 2. Electron Transpile
+- name: Transpile electron main to ESM (do NOT bundle)
+  run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
 
-      - name: Install dependencies
-        run: npm ci
+# 3. Packaging
+- name: Package Windows executable
+  env:
+    CSC_LINK: ${{ secrets.CSC_LINK || '' }}
+    CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
+  run: npx electron-builder --win --x64 --publish=never
 
-      - name: Build Next for production
-        run: npm run build
+- name: List dist contents
+  run: dir .\\dist | Out-String
 
-      - name: Transpile electron main to ESM (do NOT bundle)
-        run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
+# 4. Create Release
+- name: Create GitHub Release (from tag)
+  if: startsWith(github.ref, 'refs/tags/')
+  id: create_release
+  uses: ncipollo/release-action@v1
+  with:
+    tag: ${{ github.ref_name }}
+    name: Release ${{ github.ref_name }}
+    body: 'Automated build: windows installer and exe'
+    draft: false
+    prerelease: false
+    artifacts: 'dist/**/*'
 
-      - name: Package Windows executable with electron-builder (ESM main)
-        run: npx electron-builder --win --x64 --config.extraMetadata.main=electron/main.js --config.extraMetadata.type=module --publish=never
-        env:
-          CSC_LINK: ${{ secrets.CSC_LINK || '' }}
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
-
-      - name: List dist contents
-        run: dir .\\dist | Out-String
-
-      - name: Create GitHub Release (from tag)
-        if: startsWith(github.ref, 'refs/tags/')
-        id: create_release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
-          body: 'Automated build: windows installer and exe'
-          draft: false
-          prerelease: false
-
-      - name: Upload release assets (dist/*) using gh
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          echo "Uploading files in dist/ to release ${{ github.ref_name }}"
-          gh release upload "${{ github.ref_name }}" dist/* --clobber
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Attach dist artifacts to workflow (fallback)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-dist
-          path: dist/**
-
-  build-linux-x64:
-    runs-on: ubuntu-latest
-    needs: build-windows-exe
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next
-        run: npm run build
-
-      - name: Transpile electron main to ESM
-        run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
-
-      - name: Package Linux x64
-        run: npx electron-builder --linux --x64 --config.extraMetadata.main=electron/main.js --config.extraMetadata.type=module --publish=never
-
-      - name: Upload release assets (dist/*) using gh
-        if: startsWith(github.ref, 'refs/tags/')
-        run: gh release upload "${{ github.ref_name }}" dist/* --clobber
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Attach linux-x64 artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-x64-dist
-          path: dist/**
-
-  build-linux-arm64-selfhosted:
-    # richiede un runner self-hosted ARM registrato con i label: self-hosted,linux,arm64
-    runs-on: [self-hosted, linux, arm64]
-    needs: build-windows-exe
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next
-        run: npm run build
-
-      - name: Transpile electron main to ESM
-        run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
-
-      - name: Package Linux arm64
-        run: npx electron-builder --linux --arm64 --config.extraMetadata.main=electron/main.js --config.extraMetadata.type=module --publish=never
-
-      - name: Upload release assets (dist/*) using gh
-        if: startsWith(github.ref, 'refs/tags/')
-        run: gh release upload "${{ github.ref_name }}" dist/* --clobber
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Attach linux-arm64 artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-arm64-dist
-          path: dist/**
-
-  build-macos:
-    runs-on: macos-latest
-    needs: build-windows-exe
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next for production
-        run: npm run build
-
-      - name: Transpile electron main to ESM
-        run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
-
-      - name: Package macOS (x64 + arm64)
-        run: npx electron-builder --mac --x64 --arm64 --config.extraMetadata.main=electron/main.js --config.extraMetadata.type=module --publish=never
-        env:
-          CSC_LINK: ${{ secrets.CSC_LINK || '' }}
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
-          APPLE_ID: ${{ secrets.APPLE_ID || '' }}
-          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD || '' }}
-
-      - name: Upload mac artifacts to Release
-        if: startsWith(github.ref, 'refs/tags/')
-        run: gh release upload "${{ github.ref_name }}" dist/* --clobber
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Attach mac dist artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: mac-dist
-          path: dist/**
+# 5. Attach dist artifacts (fallback)
+- name: Attach dist artifacts (fallback)
+  if: always()
+  uses: actions/upload-artifact@v4
+  with:
+    name: windows-dist
+    path: dist/**

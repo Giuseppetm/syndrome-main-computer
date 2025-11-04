@@ -4,16 +4,23 @@ import { fileURLToPath } from 'url'
 import { app, BrowserWindow } from 'electron'
 import next from 'next'
 
-/**
- * ricava __dirname funzionando sia in ESM (import.meta.url) sia in CJS (__dirname)
- */
+function ensureWindowsEnv(): void {
+  if (process.platform !== 'win32') return
+  const sysRoot = process.env.SystemRoot ?? 'C:\\Windows'
+  process.env.SystemRoot = sysRoot
+  process.env.ComSpec = process.env.ComSpec ?? path.join(sysRoot, 'System32', 'cmd.exe')
+  if (!process.env.PATH?.toLowerCase().includes(path.join(sysRoot, 'System32').toLowerCase())) {
+    process.env.PATH = `${path.join(sysRoot, 'System32')};${process.env.PATH ?? ''}`
+  }
+}
+
+ensureWindowsEnv()
+
 const __projectDir = (() => {
   try {
-    // se siamo in ESM
     const __filename = fileURLToPath(import.meta.url)
     return path.dirname(__filename)
   } catch {
-    // se siamo in CJS
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (global as any).__dirname ?? path.resolve('.')
   }
@@ -25,7 +32,7 @@ const dev = process.env.ELECTRON_DEV === '1' || process.env.NODE_ENV !== 'produc
 let server: http.Server | null = null
 
 async function startNext(): Promise<void> {
-  const dir = path.join(__projectDir, '..') // radice progetto Next
+  const dir = path.join(__projectDir, '..')
   const nextApp = next({ dev, dir })
   await nextApp.prepare()
   const handle = nextApp.getRequestHandler()
@@ -56,6 +63,19 @@ app.whenReady().then(async () => {
     createWindow()
   } catch (err) {
     console.error('Failed to start Next:', err)
+    try {
+      const fs = await import('fs')
+      const logPath = path.join(__projectDir, '..', 'electron-error.log')
+
+      if ('writeFileSync' in fs) {
+        fs.writeFileSync(logPath, `[${new Date().toISOString()}] Failed to start Next:\n${String(err)}\n\n`, { encoding: 'utf8', flag: 'a' })
+      } else {
+        console.error('FS module missing writeFileSync')
+      }
+    } catch (logErr) {
+      console.error('Failed to write log file:', logErr)
+    }
+
     app.quit()
   }
 })
