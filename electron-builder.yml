@@ -25,7 +25,7 @@ files:
       - '**/*'
 
 win:
-  target: nsis
+  target: portable
   icon: public/images/seo/preview.png
 
 extraMetadata:
