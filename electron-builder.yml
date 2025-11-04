@@ -7,7 +7,6 @@ directories:
   buildResources: resources
 
 files:
-  - node_modules
   - package.json
 
   - from: .next
