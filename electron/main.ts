@@ -1,50 +1,86 @@
 import fs from 'fs'
 import path from 'path'
 import http from 'http'
-import next from 'next'
 import { fileURLToPath } from 'url'
 import { app, BrowserWindow } from 'electron'
+import next from 'next'
 
-function ensureWindowsEnv(): void {
-  if (process.platform !== 'win32') return
-  const sysRoot = process.env.SystemRoot ?? 'C:\\Windows'
-  process.env.SystemRoot = sysRoot
-  process.env.ComSpec = process.env.ComSpec ?? path.join(sysRoot, 'System32', 'cmd.exe')
-  if (!process.env.PATH?.toLowerCase().includes(path.join(sysRoot, 'System32').toLowerCase())) {
-    process.env.PATH = `${path.join(sysRoot, 'System32')};${process.env.PATH ?? ''}`
+const __filename = fileURLToPath(import.meta.url)
+
+const safeLog = (msg: string) => {
+  try {
+    const userData = app && typeof app.getPath === 'function' ? app.getPath('userData') : null
+    if (userData) {
+      const logPath = path.join(userData, 'desktop-debug.log')
+      fs.appendFileSync(logPath, `[${new Date().toISOString()}] ${msg}\n`, { encoding: 'utf8' })
+    }
+  } catch (e) {
+    // ignore write errors
   }
+  try { console.log(msg) } catch {}
 }
 
-ensureWindowsEnv()
-
+// Resolve project dir
 const __projectDir = (() => {
   try {
-    const __filename = fileURLToPath(import.meta.url)
+    // If app is packaged, resourcesPath points to resources (app.asar or app)
+    if (app && app.isPackaged) {
+      // process.resourcesPath gives path to resources (e.g. C:\...\resources)
+      // app files are under resources/app or resources/app.asar.unpacked
+      const resources = process.resourcesPath
+      // possible locations to check
+      const candidates = [
+        path.join(resources, 'app'), // common when unpacked
+        path.join(resources, 'app.asar.unpacked'), // unpacked ASAR
+        path.join(resources, 'app.asar') // fallback (ASAR file)
+      ]
+      for (const c of candidates) {
+        try {
+          if (fs.existsSync(path.join(c, '.next')) || fs.existsSync(path.join(c, 'package.json'))) {
+            return c
+          }
+        } catch {}
+      }
+      // fallback: resourcesPath (may still work if .next was unpacked at resources)
+      return resources
+    }
+
+    // Not packaged: walk up from current file looking for .next or package.json
     let dir = path.dirname(__filename)
-
     for (let i = 0; i < 6; i++) {
-      const hasNext = fs.existsSync(path.join(dir, '.next'))
-      const hasPkg = fs.existsSync(path.join(dir, 'package.json'))
-      if (hasNext || hasPkg) return dir
-
+      try {
+        if (fs.existsSync(path.join(dir, '.next')) || fs.existsSync(path.join(dir, 'package.json'))) {
+          return dir
+        }
+      } catch {}
       const parent = path.dirname(dir)
       if (parent === dir) break
       dir = parent
     }
-
-    return path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-  } catch {
+    // fallback to repo root relative to file
+    return path.resolve(path.dirname(__filename), '..')
+  } catch (err) {
+    try { console.error('Error resolving __projectDir', err) } catch {}
     return path.resolve('.')
   }
 })()
 
-const PORT = parseInt(process.env.PORT ?? '3000', 10)
-const dev = process.env.ELECTRON_DEV === '1' || process.env.NODE_ENV !== 'production'
+safeLog(`Resolved __projectDir=${__projectDir}`)
+safeLog(`process.resourcesPath=${process.resourcesPath}`)
+safeLog(`app.isPackaged=${app && app.isPackaged}`)
 
+// Determine dev mode: only true when explicitly in development
+const dev = (process.env.ELECTRON_DEV === '1' || process.env.NODE_ENV === 'development') && !app.isPackaged
+
+safeLog(`Running next in dev=${dev} NODE_ENV=${process.env.NODE_ENV}`)
+
+const PORT = parseInt(process.env.PORT ?? '3000', 10)
 let server: http.Server | null = null
 
 async function startNext(): Promise<void> {
-  const dir = path.join(__projectDir, '..')
+  // next expects the project root containing package.json and .next
+  const dir = __projectDir
+  safeLog(`Starting Next with dir=${dir}`)
   const nextApp = next({ dev, dir })
   await nextApp.prepare()
   const handle = nextApp.getRequestHandler()
@@ -53,8 +89,7 @@ async function startNext(): Promise<void> {
   await new Promise<void>((resolve, reject) => {
     server!.listen(PORT, (err?: Error) => (err ? reject(err) : resolve()))
   })
-
-  console.log(`Next server listening on http://localhost:${PORT} (dev=${dev})`)
+  safeLog(`Next server listening on http://localhost:${PORT} (dev=${dev})`)
 }
 
 function createWindow(): void {
@@ -74,21 +109,16 @@ app.whenReady().then(async () => {
     await startNext()
     createWindow()
   } catch (err) {
-    console.error('Failed to start Next:', err)
+    safeLog('Failed to start Next: ' + String(err))
     try {
-      const fs = await import('fs')
-      const logPath = path.join(__projectDir, '..', 'electron-error.log')
-
-      if ('writeFileSync' in fs) {
-        fs.writeFileSync(logPath, `[${new Date().toISOString()}] Failed to start Next:\n${String(err)}\n\n`, { encoding: 'utf8', flag: 'a' })
-      } else {
-        console.error('FS module missing writeFileSync')
-      }
+      // Additional detailed log in userData
+      const userData = app.getPath('userData')
+      const logPath = path.join(userData, 'electron-error.log')
+      fs.appendFileSync(logPath, `[${new Date().toISOString()}] Failed to start Next:\n${String(err)}\n\n`, { encoding: 'utf8', flag: 'a' })
     } catch (logErr) {
-      console.error('Failed to write log file:', logErr)
+      safeLog('Failed to write error log: ' + String(logErr))
     }
-
-    app.quit()
+    try { app.quit() } catch {}
   }
 })
 
@@ -109,5 +139,5 @@ app.on('before-quit', () => {
 
 process.on('SIGINT', () => {
   if (server) server.close()
-  app.quit()
+  try { app.quit() } catch {}
 })
