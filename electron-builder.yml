@@ -44,9 +44,9 @@ extraResources:
 
 win:
   target:
-    - target: portable
+    - portable
   icon: public/images/seo/preview.png
-  requestedExecutionLevel: user
+  requestedExecutionLevel: asInvoker
 
 publish:
   provider: generic
