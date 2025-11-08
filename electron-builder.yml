@@ -8,27 +8,70 @@ directories:
 
 files:
   - package.json
-
+  - next.config.js
   - from: .next
     to: .next
     filter:
       - '**/*'
-
   - from: public
     to: public
     filter:
       - '**/*'
-
   - from: electron
     to: electron
     filter:
       - '**/*'
+  - from: node_modules
+    to: node_modules
+    filter:
+      - 'next/**'
+      - 'react/**'
+      - 'react-dom/**'
+      - 'next/dist/**'
+      - 'next-server/**'
+      - 'debug/**'
+      - 'accepts/**'
+      - 'follow-redirects/**'
+      - 'qs/**'
+      - 'serialize-javascript/**'
+      - 'which/**'
+      - 'open/**'
+      - 'is-plain-object/**'
+
+asar: true
+
+asarUnpack:
+  - '.next/**'
+  - 'node_modules/**'
+
+extraResources:
+  - from: resources
+    to: resources
 
 win:
-  target: portable
+  target:
+    - target: portable
   icon: public/images/seo/preview.png
-  electronLanguages: ['en']
+  requestExecutionLevel: user
+  # Se vuoi un installer NSIS invece usa:
+  # target:
+  #   - target: nsis
+  #     arch: x64
+
+publish:
+  provider: generic
+  url: ''
 
 extraMetadata:
   main: electron/main.js
   type: module
+
+npmRebuild: false
+filesIgnore:
+  - '**/*.map'
+  - 'src/**'
+  - '.github/**'
+  - 'tests/**'
+  - '*.ts'
+  - '*.tsx'
+  - 'electron/*.ts'

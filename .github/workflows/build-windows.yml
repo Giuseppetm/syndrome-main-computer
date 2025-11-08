@@ -23,27 +23,47 @@ jobs:
         run: npm ci
 
       - name: Build Next for production
+        env:
+          NODE_ENV: production
         run: npm run build
 
       - name: Transpile electron main to ESM (do NOT bundle)
         run: npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm
 
+      - name: Ensure resources present (debug)
+        shell: pwsh
+        run: |
+          Write-Host "Listing project root"
+          dir -Force -File -Name
+          Write-Host ".next exists:" (Test-Path .next)
+          Write-Host "public exists:" (Test-Path public)
+          Write-Host "electron/main.js exists:" (Test-Path electron\main.js)
+          Write-Host "package.json exists:" (Test-Path package.json)
+
       - name: Package Windows executable
         env:
           CSC_LINK: ${{ secrets.CSC_LINK || '' }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
-        run: npx electron-builder --win --x64 --publish=never
+          NODE_ENV: production
+          ELECTRON_DEV: '0'
+        run: npx electron-builder --win --x64 --publish=never --config electron-builder.yml
+
+      - name: List dist output (debug)
+        shell: pwsh
+        run: dir dist -Recurse
 
       - name: Create artifacts directory
-        run: New-Item -Path "artifacts" -ItemType Directory
+        shell: pwsh
+        run: New-Item -Path "artifacts" -ItemType Directory -Force
 
       - name: Create single ZIP archive
         id: create_zip
         shell: pwsh
         run: |
           $tag = "${{ github.ref_name }}"
+          if (-not $tag) { $tag = (Get-Date -Format 'yyyyMMdd-HHmmss') }
           $zipFileName = "windows-build-$tag.zip"
-          Compress-Archive -Path dist\* -DestinationPath artifacts\$zipFileName
+          Compress-Archive -Path 'dist\**\*' -DestinationPath "artifacts\$zipFileName" -Force
           echo "zip_path=$zipFileName" >> $env:GITHUB_OUTPUT
 
       - name: Create GitHub Release (from tag) and Upload ZIP
@@ -56,7 +76,6 @@ jobs:
           body: 'Automated build: Windows installer and portable executable bundled in a single ZIP.'
           draft: false
           prerelease: false
-          # Carica solo il file ZIP dalla cartella artifacts
           artifacts: 'artifacts/*.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
 

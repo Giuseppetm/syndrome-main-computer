@@ -1,8 +1,9 @@
+import fs from 'fs'
 import path from 'path'
 import http from 'http'
+import next from 'next'
 import { fileURLToPath } from 'url'
 import { app, BrowserWindow } from 'electron'
-import next from 'next'
 
 function ensureWindowsEnv(): void {
   if (process.platform !== 'win32') return
@@ -19,10 +20,21 @@ ensureWindowsEnv()
 const __projectDir = (() => {
   try {
     const __filename = fileURLToPath(import.meta.url)
-    return path.dirname(__filename)
+    let dir = path.dirname(__filename)
+
+    for (let i = 0; i < 6; i++) {
+      const hasNext = fs.existsSync(path.join(dir, '.next'))
+      const hasPkg = fs.existsSync(path.join(dir, 'package.json'))
+      if (hasNext || hasPkg) return dir
+
+      const parent = path.dirname(dir)
+      if (parent === dir) break
+      dir = parent
+    }
+
+    return path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
   } catch {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (global as any).__dirname ?? path.resolve('.')
+    return path.resolve('.')
   }
 })()
 
