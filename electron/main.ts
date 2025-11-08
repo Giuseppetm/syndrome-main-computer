@@ -17,7 +17,9 @@ const safeLog = (msg: string) => {
   } catch (e) {
     // ignore write errors
   }
-  try { console.log(msg) } catch {}
+  try {
+    console.log(msg)
+  } catch {}
 }
 
 // Resolve project dir
@@ -32,7 +34,7 @@ const __projectDir = (() => {
       const candidates = [
         path.join(resources, 'app'), // common when unpacked
         path.join(resources, 'app.asar.unpacked'), // unpacked ASAR
-        path.join(resources, 'app.asar') // fallback (ASAR file)
+        path.join(resources, 'app.asar'), // fallback (ASAR file)
       ]
       for (const c of candidates) {
         try {
@@ -60,7 +62,9 @@ const __projectDir = (() => {
     // fallback to repo root relative to file
     return path.resolve(path.dirname(__filename), '..')
   } catch (err) {
-    try { console.error('Error resolving __projectDir', err) } catch {}
+    try {
+      console.error('Error resolving __projectDir', err)
+    } catch {}
     return path.resolve('.')
   }
 })()
@@ -118,7 +122,9 @@ app.whenReady().then(async () => {
     } catch (logErr) {
       safeLog('Failed to write error log: ' + String(logErr))
     }
-    try { app.quit() } catch {}
+    try {
+      app.quit()
+    } catch {}
   }
 })
 
@@ -139,5 +145,7 @@ app.on('before-quit', () => {
 
 process.on('SIGINT', () => {
   if (server) server.close()
-  try { app.quit() } catch {}
+  try {
+    app.quit()
+  } catch {}
 })
