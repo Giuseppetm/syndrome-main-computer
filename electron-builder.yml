@@ -7,7 +7,6 @@ directories:
   buildResources: resources
 
 files:
-  # include esplicito dei file essenziali
   - package.json
   - next.config.js
   - from: .next
@@ -22,24 +21,10 @@ files:
     to: electron
     filter:
       - '**/*'
-  # node_modules runtime essenziali (opzionale: sostituisci con '**/*' per includerli tutti)
   - from: node_modules
     to: node_modules
     filter:
-      - 'next/**'
-      - 'react/**'
-      - 'react-dom/**'
-      - 'next/dist/**'
-      - 'next-server/**'
-      - 'debug/**'
-      - 'accepts/**'
-      - 'follow-redirects/**'
-      - 'qs/**'
-      - 'serialize-javascript/**'
-      - 'which/**'
-      - 'open/**'
-      - 'is-plain-object/**'
-  # pattern negativi per escludere file di sorgente / map / cartelle non necessarie
+      - '**/*'
   - '!**/*.ts'
   - '!**/*.tsx'
   - '!.github/**'
@@ -61,7 +46,7 @@ win:
   target:
     - target: portable
   icon: public/images/seo/preview.png
-  requestExecutionLevel: user
+  requestedExecutionLevel: user
 
 publish:
   provider: generic
