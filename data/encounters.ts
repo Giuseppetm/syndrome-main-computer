@@ -26,5 +26,5 @@ export const encounters: Array<Encounter> = [
   { superSlug: 'metaman', omnidroidSlug: 'X7', superDefeated: false, omnidroidDefeated: true },
   { superSlug: 'metaman', omnidroidSlug: 'X8', superDefeated: true, omnidroidDefeated: false },
   { superSlug: 'mr-incredible', omnidroidSlug: 'X8', superDefeated: false, omnidroidDefeated: true },
-  { superSlug: 'mr-incredible', omnidroidSlug: 'X9', superDefeated: true, omnidroidDefeated: false },
+  { superSlug: 'mr-incredible', omnidroidSlug: 'X9', superDefeated: false, omnidroidDefeated: true },
 ]
