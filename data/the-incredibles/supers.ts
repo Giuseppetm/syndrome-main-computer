@@ -1,6 +1,6 @@
-import { Super, SuperResult } from '@/types'
+import { Entity, EntityResult } from '@/types'
 
-export const supers: Array<Super> = [
+export const theIncrediblesSupers: Array<Entity> = [
   { name: 'Universal Man', slug: 'universal-man', threatRating: 2.9, description: 'Atomic density manipulation', img: 'universal_man.png' },
   { name: 'Psycwave', slug: 'psycwave', threatRating: 1.6, description: 'Psychic foresight, thought control, telekinesis', img: 'psycwave.png' },
   { name: 'Everseer', slug: 'everseer', threatRating: 3.2, description: 'Telepathy, clairvoyance, magni-vision', img: 'everseer.png' },
@@ -33,7 +33,7 @@ export const supers: Array<Super> = [
   },
 ]
 
-export const supersResult: Array<SuperResult> = [
+export const theIncrediblesSupersResult: Array<EntityResult> = [
   {
     name: 'Elastigirl',
     slug: 'elastigirl',
@@ -42,7 +42,7 @@ export const supersResult: Array<SuperResult> = [
       'Full-body elasticity, body capable of stretching in extreme way up to three hundred feet, high durability to physical injuries, stretch assisted leaps span eighty feet. Can compress and expand shape limited to maintaining bodily volume.',
     lastActiveRecord: '13.11.55',
     locationKnown: false,
-    threatRating: '6.2 Exercise moderate caution',
+    threatRatingLabel: '6.2 Exercise moderate caution',
   },
   {
     name: 'Frozone',
@@ -52,6 +52,6 @@ export const supersResult: Array<SuperResult> = [
       'Spontaneous generation of ice from water sources, freeze surface areas in excess of five hundreds meters. Manipulation of water for the formation of ice in solid form and structures in this material. He can generate ice from his fingertips but is limited by the amount of moisture in the air and his body. ',
     lastActiveRecord: '17.12.56',
     locationKnown: true,
-    threatRating: '8.0 Exercise moderate caution',
+    threatRatingLabel: '8.0 Exercise moderate caution',
   },
 ]

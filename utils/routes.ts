@@ -1,5 +1,3 @@
-import { encounters } from '@/data'
-
 export enum ROUTES {
   AUTHENTICATION = '/',
   MENU = '/menu',
@@ -9,9 +7,3 @@ export enum ROUTES {
   ISLAND_OPERATIONS = '/island-operations',
   COUNTDOWN = '/countdown',
 }
-
-export const getEncounterRoute = (superSlug: string, omnidroidSlug: string) => `${ROUTES.ENCOUNTER}/${superSlug}/${omnidroidSlug}`
-
-const firstEncounter = encounters[0]
-
-export const getFirstEncounterRoute = () => `${ROUTES.ENCOUNTER}/${firstEncounter.superSlug}/${firstEncounter.omnidroidSlug}`

@@ -2,6 +2,7 @@ import { Button, VStack } from '@chakra-ui/react'
 import { Eye, EyeOff, Volume2, VolumeOff } from 'lucide-react'
 import { useControlsStore } from '@/store/controls'
 import { useState } from 'react'
+import UniverseModal from './universe-modal'
 
 const Controls = () => {
   const { enableControls, toggleControls, enableAudio, toggleAudio } = useControlsStore()
@@ -23,10 +24,11 @@ const Controls = () => {
         alignItems="center"
         justifyContent="center"
         gap={2}
-        px={isSoundHovered ? 4 : 2}
+        px={4}
         opacity={enableAudio || isSoundHovered ? 1 : 0.5}
       >
-        {isSoundHovered ? enableAudio ? 'Toggle audio' : 'Enable audio' : enableAudio ? <VolumeOff width={32} /> : <Volume2 size={16} />}
+        {enableAudio ? <VolumeOff width={32} /> : <Volume2 size={16} />}
+        {enableAudio ? 'Toggle audio' : 'Enable audio'}
       </Button>
 
       <Button
@@ -41,11 +43,14 @@ const Controls = () => {
         alignItems="center"
         justifyContent="center"
         gap={2}
-        px={isControlsHovered ? 4 : 2}
+        px={4}
         opacity={enableControls || isControlsHovered ? 1 : 0.5}
       >
-        {isControlsHovered ? enableControls ? 'Hide controls' : 'Show controls' : enableControls ? <EyeOff width={32} /> : <Eye size={16} />}
+        {enableControls ? <EyeOff width={32} /> : <Eye size={16} />}
+        {enableControls ? 'Hide controls' : 'Show controls'}
       </Button>
+
+      <UniverseModal />
     </VStack>
   )
 }

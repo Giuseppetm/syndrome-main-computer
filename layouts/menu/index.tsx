@@ -1,5 +1,5 @@
 import { MenuItem } from '@/types'
-import { getFirstEncounterRoute, ROUTES } from '@/utils/routes'
+import { ROUTES } from '@/utils/routes'
 import { Box, BoxProps, HStack, Stack, StackProps, useSlotRecipe } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
@@ -9,6 +9,7 @@ import { ArrowLeft } from 'lucide-react'
 import MenuItemComponent from '@/layouts/menu/partials/menu-item'
 import ControlsHint from '@/components/controls-hint'
 import useSoundPlayer, { SoundKey } from '@/hooks/sound'
+import { useMainStore } from '@/store'
 
 const MotionHStack = motion(HStack)
 const MotionBox = motion(Box)
@@ -44,6 +45,8 @@ const MenuLayout = ({ ...props }) => {
   const router = useRouter()
   const isLoaded = useRef<boolean>(false)
   const { play } = useSoundPlayer()
+
+  const getFirstEncounterRoute = useMainStore((state) => state.getFirstEncounterRoute)
 
   const [activeMenu, setActiveMenu] = useState<'main' | 'supers'>('main')
   const [navItem, setNavItem] = useState<number | null>()

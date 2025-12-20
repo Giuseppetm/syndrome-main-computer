@@ -7,34 +7,38 @@ export type MenuItem = {
   onClick?: () => void
 }
 
-export interface Super {
+export interface Entity {
   slug: string
   name: string
   description: string
-  threatRating: number
+  threatRating?: number
   img: string
 }
 
-export interface Omnidroid {
-  name: string
-  slug: string
-  description: string
-  img: string
+export interface EntityResult extends Entity {
+  lastActiveRecord: string
+  locationKnown: boolean
+  threatRatingLabel: string
+}
+
+export const UNIVERSE_IDS = { STAR_WARS: 'star-wars', THE_INCREDIBLES: 'the-incredibles' } as const
+
+export type UniverseId = (typeof UNIVERSE_IDS)[keyof typeof UNIVERSE_IDS]
+
+export type Universe = {
+  id: UniverseId
+  label: string
+  img?: string
+}
+
+export type EncounterSet = {
+  entities: Array<Entity>
+  encounters: Array<Encounter>
 }
 
 export interface Encounter {
-  superSlug: string
-  omnidroidSlug: string
-  superDefeated: boolean
-  omnidroidDefeated: boolean
-}
-
-export interface SuperResult {
-  name: string
-  slug: string
-  img: string
-  description: string
-  lastActiveRecord: string
-  locationKnown: boolean
-  threatRating: string
+  entityA_slug: string
+  entityB_slug: string
+  entityA_defeated: boolean
+  entityB_defeated: boolean
 }

@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import TerminalInput from '@/components/terminal-input'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { encounters, supers, supersResult } from '@/data'
+import { theIncrediblesEncounters, theIncrediblesSupers, theIncrediblesSupersResult } from '@/data'
 import { ROUTES } from '@/utils/routes'
 import ControlsHint from '@/components/controls-hint'
 import { SITE_URL } from '@/data/metadata'
@@ -57,18 +57,18 @@ const SearchSuperPage = () => {
     const query = searchValue.trim().toLowerCase()
     if (!query) return
 
-    const superData = supers.find((s) => s.name.toLowerCase() === query)
+    const superData = theIncrediblesSupers.find((s) => s.name.toLowerCase() === query)
 
     if (superData) {
-      const completedEncounter = encounters.find((e) => e.superSlug.toLowerCase() === superData.slug && e.superDefeated)
+      const completedEncounter = theIncrediblesEncounters.find((e) => e.entityA_slug.toLowerCase() === superData.slug && e.entityA_defeated)
 
       if (completedEncounter) {
-        router.push(`${ROUTES.ENCOUNTER}/${completedEncounter.superSlug}/${completedEncounter.omnidroidSlug}?autoplay=0`)
+        router.push(`${ROUTES.ENCOUNTER}/${completedEncounter.entityA_slug}/${completedEncounter.entityB_slug}?autoplay=0`)
         return
       }
     }
 
-    const pendingSuper = supersResult.find((s) => s.slug.toLowerCase() === query)
+    const pendingSuper = theIncrediblesSupersResult.find((s) => s.slug.toLowerCase() === query)
 
     if (pendingSuper) {
       router.push(`${ROUTES.SEARCH_SUPER}/${pendingSuper.slug}`)

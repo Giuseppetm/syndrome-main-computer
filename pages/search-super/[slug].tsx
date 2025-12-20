@@ -1,8 +1,8 @@
 import ControlsHint from '@/components/controls-hint'
 import SearchResultLayout from '@/layouts/search-result'
 import { SITE_URL } from '@/data/metadata'
-import { supersResult } from '@/data/supers'
-import { SuperResult } from '@/types'
+import { theIncrediblesSupersResult } from '@/data/the-incredibles/supers'
+import { EntityResult } from '@/types'
 import { ROUTES } from '@/utils/routes'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 interface SuperResultPageProps {
-  superData: SuperResult
+  superData: EntityResult
 }
 
 /**
@@ -90,14 +90,14 @@ const SuperResultPage = ({ superData }: SuperResultPageProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: supersResult.map((s) => ({ params: { slug: s.slug } })),
+    paths: theIncrediblesSupersResult.map((s) => ({ params: { slug: s.slug } })),
     fallback: false,
   }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params?.slug as string
-  const superData = supersResult.find((s) => s.slug === slug) || null
+  const superData = theIncrediblesSupersResult.find((s) => s.slug === slug) || null
 
   if (!superData) {
     return {

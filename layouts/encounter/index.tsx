@@ -1,4 +1,4 @@
-import { Encounter, Omnidroid, Super } from '@/types'
+import { Encounter, Entity } from '@/types'
 import { BoxProps, Grid, GridItem, useSlotRecipe } from '@chakra-ui/react'
 import { GridProps } from '@chakra-ui/system'
 import { motion } from 'framer-motion'
@@ -8,22 +8,20 @@ const MotionGrid = motion(Grid)
 
 interface EncounterLayoutProps {
   /**
-   * Data object containing details about the Super (opponent).
-   * Includes name, description, image, and threat rating.
+   * Data object containing details about the first entity.
    */
-  superData: Super
+  entityA: Entity
 
   /**
-   * Data object containing details about the Omnidroid (prototype).
-   * Includes name, description, and image reference.
+   * Data object containing details about the second entity.
    */
-  omnidroidData: Omnidroid
+  entityB: Entity
 
   /**
    * Data object describing the encounter itself.
-   * Determines whether each participant (Super or Omnidroid) has been defeated.
+   * Determines whether each participant has been defeated.
    */
-  encounterData: Encounter
+  encounter: Encounter
 }
 
 /**
@@ -46,7 +44,7 @@ interface EncounterLayoutProps {
  * @author
  * Giuseppe Del Campo
  */
-const EncounterLayout = ({ superData, omnidroidData, encounterData }: EncounterLayoutProps) => {
+const EncounterLayout = ({ entityA, entityB, encounter }: EncounterLayoutProps) => {
   const styles = useSlotRecipe({ key: 'encounterLayout' })({}) as Record<string, BoxProps & GridProps>
 
   return (
@@ -58,29 +56,29 @@ const EncounterLayout = ({ superData, omnidroidData, encounterData }: EncounterL
       animate={{ opacity: 1, filter: 'invert(0%)' }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
     >
-      {/* Super */}
+      {/* Entity A */}
       <GridItem>
         <EncounterFrame
-          name={superData.name}
-          description={superData.description}
-          threatRating={superData.threatRating}
-          type={'super'}
-          isTerminated={encounterData.superDefeated}
-          image={superData.img}
+          name={entityA.name}
+          description={entityA.description}
+          threatRating={entityA.threatRating}
+          type={'entityA'}
+          isTerminated={encounter.entityA_defeated}
+          image={entityA.img}
         />
       </GridItem>
 
       {/* Separator */}
       <GridItem bg={'{colors.text.white}'} />
 
-      {/* Omnidroid */}
+      {/* Entity B */}
       <GridItem>
         <EncounterFrame
-          name={omnidroidData.name}
-          description={omnidroidData.description}
-          type={'omnidroid'}
-          isTerminated={encounterData.omnidroidDefeated}
-          image={omnidroidData.img}
+          name={entityB.name}
+          description={entityB.description}
+          type={'entityB'}
+          isTerminated={encounter.entityB_defeated}
+          image={entityB.img}
         />
       </GridItem>
     </MotionGrid>

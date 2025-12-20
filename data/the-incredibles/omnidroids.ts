@@ -1,6 +1,6 @@
-import { Omnidroid } from '@/types'
+import { Entity } from '@/types'
 
-export const omnidroids: Array<Omnidroid> = [
+export const theIncrediblesOmnidroids: Array<Entity> = [
   { slug: 'X1', name: 'Omnidroid v.X1', description: 'Threaded locomotion, sensory display, bi-articulated grappling claws', img: 'x1.png' },
   {
     slug: 'X2',

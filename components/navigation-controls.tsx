@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Box, Button, HStack, BoxProps } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { encounters } from '@/data'
 import { ROUTES } from '@/utils/routes'
 import { ArrowLeft, ArrowRight, Home, Pause, Play } from 'lucide-react'
 import { useControlsStore } from '@/store/controls'
+import { useMainStore } from '@/store'
 
 export interface NavigationControlsProps extends BoxProps {
   autoDelay?: number // Auto navigation delay
@@ -27,16 +27,17 @@ export interface NavigationControlsProps extends BoxProps {
 const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 1000, ...props }) => {
   const router = useRouter()
   const { enableControls } = useControlsStore()
+  const { encounterSet } = useMainStore()
 
-  const { superSlug, omnidroidSlug, autoplay } = router.query as {
-    superSlug?: string
-    omnidroidSlug?: string
+  const { entityA_slug, entityB_slug, autoplay } = router.query as {
+    entityA_slug?: string
+    entityB_slug?: string
     autoplay?: string
   }
 
   const [isPlaying, setIsPlaying] = useState(autoplay !== '0')
 
-  const currentIndex = encounters.findIndex((e) => e.superSlug === superSlug && e.omnidroidSlug === omnidroidSlug)
+  const currentIndex = encounterSet.encounters.findIndex((e) => e.entityA_slug === entityA_slug && e.entityB_slug === entityB_slug)
 
   const goBackToMenu = useCallback(() => {
     router.push(ROUTES.MENU)
@@ -44,12 +45,12 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
 
   const goToIndex = useCallback(
     (index: number) => {
-      if (index >= 0 && index < encounters.length) {
-        const next = encounters[index]
-        router.push(`${ROUTES.ENCOUNTER}/${next.superSlug}/${next.omnidroidSlug}?autoplay=${isPlaying ? 1 : 0}`)
+      if (index >= 0 && index < encounterSet.encounters.length) {
+        const next = encounterSet.encounters[index]
+        router.push(`${ROUTES.ENCOUNTER}/${next.entityA_slug}/${next.entityB_slug}?autoplay=${isPlaying ? 1 : 0}`)
       }
     },
-    [router, isPlaying]
+    [router, isPlaying, encounterSet.encounters]
   )
 
   const goNext = useCallback(() => {
@@ -68,7 +69,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
       if (e.key === 'Escape') {
         goBackToMenu()
       } else if (e.key === 'ArrowRight') {
-        if (currentIndex < encounters.length - 1) goNext()
+        if (currentIndex < encounterSet.encounters.length - 1) goNext()
       } else if (e.key === 'ArrowLeft') {
         if (currentIndex > 0) goPrev()
       } else if (e.key === ' ') {
@@ -89,18 +90,18 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  }, [router, currentIndex, goNext, goPrev, goBackToMenu])
+  }, [router, currentIndex, goNext, goPrev, goBackToMenu, encounterSet.encounters.length])
 
   // Navigation auto-play
   useEffect(() => {
     if (!isPlaying) return
     const timer = setTimeout(() => {
-      if (currentIndex < encounters.length - 1) {
+      if (currentIndex < encounterSet.encounters.length - 1) {
         goToIndex(currentIndex + 1)
       }
     }, autoDelay)
     return () => clearTimeout(timer)
-  }, [isPlaying, currentIndex, goToIndex, autoDelay])
+  }, [isPlaying, currentIndex, goToIndex, autoDelay, encounterSet.encounters.length])
 
   return (
     <Box
@@ -153,7 +154,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
         </Button>
 
         {/* Next */}
-        <Button size="sm" onClick={goNext} disabled={currentIndex >= encounters.length - 1} colorScheme="gray">
+        <Button size="sm" onClick={goNext} disabled={currentIndex >= encounterSet.encounters.length - 1} colorScheme="gray">
           <HStack>
             <ArrowRight size={16} />
             <span>Next</span>

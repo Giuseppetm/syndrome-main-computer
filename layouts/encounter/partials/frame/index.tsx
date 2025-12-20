@@ -1,4 +1,6 @@
 import AnimatedImage from '@/components/animated-image'
+import { useMainStore } from '@/store'
+import { UNIVERSE_IDS } from '@/types'
 import { AspectRatio, Box, HStack, StackProps, Text, TextProps, useSlotRecipe, VStack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import React from 'react'
@@ -9,10 +11,8 @@ const MotionVStack = motion(VStack)
 interface EncounterFrameProps {
   /**
    * The type of encounter frame to render.
-   * - `"super"`: Displays information about a superhero opponent.
-   * - `"omnidroid"`: Displays information about an omnidroid prototype.
    */
-  type: 'super' | 'omnidroid'
+  type: 'entityA' | 'entityB'
 
   /**
    * Optional threat rating value shown when the type is `"super"`.
@@ -62,7 +62,7 @@ interface EncounterFrameProps {
  * @example
  * ```tsx
  * <EncounterFrame
- *   type="super"
+ *   type="entityA"
  *   threatRating={8}
  *   isTerminated={false}
  *   name="Mr. Incredible"
@@ -71,7 +71,7 @@ interface EncounterFrameProps {
  * />
  *
  * <EncounterFrame
- *   type="omnidroid"
+ *   type="entityB"
  *   isTerminated={true}
  *   name="Omnidroid v.9"
  *   description="Adaptive AI and rotating claws"
@@ -84,22 +84,26 @@ interface EncounterFrameProps {
  */
 const EncounterFrame: React.FC<EncounterFrameProps> = ({ type, threatRating, isTerminated, name, description, image }) => {
   const styles = useSlotRecipe({ key: 'encounterFrameComponent' })({}) as Record<string, StackProps & TextProps>
+  const { universe } = useMainStore()
 
-  const imageFolder = type === 'super' ? 'supers' : 'omnidroids'
-  const headerTitle = type === 'super' ? 'Opponent' : 'Prototype'
-  const footerSpecifications = type === 'super' ? 'powers' : 'features'
+  const entityImageFolder = `/images/${universe.id}/entities`
+
+  const headerTitle =
+    universe.id === UNIVERSE_IDS.THE_INCREDIBLES ? (type === 'entityA' ? 'Opponent' : 'Prototype') : type === 'entityA' ? 'Opponent 1' : 'Opponent 2'
+
+  const footerSpecifications = type === 'entityA' ? 'powers' : 'features'
 
   const TERMINATED_DURATION = 0.2
   const TEXT_MODULE_DURATION = 0.5
 
-  let footerTitle = name
+  let footerTitle = name.toUpperCase()
 
   // Handle Omnidroid footer title format
-  if (type === 'omnidroid') {
-    const [label, ...rest] = footerTitle.split(' ')
-    footerTitle = [label.toUpperCase(), ...rest].join(' ')
-  } else {
-    footerTitle = name.toUpperCase()
+  if (universe.id === UNIVERSE_IDS.THE_INCREDIBLES) {
+    if (type === 'entityB') {
+      const [label, ...rest] = footerTitle.split(' ')
+      footerTitle = [label.toUpperCase(), ...rest].join(' ')
+    }
   }
 
   return (
@@ -136,7 +140,7 @@ const EncounterFrame: React.FC<EncounterFrameProps> = ({ type, threatRating, isT
 
       <Box {...styles.imageWrapper}>
         <AspectRatio ratio={5.5 / 4}>
-          <AnimatedImage src={`/images/${imageFolder}/${image}`} alt={`${name}, ${description}`} />
+          <AnimatedImage src={`${entityImageFolder}/${image}`} alt={`${name}, ${description}`} />
         </AspectRatio>
 
         {isTerminated && (
