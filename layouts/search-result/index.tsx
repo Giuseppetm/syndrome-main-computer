@@ -94,7 +94,7 @@ const SearchResultLayout = ({ entityData }: SearchResultLayoutProps) => {
             <Text>Last active record: {entityData.lastActiveRecord}</Text>
           </Box>
 
-          <Text {...styles.threatRating}>Threat Rating: {entityData.threatRating}</Text>
+          <Text {...styles.threatRating}>Threat Rating: {entityData.threatRatingLabel}</Text>
         </Box>
       </GridItem>
     </MotionGrid>
