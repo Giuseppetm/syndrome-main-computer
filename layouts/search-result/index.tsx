@@ -1,4 +1,4 @@
-import { SuperResult } from '@/types'
+import { EntityResult } from '@/types'
 import { AspectRatio, Box, BoxProps, Grid, GridItem, GridProps, Stack, StackProps, Text, TextProps, useSlotRecipe } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -14,7 +14,7 @@ interface SearchResultLayoutProps {
    * Full data about a Super, including image, name,
    * description, location status, last record, and threat rating.
    */
-  superData: SuperResult
+  entityData: EntityResult
 }
 
 /**
@@ -36,12 +36,12 @@ interface SearchResultLayoutProps {
  *
  * @example
  * ```tsx
- * <SearchResultLayout superData={super} />
+ * <SearchResultLayout entityData={super} />
  * ```
  *
  * @author Giuseppe Del Campo
  */
-const SearchResultLayout = ({ superData }: SearchResultLayoutProps) => {
+const SearchResultLayout = ({ entityData }: SearchResultLayoutProps) => {
   const styles = useSlotRecipe({ key: 'searchResultLayout' })({}) as Record<string, BoxProps & GridProps & TextProps & StackProps>
   const imageFolder = 'search-results'
 
@@ -59,10 +59,10 @@ const SearchResultLayout = ({ superData }: SearchResultLayoutProps) => {
 
         <AspectRatio ratio={6.5 / 5}>
           <Image
-            src={`/images/${imageFolder}/${superData.img}`}
+            src={`/images/${imageFolder}/${entityData.img}`}
             width={1000}
             height={500}
-            alt={`${superData.name} - ${superData.description}. ${superData.lastActiveRecord}, ${superData.threatRating}`}
+            alt={`${entityData.name} - ${entityData.description}. ${entityData.lastActiveRecord}, ${entityData.threatRating}`}
           />
         </AspectRatio>
       </GridItem>
@@ -74,7 +74,7 @@ const SearchResultLayout = ({ superData }: SearchResultLayoutProps) => {
         <Box {...styles.spacer} />
         <Box {...styles.infoWrapper}>
           <Stack gap={'1px'}>
-            <Text {...styles.superName}>{superData.name}</Text>
+            <Text {...styles.superName}>{entityData.name}</Text>
             <Text {...styles.locationLabel}>
               Location: {/* @ts-expect-error Usual motion stuff */}
               <MotionBox
@@ -84,17 +84,17 @@ const SearchResultLayout = ({ superData }: SearchResultLayoutProps) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.4 }}
               >
-                {superData.locationKnown ? 'Known' : 'Unknown'}
+                {entityData.locationKnown ? 'Known' : 'Unknown'}
               </MotionBox>
             </Text>
           </Stack>
 
           <Box {...styles.superDescription}>
-            <Text>{superData.description}</Text>
-            <Text>Last active record: {superData.lastActiveRecord}</Text>
+            <Text>{entityData.description}</Text>
+            <Text>Last active record: {entityData.lastActiveRecord}</Text>
           </Box>
 
-          <Text {...styles.threatRating}>Threat Rating: {superData.threatRating}</Text>
+          <Text {...styles.threatRating}>Threat Rating: {entityData.threatRating}</Text>
         </Box>
       </GridItem>
     </MotionGrid>
