@@ -6,10 +6,6 @@ import { ArrowLeft, ArrowRight, Home, Pause, Play } from 'lucide-react'
 import { useControlsStore } from '@/store/controls'
 import { useMainStore } from '@/store'
 
-export interface NavigationControlsProps extends BoxProps {
-  autoDelay?: number // Auto navigation delay
-}
-
 /**
  * @name NavigationControls
  *
@@ -24,10 +20,12 @@ export interface NavigationControlsProps extends BoxProps {
  *
  * @author Giuseppe Del Campo
  */
-const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 1000, ...props }) => {
+const NavigationControls: React.FC<BoxProps> = ({ ...props }) => {
   const router = useRouter()
   const { enableControls } = useControlsStore()
   const { encounterSet } = useMainStore()
+
+  const navigationDelay = useMainStore((state) => state.universe.navigationDelay) ?? 1100
 
   const { entityA_slug, entityB_slug, autoplay } = router.query as {
     entityA_slug?: string
@@ -99,9 +97,9 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({ autoDelay = 100
       if (currentIndex < encounterSet.encounters.length - 1) {
         goToIndex(currentIndex + 1)
       }
-    }, autoDelay)
+    }, navigationDelay)
     return () => clearTimeout(timer)
-  }, [isPlaying, currentIndex, goToIndex, autoDelay, encounterSet.encounters.length])
+  }, [isPlaying, currentIndex, goToIndex, navigationDelay, encounterSet.encounters.length])
 
   return (
     <Box

@@ -76,6 +76,7 @@ const EncounterLayout = ({ entityA, entityB, encounter }: EncounterLayoutProps) 
         <EncounterFrame
           name={entityB.name}
           description={entityB.description}
+          threatRating={entityB.threatRating}
           type={'entityB'}
           isTerminated={encounter.entityB_defeated}
           image={entityB.img}

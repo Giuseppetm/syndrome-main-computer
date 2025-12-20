@@ -29,6 +29,7 @@ export type Universe = {
   id: UniverseId
   label: string
   img?: string
+  navigationDelay: number
 }
 
 export type EncounterSet = {

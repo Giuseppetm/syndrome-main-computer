@@ -11,7 +11,7 @@ const Controls = () => {
   const [isControlsHovered, setIsControlsHovered] = useState(false)
 
   return (
-    <VStack position="absolute" bottom="20px" left="20px" gap={2} zIndex={1000} fontFamily="sans-serif" align="start">
+    <VStack position="absolute" bottom="20px" left="20px" gap={2} zIndex={1000} fontFamily="sans-serif" align="start" transition="all ease 0.2s">
       <Button
         onClick={toggleAudio}
         onMouseEnter={() => setIsSoundHovered(true)}
