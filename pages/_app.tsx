@@ -9,7 +9,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { eurostile } from '@/assets/fonts'
 import { useEffect, useState } from 'react'
 import { soundMap } from '@/hooks/sound'
-import { gaId, theIncrediblesPreloadImages } from '@/data'
+import { gaId, starWarsPreloadImages, theIncrediblesPreloadImages } from '@/data'
 import { UNIVERSE_IDS } from '@/types'
 import { useMainStore } from '@/store'
 
@@ -21,6 +21,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     // Preload images when universe changes
     if (universe.id === UNIVERSE_IDS.THE_INCREDIBLES) {
       setPreloadImages([...theIncrediblesPreloadImages, ...Object.values(soundMap)])
+    } else if (universe.id === UNIVERSE_IDS.STAR_WARS) {
+      setPreloadImages([...starWarsPreloadImages, ...Object.values(soundMap)])
     }
   }, [universe])
 
