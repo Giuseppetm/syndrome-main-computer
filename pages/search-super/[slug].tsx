@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 interface SuperResultPageProps {
-  superData: EntityResult
+  entityData: EntityResult
 }
 
 /**
@@ -41,11 +41,11 @@ interface SuperResultPageProps {
  *
  * @author Giuseppe Del Campo
  */
-const SuperResultPage = ({ superData }: SuperResultPageProps) => {
+const SuperResultPage = ({ entityData }: SuperResultPageProps) => {
   const router = useRouter()
 
-  const title = `Search Result - ${superData.name} | Syndrome Main Computer`
-  const description = `Search result for ${superData.name}: ${superData.description}, Last active record: ${superData.lastActiveRecord}, Threat Rating: {superData.threatRating}`
+  const title = `Search Result - ${entityData.name} | Syndrome Main Computer`
+  const description = `Search result for ${entityData.name}: ${entityData.description}, Last active record: ${entityData.lastActiveRecord}, Threat Rating: {entityData.threatRating}`
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -66,10 +66,10 @@ const SuperResultPage = ({ superData }: SuperResultPageProps) => {
         openGraph={{
           title: title,
           description: description,
-          url: `${SITE_URL}${ROUTES.SEARCH_SUPER}/${superData.slug}`,
+          url: `${SITE_URL}${ROUTES.SEARCH_SUPER}/${entityData.slug}`,
           images: [
             {
-              url: `/images/search-results/${superData.img}`,
+              url: `/images/search-results/${entityData.img}`,
               alt: title,
             },
           ],
@@ -81,7 +81,7 @@ const SuperResultPage = ({ superData }: SuperResultPageProps) => {
         }}
       />
 
-      <SearchResultLayout superData={superData} />
+      <SearchResultLayout entityData={entityData} />
 
       <ControlsHint showNavButtons showControlsHint label={'Here you can read the informations about a super.'} />
     </>
@@ -97,16 +97,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params?.slug as string
-  const superData = theIncrediblesSupersResult.find((s) => s.slug === slug) || null
+  const entityData = theIncrediblesSupersResult.find((s) => s.slug === slug) || null
 
-  if (!superData) {
+  if (!entityData) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: { superData },
+    props: { entityData },
     revalidate: 604800,
   }
 }
