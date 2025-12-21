@@ -55,7 +55,7 @@ const KronosStep2: React.FC = () => {
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
       <Box pos="absolute" bottom={61} left={330} zIndex={2}>
-        <Image src={'/images/kronos/city-hills-v2.png'} width={1100} height={100} alt={stepLabel[KronosStep.DELIVERY] + ' - Ship'} />
+        <Image src={'/images/the-incredibles/kronos/city-hills-v2.png'} width={1100} height={100} alt={stepLabel[KronosStep.DELIVERY] + ' - Ship'} />
       </Box>
 
       <AnimatedLabel top={720} left={350} text={['Launch', 'Point']} delay={0.3} />
@@ -105,7 +105,7 @@ const KronosStep2: React.FC = () => {
             rotate: rotation,
           }}
         >
-          <Image src={'/images/kronos/mini-ship.png'} width={70} height={70} alt="Ship" />
+          <Image src={'/images/the-incredibles/kronos/mini-ship.png'} width={70} height={70} alt="Ship" />
         </motion.div>
       </motion.div>
     </MotionBox>

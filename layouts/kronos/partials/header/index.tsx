@@ -95,7 +95,7 @@ const KronosHeader: React.FC<KronosHeaderProps> = ({ step }) => {
           </MotionFlex>
 
           <MotionImage
-            src="/images/kronos/title-shape.png"
+            src="/images/the-incredibles/kronos/title-shape.png"
             width={90}
             height={90}
             alt="Decorative Shape for Omnidroid v.10"

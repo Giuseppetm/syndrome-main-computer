@@ -20,11 +20,11 @@ const MotionBox = motion(Box)
  * @author Giuseppe Del Campo
  */
 const KronosStep3 = () => {
-  const [imageSrc, setImageSrc] = useState('/images/kronos/phase-3.png')
+  const [imageSrc, setImageSrc] = useState('/images/the-incredibles/kronos/phase-3.png')
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setImageSrc('/images/kronos/phase-3-destroyed.png')
+      setImageSrc('/images/the-incredibles/kronos/phase-3-destroyed.png')
     }, 500)
 
     return () => clearTimeout(timer)

@@ -21,7 +21,7 @@ export interface EntityResult extends Entity {
   threatRatingLabel: string
 }
 
-export const UNIVERSE_IDS = { STAR_WARS: 'star-wars', THE_INCREDIBLES: 'the-incredibles' } as const
+export const UNIVERSE_IDS = { STAR_WARS: 'star-wars', THE_INCREDIBLES: 'the-incredibles', HARRY_POTTER: 'harry-potter' } as const
 
 export type UniverseId = (typeof UNIVERSE_IDS)[keyof typeof UNIVERSE_IDS]
 

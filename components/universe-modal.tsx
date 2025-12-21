@@ -57,7 +57,7 @@ const UniverseModal = () => {
       <Dialog.Backdrop bg="rgba(0,0,0,0.6)" backdropFilter="blur(6px)" w="full" h="full" />
 
       <Dialog.Positioner w="full" h="full">
-        <Dialog.Content bg="gray.900" color="white" borderRadius="lg" p={6} maxW="lg" w="90vw" boxShadow="0 0 30px rgba(0,0,0,0.6)" my="auto">
+        <Dialog.Content bg="gray.900" color="white" borderRadius="lg" p={6} maxW="800px" w="90vw" boxShadow="0 0 30px rgba(0,0,0,0.6)" my="auto">
           <Text fontSize="2xl" fontWeight="bold" mb={2}>
             Select universe theme
           </Text>
@@ -66,7 +66,7 @@ const UniverseModal = () => {
             Changing the universe updates characters, encounters and the overall visual mood of the experience.
           </Text>
 
-          <SimpleGrid columns={{ base: 1, sm: 2 }} gap={4} mb={6}>
+          <SimpleGrid columns={UNIVERSES.length} gap={4} mb={6}>
             {UNIVERSES.map((u) => (
               <Box
                 key={u.id}

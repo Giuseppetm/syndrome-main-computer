@@ -1,7 +1,31 @@
 import { starWarsCharacters, starWarsEncounters, theIncrediblesCharacters, theIncrediblesEncounters, UNIVERSES } from '@/data'
+import { harryPotterEntities } from '@/data/harry-potter'
+import { harryPotterEncounters } from '@/data/harry-potter/encounters'
 import { EncounterSet, Universe, UNIVERSE_IDS } from '@/types'
 import { ROUTES } from '@/utils/routes'
 import { create } from 'zustand'
+
+const mapEncounterSet = (universeId: string): EncounterSet => {
+  switch (universeId) {
+    case UNIVERSE_IDS.STAR_WARS:
+      return {
+        encounters: starWarsEncounters,
+        entities: starWarsCharacters,
+      }
+    case UNIVERSE_IDS.THE_INCREDIBLES:
+      return {
+        encounters: theIncrediblesEncounters,
+        entities: theIncrediblesCharacters,
+      }
+    case UNIVERSE_IDS.HARRY_POTTER:
+      return {
+        encounters: harryPotterEncounters,
+        entities: harryPotterEntities,
+      }
+    default:
+      throw new Error(`Unknown universe ID: ${universeId}`)
+  }
+}
 
 interface State {
   isContentReady: boolean
@@ -28,10 +52,7 @@ export const useMainStore = create<State>((set, get) => ({
   setUniverse: (universe: Universe) => {
     set({
       universe,
-      encounterSet: {
-        encounters: universe.id === UNIVERSE_IDS.THE_INCREDIBLES ? theIncrediblesEncounters : starWarsEncounters,
-        entities: universe.id === UNIVERSE_IDS.THE_INCREDIBLES ? theIncrediblesCharacters : starWarsCharacters,
-      },
+      encounterSet: mapEncounterSet(universe.id),
     })
   },
 

@@ -48,7 +48,7 @@ const KronosStepIdle = () => {
   return (
     <Box {...styles.idle}>
       <MotionBox initial="hidden" animate="visible" variants={fadeImageVariant}>
-        <Image src={'/images/kronos/omnidroid_cut_upscale.png'} width={1000} height={500} alt={'Omnidroid Final Design v.10'} />
+        <Image src={'/images/the-incredibles/kronos/omnidroid_cut_upscale.png'} width={1000} height={500} alt={'Omnidroid Final Design v.10'} />
       </MotionBox>
 
       {/* @ts-expect-error Usual motion stuff */}

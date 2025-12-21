@@ -1,4 +1,4 @@
-import { MenuItem } from '@/types'
+import { MenuItem, UNIVERSE_IDS } from '@/types'
 import { ROUTES } from '@/utils/routes'
 import { Box, BoxProps, HStack, Stack, StackProps, useSlotRecipe } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
@@ -46,6 +46,7 @@ const MenuLayout = ({ ...props }) => {
   const isLoaded = useRef<boolean>(false)
   const { play } = useSoundPlayer()
 
+  const { universe } = useMainStore()
   const getFirstEncounterRoute = useMainStore((state) => state.getFirstEncounterRoute)
 
   const [activeMenu, setActiveMenu] = useState<'main' | 'supers'>('main')
@@ -68,7 +69,7 @@ const MenuLayout = ({ ...props }) => {
       href: null,
     },
     {
-      label: 'Supers',
+      label: universe.id === UNIVERSE_IDS.THE_INCREDIBLES ? 'Supers' : 'Characters',
       icon: <SuperIcon boxSize={14} color="black" />,
       href: null,
       onClick: () => setActiveMenu('supers'),
@@ -77,12 +78,12 @@ const MenuLayout = ({ ...props }) => {
 
   const superMenuItems: Array<MenuItem> = [
     {
-      label: 'Supers List',
+      label: universe.id === UNIVERSE_IDS.THE_INCREDIBLES ? 'Supers List' : 'Characters List',
       icon: <SuperIcon boxSize={14} color="black" />,
       href: getFirstEncounterRoute(),
     },
     {
-      label: 'Search Super',
+      label: universe.id === UNIVERSE_IDS.THE_INCREDIBLES ? 'Search Super' : 'Search Character',
       icon: <SearchIcon color="black" />,
       href: '/search-super',
     },

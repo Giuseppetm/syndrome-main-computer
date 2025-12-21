@@ -12,6 +12,7 @@ import { soundMap } from '@/hooks/sound'
 import { gaId, starWarsPreloadImages, theIncrediblesPreloadImages } from '@/data'
 import { UNIVERSE_IDS } from '@/types'
 import { useMainStore } from '@/store'
+import { harryPotterPreloadImages } from '@/data/harry-potter'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { universe } = useMainStore()
@@ -23,6 +24,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       setPreloadImages([...theIncrediblesPreloadImages, ...Object.values(soundMap)])
     } else if (universe.id === UNIVERSE_IDS.STAR_WARS) {
       setPreloadImages([...starWarsPreloadImages, ...Object.values(soundMap)])
+    } else if (universe.id === UNIVERSE_IDS.HARRY_POTTER) {
+      setPreloadImages([...harryPotterPreloadImages, ...Object.values(soundMap)])
     }
   }, [universe])
 

@@ -25,7 +25,7 @@ const KronosStep1 = () => {
     <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: 'easeInOut' }}>
       <Box pos="absolute" top={420} left={500} zIndex={2}>
         <Image
-          src={'/images/kronos/small-omnidroid-upscale-v2.png'}
+          src={'/images/the-incredibles/kronos/small-omnidroid-upscale-v2.png'}
           width={230}
           height={100}
           alt={stepLabel[KronosStep.LOADING] + ' - Small Omnidroid'}
@@ -33,7 +33,7 @@ const KronosStep1 = () => {
       </Box>
 
       <Box pos="absolute" top={245} left={880} zIndex={2}>
-        <Image src={'/images/kronos/ship-v2.png'} width={430} height={100} alt={stepLabel[KronosStep.LOADING] + ' - Ship'} />
+        <Image src={'/images/the-incredibles/kronos/ship-v2.png'} width={430} height={100} alt={stepLabel[KronosStep.LOADING] + ' - Ship'} />
       </Box>
 
       <AnimatedLabel top={290} left={570} text={['Omnidroid']} />
