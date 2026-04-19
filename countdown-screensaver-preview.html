@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Kronos — Countdown Screensaver</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #5f8f92 0%, #2f4f4f 100%);
+      font-family: 'Rajdhani', sans-serif;
+      cursor: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Slow drift — keeps content comfortably within viewport */
+    .content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: drift 24s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%   { transform: translate(0px,   0px);  }
+      20%  { transform: translate(18px, -14px); }
+      40%  { transform: translate(-12px, 20px); }
+      60%  { transform: translate(22px,  12px); }
+      80%  { transform: translate(-18px, -8px); }
+      100% { transform: translate(0px,   0px);  }
+    }
+
+    .title,
+    .subtitle {
+      color: #A6A8A8;
+      font-size: 70px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1;
+    }
+
+    /* Timer bar spans full width with its own background */
+    .timer-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      margin: 56px 0;
+      background: radial-gradient(circle, rgba(139,162,159,1) 0%, rgba(107,126,124,1) 100%);
+    }
+
+    .timer-inner {
+      display: flex;
+      align-items: center;
+      gap: 96px;
+    }
+
+    .unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .unit-value {
+      font-size: 126px;
+      font-weight: 700;
+      color: #181818;
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+
+    .unit-label {
+      font-size: 22px;
+      font-weight: 700;
+      color: #AE0F0D;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .unit-sep {
+      font-size: 72px;
+      font-weight: 700;
+      color: #181818;
+      line-height: 1;
+      margin-bottom: 60px;
+    }
+
+    /* Occasional subtle flash — mimics the FlashLayer component */
+    .flash {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+      opacity: 0;
+      z-index: 100;
+      animation: flash 12s ease-in-out infinite;
+    }
+
+    @keyframes flash {
+      0%, 90%, 100% { opacity: 0; }
+      93%            { opacity: 0.25; }
+      96%            { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flash"></div>
+
+  <div class="content">
+    <div class="title">Project Kronos Countdown</div>
+
+    <div class="timer-bar">
+      <div class="timer-inner">
+        <div class="unit">
+          <span class="unit-value" id="hours">08</span>
+          <span class="unit-label">Hours</span>
+        </div>
+        <span class="unit-sep">:</span>
+        <div class="unit">
+          <span class="unit-value" id="minutes">10</span>
+          <span class="unit-label">Minutes</span>
+        </div>
+        <span class="unit-sep">:</span>
+        <div class="unit">
+          <span class="unit-value" id="seconds">42</span>
+          <span class="unit-label">Seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subtitle">Until Launch</div>
+  </div>
+
+  <script>
+    let total = 8 * 3600 + 10 * 60 + 42
+
+    const pad = n => String(n).padStart(2, '0')
+
+    const hEl = document.getElementById('hours')
+    const mEl = document.getElementById('minutes')
+    const sEl = document.getElementById('seconds')
+
+    function tick() {
+      if (total <= 0) {
+        hEl.textContent = mEl.textContent = sEl.textContent = '00'
+        return
+      }
+      hEl.textContent = pad(Math.floor(total / 3600))
+      mEl.textContent = pad(Math.floor((total % 3600) / 60))
+      sEl.textContent = pad(total % 60)
+      total--
+    }
+
+    tick()
+    setInterval(tick, 1000)
+  </script>
+</body>
+</html>
