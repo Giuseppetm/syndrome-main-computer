@@ -35,8 +35,9 @@ files:
 asar: true
 
 asarUnpack:
-  - '.next/**'
-  - 'node_modules/**'
+  - '.next/standalone/**'
+  - '.next/static/**'
+  - 'public/**'
 
 extraResources:
   - from: resources

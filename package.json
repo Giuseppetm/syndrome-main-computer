@@ -14,7 +14,7 @@
     "desktop:build:web": "next build",
     "desktop:build:app": "electron-builder --win --x64",
     "desktop:build": "npm run desktop:build:web && npm run desktop:build:app",
-    "build:electron": "npx esbuild electron/main.ts --platform=node --target=node18 --outfile=electron/main.js --format=esm",
+    "build:electron": "npx esbuild electron/main.ts --platform=node --target=node24 --outfile=electron/main.js --format=esm",
     "desktop:pack-local": "npm run build && npm run build:electron && npx electron-builder --win --x64 --config.extraMetadata.main=electron/main.js --config.extraMetadata.type=module --publish=never"
   },
   "dependencies": {
@@ -54,6 +54,6 @@
     "wait-on": "^8.0.5"
   },
   "engines": {
-    "node": ">=18.18.0 <21"
+    "node": ">=24.0.0 <25"
   }
 }
